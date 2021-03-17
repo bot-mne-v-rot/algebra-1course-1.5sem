@@ -6,18 +6,19 @@ cache:
   - "$HOME/.texlive"
 script:
 - mkdir _build
-- travis_wait 3 pdflatex -output-directory _build ./LinalColloc02.tex
-- travis_wait 3 pdflatex -output-directory _build ./LinalColloc02.tex
+- travis_wait 3 pdflatex -output-directory _build ./LinalColloc03.tex
+- travis_wait 3 pdflatex -output-directory _build ./LinalColloc03.tex
 before_deploy:
 - ls
 deploy:
   provider: releases
   api_key:
-  secure: "TNHSN4C5xF/mY9HqCue0sx2BcUZUs466yvEwXDHAnZnDEZbPLu5Bz3NmHC4TN11ASMAYFSg+4P5Ch8XzjW95er/7HMazdpf5Xa22a7+KbRfBW83Ydr9Z0syM92ERyCmrsGnI0mlixskSdg6dE9SuoBd5gHsdygDZwXZhKGj3YDImxPVLuwVHRLm0AdX9KkywkvJ+fVR4v2YZCjgcMxy+niCTMeOkHNps7YcqbmMcj8nUgmv2lG2E8PZYY//rqYasaanfYzJQ5WeVS9VIvvpuCfxslfz5bKrr2KqYluMePTUtHL5QaJ5qjuIaxYcAjMqvvaF7KX1c0dX8iZKH+n/HcjFqUZ2xPVJLfuJGurhASvvW7QUHbzePDZFDSxSI9MnlqwjM4Jnvy7xrG8Fl6QnAky4Q43V2J0yp+QCAo/bbsS//1nowA8Xk+dfS3RhAd33qKrP2NsA7+XQuLU97NIgrtjQ7oMjMhW1Ah6bIOB1no8l6qSlWrNLGsDlH7brfHaCVPSjGvcNFqj9UMDZSyccrIoZg8OeMebIVDenGsbAnEXQ9VUf09Bv5c8yxUiBGyelX34InuC5aQwFlO7VB9sou6jBgthbXawIyIiqyJzD7OK8xer5FA99OWKSIBWYZ7S+2raL1r2r4nAI7wKUDToXksMOZ8BYWGnEJ1rP5vOcqBWI="  file: "_build/LinalColloc02.pdf"
+    secure: "TNHSN4C5xF/mY9HqCue0sx2BcUZUs466yvEwXDHAnZnDEZbPLu5Bz3NmHC4TN11ASMAYFSg+4P5Ch8XzjW95er/7HMazdpf5Xa22a7+KbRfBW83Ydr9Z0syM92ERyCmrsGnI0mlixskSdg6dE9SuoBd5gHsdygDZwXZhKGj3YDImxPVLuwVHRLm0AdX9KkywkvJ+fVR4v2YZCjgcMxy+niCTMeOkHNps7YcqbmMcj8nUgmv2lG2E8PZYY//rqYasaanfYzJQ5WeVS9VIvvpuCfxslfz5bKrr2KqYluMePTUtHL5QaJ5qjuIaxYcAjMqvvaF7KX1c0dX8iZKH+n/HcjFqUZ2xPVJLfuJGurhASvvW7QUHbzePDZFDSxSI9MnlqwjM4Jnvy7xrG8Fl6QnAky4Q43V2J0yp+QCAo/bbsS//1nowA8Xk+dfS3RhAd33qKrP2NsA7+XQuLU97NIgrtjQ7oMjMhW1Ah6bIOB1no8l6qSlWrNLGsDlH7brfHaCVPSjGvcNFqj9UMDZSyccrIoZg8OeMebIVDenGsbAnEXQ9VUf09Bv5c8yxUiBGyelX34InuC5aQwFlO7VB9sou6jBgthbXawIyIiqyJzD7OK8xer5FA99OWKSIBWYZ7S+2raL1r2r4nAI7wKUDToXksMOZ8BYWGnEJ1rP5vOcqBWI="  
+  file: "_build/LinalColloc03.pdf"
   draft: true
   overwrite: true
   on:
-    repo: bot-mne-v-rot/algebra-1course-1sem
+    repo: bot-mne-v-rot/algebra-1course-1.5sem
     branch:  
         - master 
   skip_cleanup: 'true'

@@ -1,1 +1,403 @@
 \section{Лекция номер 3}
+
+\subsection{Канонический гомоморфизм}
+
+\begin{conj}
+Канонический гомоморфизм проекции группы на фактор-группу.
+
+$\pi_{H}: G \to G / H$
+
+$\quad \quad g \mapsto gH$
+
+\begin{proof}
+    $\pi_{H}(g) \cdot \pi_{H}(g') = gH \cdot g'H = gg'H = \pi_{H}(gg')$
+\end{proof}
+$\Imm \pi_{H} = G / H$ (т.е. это сюръективный гомоморфизм)
+
+$\Ker \pi_{H} = H$ (т.к. $gH = eH \Leftrightarrow g \in H$) 
+\end{conj}
+
+\begin{conj}
+Канонический гомоморфизм вложения подгруппы $K$ в группу $G$
+
+$i_{K}: K \to G$
+
+$\quad \quad g \mapsto g$
+
+$\Imm i_{K} = K$
+
+$\Ker i_{K} = \{ e \}$ (т.е. это инъективный гомоморфизм)
+\end{conj}
+
+\notice 
+
+$\varphi: G \to G'$~--- гомоморфизм
+
+$\varphi$~--- инъекция $\Longleftrightarrow \Ker \varphi = \{ e \}$
+
+\begin{proof}
+    "$\Longrightarrow$"
+    
+    $\varphi$~--- инъекция $\Longrightarrow \abs{\varphi(e_{G'})^{-1}} \leqslant 1$
+    
+    (не в точности $1$, так как $\varphi$ может и не быть сюръекцией, но точно не больше $1$ из-за инъекции)
+
+    $\varphi(e_{G'})^{-1} = \Ker \varphi \ni e_{G}$
+    (всегда, т.к. гомоморфизм переводит нейтральный в нейтральный)
+
+    "$\Longleftarrow$"
+
+    $\Ker \varphi = \{ e \}$
+
+    Пусть $\varphi(g_1) = \varphi(g_2)$ для некоторых $g_1, g_2 \in G$
+
+    Рассмотрим $\varphi(g_2^{-1}g_1) = \varphi(g_2^{-1})\varphi(g_1) = \varphi(g_2)^{-1}\varphi(g_1) = \varphi(g_2)^{-1}\varphi(g_2) = e_{G'}$
+
+    $\Longrightarrow g_2^{-1}g_1 \in \Ker \varphi \Longrightarrow g_2^{-1}g_1 = e \Longrightarrow g_1 = g_2 \Longrightarrow \varphi$~--- инъекция. 
+\end{proof}
+
+\subsection{Разложение гомоморфизма через канонический гомоморфизм}
+
+Теперь, определив два таких гомоморфизма, мы можем доказать два полезных разложения любого гомоморфизма групп. 
+
+\begin{theorem-non}
+    Разложение гомоморфизма через каноническую проекцию на фактор-группу.
+
+    $\varphi: G \to G'$~--- гомоморфизм групп.
+
+    $H \vartriangleleft G, H \subset \Ker \varphi$
+
+    Тогда $\exists !$ гомоморфизм $\varphi': G/H \to G':$
+
+    $\varphi = \varphi' \circ \pi_{H}$
+
+    Иными словами, гомоморфизм двух групп единственным образом раскладывается в 2 гомоморфизма:
+
+    $G \stackrel{\varphi}{\to} G'$ то же, что и $G \stackrel{\pi_{H}}{\to} G / H \stackrel{\varphi'}{\to} G'$
+
+    \begin{proof}
+        $ $ \\
+        Существование:
+
+        $\varphi'(gH) := \varphi(g)$
+
+        Проверим корректность определения:
+
+        $g_1H = g_2H \stackrel{?}{\Longrightarrow} \varphi(g_1) = \varphi(g_2)$
+        
+        $g_1H = g_2H \Longrightarrow g_2 = g_1h,\, h \in H$
+
+        $\varphi(g_2) = \varphi(g_1)\underbrace{\varphi(h)}_{\text{$H \subset \Ker \varphi$}} = \varphi(g_1)e = \varphi(g_1)$
+
+        Единственность:
+
+        $\varphi(g) = (\varphi' \circ \pi_{H})(g) = \varphi'(gH)$
+
+        $\Longrightarrow \varphi'(gH)$ определён однозначно.
+
+        Проверим гомоморфизм:
+        \begin{gather*}
+            \varphi'(g_1H \cdot g_2H) = \varphi'(g_1g_2H) = \varphi(g_1g_2) = \varphi(g_1)\varphi(g_2) = \varphi'(g_1H)\varphi'(g_2H)    
+        \end{gather*}
+        
+        $\forall g \in G: \varphi(g) = (\varphi' \circ \pi_{H})(g)$~--- равенство выполняется.
+    \end{proof}
+\end{theorem-non}
+
+\begin{theorem-non}
+    Разложение гомоморфизма через каноническое вложение подгруппы в группу. 
+
+    $\varphi: G \to G'$~--- гомоморфизм групп.
+
+    $K < G', \Imm \varphi \subset K$
+
+    Тогда $\exists !$ гомоморфизм $\tilde{\varphi}: G \to K:$
+
+    $\varphi = \tilde{\varphi} \circ i_K$
+
+    Иными словами, гомоморфизм двух групп единственным образом раскладывается в 2 гомоморфизма:
+
+    $G \stackrel{\varphi}{\to} G'$ то же, что и $G \stackrel{\tilde{\varphi}}{\to} K \stackrel{i_{K}}{\to} G'$
+
+    \begin{proof}
+        $ $ \\
+        $\tilde{\varphi}(g) := \varphi(g)$
+        
+        То же самое отображение, только образ не $G'$, а $K$.
+        
+    \end{proof}
+\end{theorem-non}
+
+\subsection{Индуцированный гомоморфизм}
+
+\begin{theorem-non}
+    Разложение гомоморфизма в композицию трёх гомоморфизмов.
+
+    $H \vartriangleleft G, H \subset \Ker \varphi$
+
+    $K \subset G', \Imm \varphi \subset K$
+
+    $\exists !$ гомоморфизм $\varphi'': G / H \to K:$
+
+    $\varphi =  i_K \circ \varphi'' \circ \pi_H$
+
+    Иными словами, гомоморфизм двух групп единственным образом раскладывается в 3 гомоморфизма:
+
+    $G \stackrel{\varphi}{\to} G'$ то же, что и $G \stackrel{\pi_{H}}{\to} G/H \stackrel{\varphi''}{\to} K \stackrel{i_{K}}{\to} G'$
+
+    \begin{proof}
+        Воспользуемся двумя предложениями выше.
+
+        Сперва построим гомоморфизм $\varphi': G / H \to G'$ \, такой, что $\varphi = \varphi' \circ \pi_H$
+
+        Заметив, что $\Imm \varphi' = \Imm \varphi \subset K$, мы можем разложить $\varphi'$ через:
+
+        $\varphi'': G / H \to K$ \, такой, что $\varphi' = i_K \circ \varphi''$
+
+        Тогда получим, что: 
+        \begin{gather*}
+            \varphi = \varphi' \circ \pi_H = i_K \circ \varphi'' \circ \pi_H
+        \end{gather*}
+    \end{proof}
+
+    \notice Гомоморфизм $\varphi''$ из $G / H$ в $K$ называется индуцированным гомоморфизмом $\varphi$
+\end{theorem-non}
+
+\subsection{Теорема о гомоморфизме}
+
+\begin{theorem}
+    О гомоморфизме.
+
+    $\varphi: G \to G'$~--- гомоморфизм групп.
+    
+    Тогда индуцированный гомоморфизм
+    $\varphi'': G / \Ker \varphi \to \Imm \varphi$
+    является изоморфизмом.
+    
+    Здесь мы берём за $H$ всё $\Ker \varphi$, а за $K$ весь $\Imm \varphi$,
+    то есть это частный случай индуцированного гомоморфизма.
+
+    \begin{proof}
+        $\varphi''(g\Ker \varphi) = \varphi(g)$
+
+        Сюръективность:
+
+        $g' \in \Imm \varphi \Longrightarrow \exists g \in G$
+
+        $g' = \varphi(g) = \varphi''(g \Ker \varphi) \Longrightarrow g' \in \Imm \varphi''$
+
+        т.е. $\Imm \varphi'' = \Im \varphi $
+
+        Инъективность:
+
+        Проверим тривиальность ядра
+
+        Пусть $g \Ker \varphi \in \Ker \varphi''$
+
+        $\varphi''(g  \Ker \varphi ) = e_{G'} \Longrightarrow \varphi(g) = e_{G'} \Longrightarrow g \Ker \varphi = e_{G} \Ker \varphi$
+
+        Таким образом $\Ker \varphi'' = \{ e_{G} \Ker \varphi \}$, т.е. $\varphi''$~--- инъективен.
+        
+    \end{proof}
+\end{theorem}
+
+\underline{Примеры нахождения изоморфизма:}
+\begin{enumerate}
+    \item $G := \C^* \; H := \mathbb{T} = \{ z \, | \, |z| = 1 \}$
+    
+    $\C^* / \mathbb{T} = ?$ 
+
+    $\varphi: \C^* \to \R^{*}$
+
+    $\quad \quad z \mapsto |z|$
+
+    $\Imm \varphi = \R^{*}_{+}$
+
+    $\Ker \varphi = \mathbb{T}$
+
+    По Т. о гомоморфизме, индуцированный гомоморфизм $\C^{*} / \mathbb{T} \to \R^{*}_{+}$~--- изоморфизм.
+
+    Т.о. $\C^* / \mathbb{T} \cong \R^{*}_+$
+
+    \notice $\R^{*}_+ \cong \R (a \mapsto \ln{a})$
+
+    \item $G / H := \C^* / \cycle{i}$
+    
+    $\ord i = 4, \, \cycle{i} = \{ i, -1, -i, 1 \}$
+    
+    $\varphi: \C^* \to \C^*$
+    
+    $\quad \quad z \mapsto z^4$
+
+    $\Ker \varphi = \cycle{i}$
+
+    $\Imm \varphi = \C^*$
+
+    $\Longrightarrow \C^* / \cycle{i} \cong \C^*$
+
+    \item $G / H := S_n / A_n \quad (A_n \vartriangleleft S_n)$
+    
+    $\varphi: S_n \to \Z^* = \{ 1, -1 \}$
+
+    $\quad \quad \sigma \mapsto \sign(\sigma)$
+
+    $\Ker \varphi = A_n$
+
+    $\Imm \varphi = \Z^*$
+
+    $\Longrightarrow S_n / A_n \cong \Z^{*}$
+\end{enumerate}
+
+\subsection{Классификация циклических групп}
+
+\begin{theorem-non}
+    $G$~--- циклическая группа 
+
+    \begin{enumerate}
+        \item $G$~--- бесконечная $\Longrightarrow G \cong \Z$
+        \item $|G| = n < +\infty \Longrightarrow G \cong \Z / n \Z$
+    \end{enumerate}
+
+    \begin{proof}
+        
+        $G = \cycle{g}$
+
+        $\varphi: \Z \to G$ (очевидно, гомоморфизм)
+
+        $\quad \quad a \mapsto g^a$
+
+        \begin{enumerate}
+            \item
+            $G$~--- бесконечная $\Longrightarrow g^m \neq e \, \forall m \in \N$
+            
+            $\Longrightarrow g^{-m} \neq e \, \forall m \in \N$
+
+            Т.о. $\Ker \varphi = \{ e \} \Longrightarrow \varphi$~--- инъективен
+
+            $\Imm \varphi = \{ g^a \, | \, a \in \Z \} = \cycle{g} = G$
+
+            $\Longrightarrow \Z / \Ker \varphi \cong \Imm \varphi \Longrightarrow \Z \cong G$
+
+            \item
+            $|G| = n < +\infty \Longrightarrow \ord{g} = n$
+            
+            Посмотрим на ядро.
+
+            Знаем, что:
+            \begin{itemize}
+                \item $n \in \Ker \varphi$
+                \item $0 < m < n \Longrightarrow m \not \in \Ker \varphi$
+                \item $t \in \Z \; t = nq + r \, 0 \leqslant r \leqslant n - 1$
+                $r = 0 \Longrightarrow t \in \Ker \varphi$
+                $r \neq 0 \Longrightarrow r \not \in \Ker \varphi \Longrightarrow t \not \in \Ker \varphi$
+            \end{itemize}
+
+            Т.о. $\Ker \varphi = \{ nq \, | \, q \in \Z \} = n \Z$
+
+            $\Longrightarrow \Z / \Ker \varphi \cong \Imm \varphi \Longrightarrow \Z / n \Z \cong G$
+             
+        \end{enumerate}
+    \end{proof}
+
+    Второе доказательство:
+    \begin{proof}
+        
+        $G \cong \Z / \Ker \varphi$
+
+        Поищем, каким может быть ядро.
+
+        Знаем, что в $\Z$ идеалы выглядят так: $(n) \, n \in \N_{0}$
+
+        Любая подгруппа $H$ в $\Z$~--- идеал в $\Z:$
+
+        $la = \underbrace{a + \dots + a}_{\text{l}} \in H \quad l \in \N, a \in H$
+
+        $(-l)a = -(la) \in H$
+
+        $0 \cdot a = 0 \in H$
+
+        Любая подгруппа~--- идеал, а все идеалы главные.
+
+        $\Longrightarrow G \cong \Z / (n):$
+        \begin{itemize}
+            \item $n < +\infty \Longrightarrow G \cong \Z / n \Z$
+            \item Иначе $G \cong \Z$
+        \end{itemize}
+    \end{proof}
+\end{theorem-non}
+
+\subsection{Две теоремы об изоморфизме}
+
+\begin{theorem-non}
+    Образ и прообраз подгруппы.
+
+    $\varphi: G \to G'$~--- гомоморфизм групп.
+
+    \begin{enumerate}
+        \item $H < G \Longrightarrow \varphi(H) < G'$
+        \item $K < G' \Longrightarrow \varphi^{-1}(K) < G$
+    \end{enumerate}
+
+    \begin{proof}
+        $ $ \\
+        \begin{enumerate}
+            \item 
+            $\varphi(H) \neq \varnothing \; (e_G \in H \Rightarrow e_{G'} \in \varphi(H))$
+        
+            $\varphi(h_1) \varphi(h_2) = \varphi(h_1h_2) \in \varphi(H) \quad h_1, h_2 \in H$
+
+            $\varphi(h)^{-1} = \varphi(h^{-1}) \in \varphi(H) \quad h \in H$
+            \item 
+            $\varphi^{-1}(K) \neq \varnothing \; (e_{G'} \in K \Rightarrow e_{G} \in \varphi^{-1}(K))$
+
+            $\varphi(g_1g_2) = \underbrace{\varphi(g_1)}_{\text{$\in K$}} \underbrace{\varphi(g_2)}_{\text{$\in K$}} \in K \quad g_1, g_2 \in \varphi^{-1}(K)$
+        \end{enumerate}
+        \end{proof}
+
+\end{theorem-non}
+
+\begin{theorem}
+    О соответствии.
+
+    $H \vartriangleleft G$
+
+    Тогда следующие два отображения являются взаимнообратными биекциями:
+    \begin{itemize}
+        \item
+        $\{ K < G \, | \, H \subset K \} \rightarrow \{ K' < G / H \}$
+
+        $K \mapsto \pi_H(K)$
+        \item
+        $\{ K' < G / H \} \rightarrow \{ K < G \, | \, H \subset K \} $
+
+        $K' \mapsto \pi^{-1}_{H}(K')$
+    \end{itemize}
+
+    При этом $K \vartriangleleft G \Longleftrightarrow \pi_{H}(K) \vartriangleleft G / H$
+    
+    \begin{proof}
+        Знаем, что $\pi_H(K) < G / H$ и $H \subset \pi^{-1}_{H}(K') < G$
+
+        Проверим, что они взаимнообратные:
+
+        $\pi^{-1}_{H}(\pi_{H}(K)) = \bigcup_{k \in K} kH \stackrel{H \subset K}{=} K$
+
+        
+        $\pi_H(\pi^{-1}_{H}(K')) = K' \quad (\pi^{-1}_{H}(K') < G / H)$
+
+        Проверим заявленную нормальность:
+
+        $K \vartriangleleft G \Longleftrightarrow \forall g \in G, k \in K: gkg^{-1} \in K 
+        \Longleftrightarrow \forall g \in G, k \in K: \pi_{H}(gkg^{-1}) \in \pi_{H}(K)$
+
+        $\Longleftrightarrow \underbrace{\forall g \in G, k \in K \; (gH)(kH)(gH)^{-1} \in \pi_H(K)}_{\text{*}}$
+
+        Но так как:
+        \begin{itemize}
+            \item $\{ kH \, | \, k \in K \} = \pi_H(K)$
+            \item $\{ gH \, | \, g \in G \} = G / H$
+        \end{itemize}
+        То $ * \Longleftrightarrow \pi_H(K) \vartriangleleft G / H$
+    \end{proof}
+
+\end{theorem}

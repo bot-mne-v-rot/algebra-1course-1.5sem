@@ -70,6 +70,30 @@ $\varphi$~--- инъекция $\Longleftrightarrow \Ker \varphi = \{ e \}$
     $G \stackrel{\varphi}{\to} G'$ то же, что и $G \stackrel{\pi_{H}}{\to} G / H \stackrel{\varphi'}{\to} G'$
 
     \begin{proof}
-        %Таймкод 15:30
+        $ $ \\
+        Существование:
+
+        $\varphi'(gH) := \varphi(g)$
+
+        Проверим корректность определения:
+
+        $g_1H = g_2H \stackrel{?}{\Longrightarrow} \varphi(g_1) = \varphi(g_2)$
+        
+        $g_1H = g_2H \Longrightarrow g_2 = g_1h,\, h \in H$
+
+        $\varphi(g_2) = \varphi(g_1)\underbrace{\varphi(h)}_{\text{$H \subset \Ker \varphi$}} = \varphi(g_1)e = \varphi(g_1)$
+
+        Единственность:
+
+        $\varphi(g) = (\varphi'(g) \circ \pi_{H})(g) = \varphi'(gH)$
+
+        $\Longrightarrow \varphi'(gH)$ определён однозначно.
+
+        Проверим гомоморфизм:
+        \begin{gather*}
+            \varphi'(g_1H \cdot g_2H) = \varphi'(g_1g_2H) = \varphi(g_1g_2) = \varphi(g_1)\varphi(g_2) = \varphi'(g_1H)\varphi'(g_2H)    
+        \end{gather*}
+        
+        $\forall g \in G: \varphi(g) = (\varphi' \circ \pi_{H})(g)$~--- равенство выполняется.
     \end{proof}
 \end{theorem-non}

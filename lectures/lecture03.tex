@@ -54,16 +54,18 @@ $\varphi$~--- инъекция $\Longleftrightarrow \Ker \varphi = \{ e \}$
     $\Longrightarrow g_2^{-1}g_1 \in \Ker \varphi \Longrightarrow g_2^{-1}g_1 = e \Longrightarrow g_1 = g_2 \Longrightarrow \varphi$~--- инъекция. 
 \end{proof}
 
-Теперь, определив два таких гомоморфизма, мы можем доказать два полезных разложения гомоморфизмов. 
+Теперь, определив два таких гомоморфизма, мы можем доказать два полезных разложения любого гомоморфизма групп. 
 
 \begin{theorem-non}
+    Разложение гомоморфизма через каноническую проекцию на фактор-группу.
+
     $\varphi: G \to G'$~--- гомоморфизм групп.
 
     $H \vartriangleleft G, H \subset \Ker \varphi$
 
     Тогда $\exists !$ гомоморфизм $\varphi': G/H \to G':$
 
-    $\varphi = \pi_{H} \circ \varphi'$
+    $\varphi = \varphi' \circ \pi_{H}$
 
     Иными словами, гомоморфизм двух групп единственным образом раскладывается в 2 гомоморфизма:
 
@@ -85,7 +87,7 @@ $\varphi$~--- инъекция $\Longleftrightarrow \Ker \varphi = \{ e \}$
 
         Единственность:
 
-        $\varphi(g) = (\varphi'(g) \circ \pi_{H})(g) = \varphi'(gH)$
+        $\varphi(g) = (\varphi' \circ \pi_{H})(g) = \varphi'(gH)$
 
         $\Longrightarrow \varphi'(gH)$ определён однозначно.
 
@@ -97,3 +99,120 @@ $\varphi$~--- инъекция $\Longleftrightarrow \Ker \varphi = \{ e \}$
         $\forall g \in G: \varphi(g) = (\varphi' \circ \pi_{H})(g)$~--- равенство выполняется.
     \end{proof}
 \end{theorem-non}
+
+\begin{theorem-non}
+    Разложение гомоморфизма через каноническое вложение подгруппы в группу. 
+
+    $\varphi: G \to G'$~--- гомоморфизм групп.
+
+    $K < G', \Imm \varphi \subset K$
+
+    Тогда $\exists !$ гомоморфизм $\tilde{\varphi}: G \to K:$
+
+    $\varphi = \tilde{\varphi} \circ i_K$
+
+    Иными словами, гомоморфизм двух групп единственным образом раскладывается в 2 гомоморфизма:
+
+    $G \stackrel{\varphi}{\to} G'$ то же, что и $G \stackrel{\tilde{\varphi}}{\to} K \stackrel{i_{K}}{\to} G'$
+
+    \begin{proof}
+        $ $ \\
+        $\tilde{\varphi}(g) := \varphi(g)$
+        
+        То же самое отображение, только образ не $G'$, а $K$.
+        
+    \end{proof}
+\end{theorem-non}
+
+\begin{theorem-non}
+    Разложение гомоморфизма в композицию трёх гомоморфизмов.
+
+    $H \vartriangleleft G, H \subset \Ker \varphi$
+
+    $K \subset G', \Imm \varphi \subset K$
+
+    $\exists !$ гомоморфизм $\varphi'': G / H \to K:$
+
+    $\varphi =  i_K \circ \varphi'' \circ \pi_H$
+
+    Иными словами, гомоморфизм двух групп единственным образом раскладывается в 3 гомоморфизма:
+
+    $G \stackrel{\varphi}{\to} G'$ то же, что и $G \stackrel{\pi_{H}}{\to} G/H \stackrel{\varphi''}{\to} K \stackrel{i_{K}}{\to} G'$
+
+    \begin{proof}
+        Воспользуемся двумя предложениями выше.
+
+        Сперва построим гомоморфизм $\varphi': G / H \to G'$ \, такой, что $\varphi = \varphi' \circ \pi_H$
+
+        Заметив, что $\Imm \varphi' = \Imm \varphi \subset K$, мы можем разложить $\varphi'$ через:
+
+        $\varphi'': G / H \to K$ \, такой, что $\varphi' = i_K \circ \varphi''$
+
+        Тогда получим, что: 
+        \begin{gather*}
+            \varphi = \varphi' \circ \pi_H = i_K \circ \varphi'' \circ \pi_H
+        \end{gather*}
+    \end{proof}
+
+    \notice Гомоморфизм $\varphi''$ из $G / H$ в $K$ называется индуцированным гомоморфизмом $\varphi$
+\end{theorem-non}
+
+\begin{theorem}
+    О гомоморфизме.
+
+    $\varphi: G \to G'$~--- гомоморфизм групп.
+    
+    Тогда индуцированный гомоморфизм
+    $\varphi'': G / \Ker \varphi \to \Imm \varphi$
+    является изоморфизмом.
+    
+    Здесь мы берём за $H$ всё $\Ker \varphi$, а за $K$ весь $\Imm \varphi$,
+    то есть это частный случай индуцированного гомоморфизма.
+
+    \begin{proof}
+        $\varphi''(g\Ker \varphi) = \varphi(g)$
+
+        Сюръективность:
+
+        $g' \in \Imm \varphi \Longrightarrow \exists g \in G$
+
+        $g' = \varphi(g) = \varphi''(g \Ker \varphi) \Longrightarrow g' \in \Imm \varphi''$
+
+        т.е. $\Imm \varphi'' = \Im \varphi $
+
+        Инъективность:
+
+        Проверим тривиальность ядра
+
+        Пусть $g \Ker \varphi \in \Ker \varphi''$
+
+        $\varphi''(g  \Ker \varphi ) = e_{G'} \Longrightarrow \varphi(g) = e_{G'} \Longrightarrow g \Ker \varphi = e_{G} \Ker \varphi$
+
+        Таким образом $\Ker \varphi'' = \{ e_{G} \Ker \varphi \}$, т.е. $\varphi''$~--- инъективен.
+        
+    \end{proof}
+\end{theorem}
+
+\underline{Примеры нахождения изоморфизма:}
+\begin{enumerate}
+    \item $G := \mathbb{C}^* \; H := \mathbb{T} = \{ z \, | \, |z| = 1 \}$
+    
+    $\mathbb{C}^* / \mathbb{T} = ?$ 
+
+    $\varphi: \mathbb{C}^* \to \R^{*}$
+
+    $\quad z \mapsto |z|$
+
+    $\Imm \varphi = \R^{*}_{+}$
+
+    $\Ker \varphi = \mathbb{T}$
+
+    По Т. о гомоморфизме, индуцированный гомоморфизм $C^{*} / \mathbb{T} \to \R^{*}_{+}$~--- изоморфизм.
+
+    Т.о. $\mathbb{C}^{*} / \mathbb{T} \cong \R^{*}_+$
+
+    \notice $\R^{*}_+ \cong \R (a \mapsto \ln{a})$
+
+    %\item $G / H := \mathbb{C}^{*} / i $
+    %45:26
+\end{enumerate}

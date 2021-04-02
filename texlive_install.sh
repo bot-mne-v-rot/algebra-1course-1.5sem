@@ -80,3 +80,4 @@ tlmgr option -- autobackup 0
 
 # Update the TL install but add nothing new
 tlmgr update --self --all
+sudo tlmgr option repository ftp://tug.org/historic/systems/texlive/2020/tlnet-final

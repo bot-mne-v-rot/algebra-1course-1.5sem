@@ -13,7 +13,7 @@ if ! command -v texlua > /dev/null; then
   # Obtain TeX Live
   wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
   tar -xzf install-tl-unx.tar.gz
-  cd install-tl-20*
+  cd install-tl-21*
 
   # Install a minimal system
   ./install-tl --profile=../texlive/texlive.profile
@@ -80,4 +80,3 @@ tlmgr option -- autobackup 0
 
 # Update the TL install but add nothing new
 tlmgr update --self --all
-update-tlmgr-latest.sh --update

@@ -1,1 +1,269 @@
 \section{Лекция номер 4}
+\begin{conj}
+    Пусть у нас есть $H \lhd G $ и факторгруппа $G/H$. Чтобы неким образом описать 
+    подгруппы этой факторгруппы введем отображение:  
+    \begin{gather*}
+        \pi_H: G \longrightarrow G/H
+    \end{gather*}
+    Все подгруппы $G/H$ имеют вид $: \pi_H(K), $ где $K < G, H \subset K$
+
+    Заметим также, что группу $\pi_H(k)$ можно, в общем то, представлять в более явном виде. 
+    $\pi_H(k) = kH,$ то есть не что иное, как правый/левый смежный класс. И тогда: 
+    \begin{gather*} 
+        \pi_H(K) = \{kH \mid k \in K\} = K/H
+    \end{gather*}
+    Также можно отметить из того, что $H \lhd G$ тривиальным образом следует, что $H \lhd K$
+\end{conj}
+
+\begin{theorem} (О факторгруппе факторгруппы)
+    \begin{gather*}
+        \text{Пусть есть } H, K \lhd G, \text{причем } h \subset K \\
+        \text{Тогда } K/H \lhd G/H \text{ и } 
+        (G/H)/(K/H) \cong G/K
+    \end{gather*}
+\end{theorem}
+\begin{proof} \quad 
+
+    Для начала рассмотрим гомоморфизм проекций на факторгруппу: 
+    \begin{gather*}
+        \pi_K : G \longrightarrow G/K \\
+        \text{Мы знаем, что }\Ker \pi_K = K \Longrightarrow H < \Ker \pi_K \\
+        \text{Так как } H \lhd G, \; \exists \text{ индуцированный гомоморфизм } 
+        \varphi: G/H \longrightarrow G/K  \\
+    \end{gather*}
+    Действовать он будет следующим образом: $gH \longmapsto \pi_K(g) = gK$. То есть на классе некоторого 
+    элемента $G$ он действует как действовал бы исходный гомоморфизм на самом элементе. 
+
+    \notice Стоит отметить на будущее, что всегда можно гомоморфно отобразить факторгруппу по 
+    меньшей подгруппе в факторгруппу по большей подгруппе. 
+
+    Вот теперь к нашему $\varphi$ будем применять теорему о гомоморфизме. Для начала заметим, что 
+    $\Imm \varphi = \{gK \mid g \in G\} = G/K$. Вышла вся подгруппа, то есть $\varphi$ сюръективен. Ну а 
+    ядро будет следующим: $\Ker \varphi = \{gH \mid gK = eK\} = \{gH \mid g \in K\} = K/H$. Осталось подставить все 
+    в теорему о гомоморфизме. Получаем, что $(G/H)/(K/H) \cong G/K$. 
+\end{proof}
+
+\follow \begin{enumerate}
+    \item Подгруппы $\Z$ -- это всевозможные $lZ$, где $l \in \N_0$ (то есть натуральные числа или 0). 
+    \begin{proof}
+        Было
+    \end{proof}
+    \item Пусть $n$ -- натуральное число. Тогда все подгруппы $\Z / n\Z$ -- это циклические подгруппы $\cycle{\bar d}$, 
+    где $d$ пробегает натуральные делители $n$. 
+    
+    При этом $(\Z/ n\Z)/ \cycle{\bar d} \cong \Z/d\Z$. 
+    
+    Например, перечислим все подгруппы $\Z/10\Z$: 
+    \begin{align*}
+        \cycle{\bar 1} &= \Z/ 10 \Z \\
+        \cycle{\bar 2} &= \{\bar 2, \bar 4, \bar 6, \bar 8, \bar 0\} \\
+        \cycle{\bar 5} &= \{\bar 5, \bar 0\} \\
+        \cycle{\bar{10}} &= \cycle{\bar 0} = \{\bar 0\} \\
+    \end{align*}
+    \begin{proof}
+        Воспользуемся теоремой о соответствии. $\Z  \overset{\pi_{n\Z}}{\longrightarrow} \Z/ n\Z$. По теореме о соответствии, 
+        подгруппами в $\Z/ n\Z$ будут образы подгрупп в $\Z$, которые содержали $n\Z$. Таким образом, $\pi_{n\Z}(d\Z)$, где 
+        $d\Z \supset n\Z$. А когда такое бывает? Тогда, когда все числа, кратные $n$, будут кратны $d$. То есть это условие 
+        равносильно тому, что $d \mid n$.
+
+        $\pi_{n\Z}(d\Z) = \{dm + n\Z\mid m \in \Z\} = \{m (d + n\Z)\mid m \in Z\} = \{d + n\Z\} = \cycle{\bar d}$
+
+        Итак, мы описали все подгруппы $\Z/ n\Z$. Это будут циклические подгруппы порожденные разными натуральными 
+        делителями $n$ и нулем. 
+
+        Ну и финальная точка в доказательстве -- применение теоремы о факторгруппе факторгруппы: $(\Z/n\Z)/\cycle{\bar d} = (\Z/n\Z)/(d\Z/ n\Z) \cong \Z/d\Z$
+    \end{proof}
+\end{enumerate}
+
+\notice На самом деле, доказав последний факт, мы в каком-то смысле внесли ясность в предыдущую часть, так как в ее доказательстве 
+мы замяли вопрос о том, не может ли быть такого, что $\cycle{\bar a} = \cycle{\bar b}$. Но сейчас мы поняли, что у фактогрупп разные порядки.
+\begin{gather*}
+    \ord{\Z/d\Z} = d \Longrightarrow (\Z/n\Z)/\cycle{\bar d} = d \Longrightarrow (\Z/n\Z : \cycle{\bar d}) = d \\
+    \text{(так как мы знаем, что порядок факторгруппы равен индексу)} \\ 
+    \text{а также } \ord{\Z/n\Z : \cycle{\bar d}} = \underbrace{\ord{\Z/n\Z}}_n / \ord{\cycle{\bar d}} \Longrightarrow \ord{\cycle{\bar d}} = \frac{n}{d} \\
+    \cycle{\bar d_1} \neq \cycle{\bar d_2}, \text{если } d_1, d_2 \text{ -- различные делители } n
+\end{gather*}
+
+Теперь давайте поговорим о произведении двух подгрупп. 
+Напомним, что если у нас есть группа $G$ и есть любые подмножества $M, N$ в ней, то можно рассматривать 
+множество $MN = \{ mn \mid m \in M, n \in N\}$. Чаще всего данную конструкцию применяют, когда $M,N$ -- подгруппы $G$. 
+При это не лишним будет отметить, что даже если они и правда подгруппы, то из этого не следует, что $MN < G$. 
+
+\example \begin{gather*}
+    G = S_3, H = \{(12)\} = \{e, (12)\}, K = \{(13)\} = \{e, (13)\} \\
+    HK = \{e, (12), (13), (132)\} \nless S_3 \; (\text{т. Лагранжа})
+\end{gather*}
+
+\begin{lemma}
+    Пусть $H \lhd G, K < G$. Тогда $HK = KH$ -- подгруппа в $G$
+\end{lemma}
+
+\begin{proof}
+    Сначала докажем включение $HK \subset KH$. Возьмем $h \in H, k \in K$. Тогда $hk = k\underbrace{k^{-1}hk}_{\in H} \in KH$. 
+    Аналогично можно получить, что $HK \supset KH$. Таким образом, равенство мы доказали. Осталось проверить три свойства подгруппы. 
+    Непустота гарантированна, т. к. как минимум $ee$ точно попал в множество. Замкнутость относительно обратного тоже есть т. к. 
+    $(HK)^{-1} = K^{-1} H^{-1} = KH = HK$. Наконец, замкнутость относительно умножения тоже имеется, так как $(HK)(HK) = H(KH)K = H(HK)K
+    = (HH)(KK) = HK$. 
+\end{proof}
+
+\begin{theorem}
+    (Теорема о произведении подгрупп)
+
+    Пусть $H \lhd G, K < G$. Тогда $H \lhd KH, H \cap K \lhd K$ и $KH/H \cong K/(K \cap H)$
+\end{theorem}
+
+\begin{proof} \quad 
+
+    \begin{itemize}
+        \item $H \lhd KH$ -- тривиально 
+        \item Возьмем $c \in K \cap H, k \in K$. Тогда: 
+        \begin{align*}
+            kck^{-1} &\in H, \text{ т. к. } c \in H \\
+            kck^{-1} &\in K, \text{ т. к. все три этих элемента } \in K
+        \end{align*} А значит, $kck^{-1} \in K \cap H$
+        \item Применим теорему о гомоморфизме. Введем следующее отображение: 
+        \begin{gather*}
+            \varphi: K \longrightarrow KH/H \\
+            k \longmapsto kH
+        \end{gather*}
+        Элемент $K$ одновременно является элементом $KH$, так как $k = ke$. И поскольку 
+        класс произведения равен произведению классов, $\varphi$ -- гомоморфизм. 
+
+        Посмотрим на образ $\varphi$: $\Imm{\varphi} = \{kH \mid k \in K\}$, при этом 
+        $KH/H = \{\underbrace{khH}_{kH} \mid k \in K, h \in H\} = \{kH \mid k \in K\}$.
+        Получили, что $\varphi$ сюръективен. $\Ker{\varphi} = \{k \in K \mid kH = eH\} =
+        \{k \in K \mid k \in H\} = K \cap H$. Итого, по теореме о гомоморфизме: 
+        \begin{gather*}
+            K/(K \cap H) \cong KH/H
+        \end{gather*}
+    \end{itemize}
+\end{proof}
+
+\follow Пусть $G$ -- конечная группа. Тогда 
+\begin{gather*}
+    \frac{\abs{K}}{\abs{K \cap H}} = \left( K : (K \cap H)\right) = (KH : H) = 
+    \frac{\abs{KH}}{\abs{H}} \Longrightarrow \\
+    \abs{KH} = \frac{\abs{K} \cdot \abs{H}}{\abs{K \cap H}}
+\end{gather*}
+
+\subsection*{Прямое произведение}
+Пусть есть $G, G'$ -- группы. Построим новую группу 
+$G \times G'. \; (g_1, g_1')(g_2, g_2') = (g_1g_2, g_1'g_2')$. Легко видеть, 
+что $(G \times G', \; \cdot \; )$ -- группа. 
+
+\begin{theorem-non} 
+    Рассмотрим отображения: 
+    \begin{align*}
+        i_1: G \longrightarrow G \times G' &\qquad g \longmapsto (g, e) \\
+        i_2: G' \longrightarrow G \times G' &\qquad g' \longmapsto (e, g') \\
+        \pi_1: G \times G' \longrightarrow G &\qquad (g, g') \longmapsto g \\
+        \pi_2: G \times G' \longrightarrow G' &\qquad (g, g') \longmapsto g'
+    \end{align*}
+\end{theorem-non}
+\textbf{\textit{Fun facts: }}
+\begin{enumerate}
+    \item $i_1, i_2$ (вложения) -- мономорфизмы групп
+    
+    $\pi_1, \pi_2$ (проекции) -- эндоморфизмы групп
+    \item $\Imm{i_1} = \Ker{\pi_2} = G \times \{e\}$
+    
+    $\Imm{i_2} = \Ker{\pi_1} = \{e\} \times G$
+    \item $\pi_1 \circ i_1 = id_G, \quad \pi_2 \circ i_2 = id_{G'}$
+    
+    $\pi_1 \circ i_2 = e: G' \longrightarrow G, \; g' \longmapsto e$ (единичный гомоморфизм)
+
+    $\pi_2 \circ i_1 = e: G \longrightarrow G', \; g \longmapsto e$ (единичный гомоморфизм)
+\end{enumerate}
+
+Стоит также заметить, что $i_1, i_2$ индуцируют 
+\begin{gather*}
+    G \longrightarrow G \times \{e\} \text{ -- изоморфизм} \\
+    G' \longrightarrow \{e\} \times G' \text{ -- изоморфизм}
+\end{gather*}
+
+Бывает ситуации, когда у нас изначально есть некая группа, у нее две подгруппы и в какой-то момент становится 
+ясно, что группа устроена как прямое произведение этих самых подгрупп. В качестве примера такой группы можно взять 
+комплексные числа. Группа комплексных чисел по умножению изоморфна группе пар, где первый элемент пары -- 
+модуль комплексного числа, а второй -- тригонометрическая часть. 
+
+\begin{theorem} Пусть $G$ -- группа, $H_1 < G, H_2 < G$, тогда два условия равносильны: 
+    \begin{itemize}
+        \item[А.] Выполняются 3 свойства: 
+        \begin{enumerate}
+            \item $H_1 H_2 = G$
+            \item $H_1 \cap H_2 = \{e\}$
+            \item $\forall h_1 \in H_1, \; \forall h_2 \in H_2 : h_1 h_2 = h_2 h_1$
+        \end{enumerate} 
+        \item[Б.] Следующее отображение является изоморфизмом групп:  
+        \begin{gather*}
+            \varphi : H_1 \times H_2 \longrightarrow G \\
+            (h_1, h_2) \longmapsto h_1 h_2
+        \end{gather*}
+    \end{itemize}
+\end{theorem}
+\begin{proof} \quad 
+    
+    \begin{itemize}
+        \item[``A] $\Longrightarrow$ Б:'' Для начала проверим, что $\varphi$ хотя-бы гомоморфизм.
+        \begin{gather*}
+            \varphi((h_1, h_2)(h_1', h_2')) = \varphi((h_1h_1', h_2 h_2')) = \\
+            h_1 h_1' h_2 h_2' = h_1 h_2 h_1' h_2' = \varphi((h_1, h_2)) \varphi((h_1', h_2'))
+        \end{gather*} 
+        Значит $\varphi$ -- гомоморфизм. $\Imm{\varphi} = G$, так как $G = H_1 H_2$. То есть $\varphi$ сюръективен. 
+
+        \begin{gather*}
+            \Ker{\varphi} = \{(h_1, h_2) \mid h_1, h_2 = e\} = \\
+            \{(h_1, h_1^{-1}) \mid h_1 \in H_1, h_1^{-1} \in H_2\} = \{(e, e)\} \text{ т. к. } H_1 \cap H_2 = \{e\}
+        \end{gather*}
+        
+        А значит $\varphi$ инъективен $\Longrightarrow$ биективен $\Longrightarrow$ является изоморфизмом. 
+        \item[``Б] $\Longrightarrow$ А:'' 
+        \begin{itemize}
+            \item[$\bullet$] $\Imm{\varphi} = H_1 H_2$. То есть из того, что $\Imm{\varphi} = G$ следует, что $H_1 h_2 = G$ 
+            \item[$\bullet$] Пусть $h \in H_1 \cap H_2$. Тогда $\varphi(h, h^{-1}) = h h^{-1} = e \Longrightarrow h = e$ 
+            (т. к. ядро тривиально)
+            \item[$\bullet$] $\forall h_1 \in H_1, h_2 \in H_2: h_1 h_2 = \varphi((h_1, h_2)) = 
+            \varphi((h_1, e) \cdot (e, h_2)) = \varphi((e, h_2) \cdot (h_1, e)) = 
+            \varphi((e, h_2)) \varphi ((h_1, e)) = h_2 h_1$
+        \end{itemize}
+    \end{itemize}
+\end{proof}
+
+Если подгруппы $H_1, H_2$ удовлетворяют условию теоремы, то $G$ -- внутреннее прямое произведение этих подгрупп. 
+
+\example $\R^*$ -- внутреннее прямое произведение $\R^*_+$ и $\{\pm 1\}$
+
+\begin{theorem-non}
+    $G$ - внутреннее прямое произведение $H_1$ и $H_2 \Longleftrightarrow$ выполняются 3 условия: 
+    \begin{itemize}
+        \item Пункты $1$) и $2$) из предыдущей теоремы
+        \item Пункт $3'$) $H_1, H_2 \lhd G$
+    \end{itemize}
+\end{theorem-non}
+\begin{proof}
+    \item[]``$1, 2, 3 \Longrightarrow 3'$:'' Возьмем $h \in H, g \in G$. Необходимо
+    проверить, что $ghg^{-1} = H_1$
+    
+    Исходя из первого пункта представим $g$ как $h_1 \cdot h_2$ для некоторых 
+    $h_1 \in H_1, h_2 \in H_2$
+
+    Тогда $ghg^{-1} = h_1 h_2 h h_2^{-1} h_1 ^{-1}$. Так как пункт 3 говорит, что $h_1$ и $h_2$ коммутируют, то это
+    в свою очередь будет равно $h_1 h h_2 h_2^{-1} h_1^{-1} = h_1 h h_1^{-1} \in H_1$ так как все три элемента лежат в $H_1$. 
+
+    Доказали, что $H_1 \lhd G$. Аналогично проверяется, что $H_2 \lhd G$
+    \item[]``$1, 2, 3' \Longrightarrow 3$:'' Возьмем $h_1 \in H_1, h_2 \in H_2$. Напишем коммутатор 
+    этих элементов (данное понятие будет определяться позднее). 
+    \begin{gather*}
+        h_1 \underbrace{h_2 h_1^{-1} h_2^{-1}}_{\text{попало в } H_1} \in H_1
+    \end{gather*} 
+    Но, с другой стороны: 
+    \begin{gather*}
+        \underbrace{h_1 h_2 h_1^{-1}}_{\text{попало в } H_2} h_2^{-1} \in H_2
+    \end{gather*} 
+    Значит $h_1 h_2 h_1^{-1} h_2^{-1} \in H_1 \cap H_2$. А по пункту 2, $H_1 \cap H_2 = \{e\}$. То есть: 
+    \begin{gather*}
+        h_1 h_2 h_1^{-1} h_2^{-1} = e \\
+        h_1 h_2 h_1^{-1} = e h_2 \\
+        h_1 h_2 = h_2 h_1
+    \end{gather*}
+\end{proof}

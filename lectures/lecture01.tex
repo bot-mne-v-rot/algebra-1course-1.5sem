@@ -55,11 +55,12 @@ $\Rightarrow \dim{\mathrm{{Im}{\varphi}}} =\rk A$
 \follow 
 $\dim{U} = n - \rk A$
 
-\subsection{Глава 6: Теория групп}
+\chapter{Теория групп}
 
-\paragraph{1}{ Группы и подгруппы, новые примеры}
+\section{Группы и подгруппы, новые примеры}
+\begin{itemize}
 
-Аддитивные группы колец:
+\item Аддитивные группы колец:
 
 \begin{itemize}
 \item $\mathbb{Z}$, $\mathbb{Q}$, $\mathbb{R}$, $\mathbb{C}$, $A[X]$, $K(X)$, $M(n, A)$
@@ -121,8 +122,7 @@ $R/(f) = R/\stackrel{f}{\equiv}$ --- факторкольцо.
   \item $R$ --- коммутативное кольцо, $I\subset R$ --- идеал в нем. Тогда $a \stackrel{I}{\equiv} b \Leftrightarrow a - b \in I$
 \end{itemize} 
 
-\subsection{Группы обратимых элементов кольца}
-
+\item Группы обратимых элементов кольца
 
 Пусть $A$ --- ассоциативное кольцо с единицей. 
 
@@ -154,3 +154,28 @@ $\mathbb(Z)^*$, $\mathbb{R}^*$, $\mathbb{Q}^*$, $\mathbb{C}^*$, $M(n, K)^* = GL(
 
 $\varphi(m)$--- функция Эйлера, сопоставляет число количество натуральных, не превышающих его и взаимно простых с ним
 
+\item 
+$S_n = S(\{ 1, \cdots, n \})$
+
+$A_n = \{ \sigma \in S_n | \sign{\sigma} = 1 \}$ --- группа четных перестановок
+
+$A_n < S_n$, так как произведение четных перестановок четно, обратная к четной перестановке четна и тождественная перестановка четна. 
+
+\item Группы симметрий геометрических фигур
+
+$\Phi$ --- фигура
+
+$\Sigma(\Phi)$ --- самосовмещения этой фигуры
+
+$D_n$ --- группы симметрий правильного $n$-угольника
+
+\begin{tikzpicture}
+  \draw[gray, thick] (-2,-2) -- (-2,2);
+  \draw[gray, thick] (2,-2) -- (2,2);
+  \draw[gray, thick] (2)
+
+  \filldraw[black] (0,0) circle (2pt) node[anchor=west] {Intersection point};
+  
+\end{tikzpicture}
+
+\end{itemize}

@@ -1,1 +1,429 @@
 \section{Лекция номер 1}
+
+\subsection{Что-то про СЛУ}
+
+$A: V \rightarrow W$
+
+Было доказано: $\dim{\ker{A}} + \dim{\mathrm{Im}{V}} = \dim{V}$
+
+Как это применить к изучению СЛУ?
+
+Представим, что есть система из $m$ уравнений, $n$ неизвестных и она однородна: 
+
+$AX = 0$, $A\in M(m, n, k)$
+
+Пусть $U = \{ X | AX = 0 \} \subset K^n$ - пространство решений (подпространство пронстранства всех столбцов высоты $n$).
+
+Требуется понять, чему равна размерность пространства решений. 
+
+Для этого нужно интерпретировать $U$ как ядро некоторого линейного отображения. Это нетрудно, потому что $U$ состоит из тех столбцов, из которых получается 0 в результате некоторой операции. Остается операцию (умножение на матрицу $A$) интерпретировать как некоторое линейное отображение. 
+
+Умножение на матрицу $A$ сопоставляет столбцу высоты $n$ столбец высоты $m$: 
+
+$K^n \stackrel{\varphi}{\rightarrow} K^m$
+
+$c \mapsto  Ac$
+
+$\varphi \in \Hom(K^n, K^m)$
+
+Остается применить равенство с размерностями.
+
+Ядро умножения на матрицу $A$ – $U$.
+
+$\dim{U} + \dim{\mathrm{Im}{\varphi}} = n$
+
+Осталось понять, что представляет из себя размерность образа.
+
+Рассмотрим:
+
+$A \left(
+  \begin{matrix}
+  c_1 \\ 
+  \vdots \\
+  c_n
+\end{matrix}
+\right) = c_1A_1 + c_2A_2 + \cdots + c_nA_n$
+
+$A = (A_1A_2\cdots A_n)$
+
+Следовательно, образ $\varphi$ – множество всевозможных линейных комбинаций столбцов: 
+
+$\Rightarrow \mathrm{{Im}{\varphi}} = \Lin(A_1, \cdots, A_n)$
+
+$\Rightarrow \dim{\mathrm{{Im}{\varphi}}} =\rk A$
+
+\follow 
+$\dim{U} = n - \rk A$
+
+% \chapter{Теория групп} !!!
+
+\subsection{Группы и подгруппы, новые примеры}
+\begin{itemize}
+
+\item Аддитивные группы колец:
+
+\begin{itemize}
+\item $\mathbb{Z}$, $\mathbb{Q}$, $\mathbb{R}$, $\mathbb{C}$, $A[X]$, $K(X)$, $M(n, A)$
+\item Кольца вычетов (группы по сложению) $\mathbb{Z}/m\mathbb{Z} = \mathbb{Z}/(m) = \mathbb{Z}/\stackrel{m}{\equiv}\ = \{ [0], [1], \cdots, [m-1] \}$
+\end{itemize}
+
+Введем сложение и умножение на классах вычетов: 
+\begin{gather*}
+  [a] + [b] = [a + b] \\
+  [a]\cdot [b] = [a \cdot b]
+\end{gather*}
+
+Это определение нуждается в проверке корректности.
+\begin{gather*}
+\begin{cases}
+    [a] = [a']  \\
+    [b] = [b']
+\end{cases}
+\stackrel{?}{\Rightarrow}
+\begin{cases}
+  [a' + b'] = [a + b]  \\
+  [a' \cdot b'] = [a \cdot b]
+\end{cases}
+\end{gather*}
+
+\begin{gather*}
+\begin{cases}
+  a \stackrel{m}{\equiv} a' \\
+  b \stackrel{m}{\equiv} b'
+\end{cases}
+\stackrel{?}{\Rightarrow}
+\begin{cases}
+  a + b \equiv a' + b' \\ 
+  a \cdot b \equiv a' \cdot b'
+\end{cases}
+\end{gather*}
+
+Из курса дискретной математики известно, что замена представителей классов на других представителей тех же классов не влияет на результат операций.
+
+\begin{theorem-non}
+  $(\mathbb{Z}/m \mathbb{Z}, +, \cdot)$ --- коммутативное ассоциативное кольцо с единицей.
+
+  \begin{proof}
+    Рутинная проверка, тривиально.
+  \end{proof}
+\end{theorem-non}
+
+\notice
+Можно обобщить построение кольца классов вычетов до любого коммутативного кольца. 
+
+$R$ --- коммутативное кольцо, $f\in R$, $\stackrel{f}{\equiv}$ --- отношение сравнимости по модулю элемента $f$.
+
+$R/(f) = R/\stackrel{f}{\equiv}$ --- факторкольцо. 
+
+В частности можно самостоятельно обдумать такое: 
+
+\begin{itemize}
+  \item $\mathbb{R}[X]/(X^2 + 1)$ --- легко отождествляется с полем комплексных чисел. 
+  \item $R$ --- коммутативное кольцо, $I\subset R$ --- идеал в нем. Тогда $a \stackrel{I}{\equiv} b \Leftrightarrow a - b \in I$
+\end{itemize} 
+
+\item Группы обратимых элементов кольца
+
+Пусть $A$ --- ассоциативное кольцо с единицей. 
+
+Тогда мы имеем дело с еще одной группой. Элементы $A$ не образуют группу по умножению, но если ограничиться обратимыми элементами ($A^*$), то они образуют группу по умножению. 
+
+Будем занудами, проверим замкнутость: 
+\begin{gather*}
+  ab = 1 \\
+  a'b' = 1 = b'a' \\
+  \Rightarrow (aa')(b'b) = 1  
+\end{gather*}
+
+Теперь имеем такие примеры: 
+
+$\mathbb(Z)^*$, $\mathbb{R}^*$, $\mathbb{Q}^*$, $\mathbb{C}^*$, $M(n, K)^* = GL(n, K)$ --- общая линейная группа степени $n$ над полем $K$.
+
+В $GL(n, K)$ есть важная подгруппа (специальная линейная группа), состоит из матриц, у которых определитель равен единице. 
+\begin{gather*}
+  SL(n, k) = \{ A \in GL(n, K) | \det{A} = 1 \} \\
+  SL(n, k) < GL(n, k)
+\end{gather*}
+
+Теперь в кольце классов вычетов можно рассмотреть группу обратимых элементов: 
+
+\begin{gather*}
+  (\mathbb{Z}/m \mathbb{Z})^* = \{ [a] | (a, m) = 1 \} \\
+  |(\mathbb{Z}/m \mathbb{Z})^*| = \varphi(m)
+\end{gather*}
+
+$\varphi(m)$--- функция Эйлера, сопоставляет число количество натуральных, не превышающих его и взаимно простых с ним
+
+\item 
+$S_n = S(\{ 1, \cdots, n \})$
+
+$A_n = \{ \sigma \in S_n | \sign{\sigma} = 1 \}$ --- группа четных перестановок
+
+$A_n < S_n$, так как произведение четных перестановок четно, обратная к четной перестановке четна и тождественная перестановка четна. 
+
+\item Группы симметрий геометрических фигур
+
+$\Phi$ --- фигура
+
+$\Sigma(\Phi)$ --- самосовмещения этой фигуры
+
+$D_n$ --- группы симметрий правильного $n$-угольника
+
+$R_k$ --- Повороты на углы кратные $n$: $k \cdot \frac{2\pi}{n}$
+
+$S_k$ --- Оси симметрии: $k=0,1,\cdots, n-1$ (на каждую вершину одна ось)
+% В планах нарисовать шестиугольник чтобы показать симметрии, но сейчас нет времени
+$|D_n| = 2n$
+
+Показано, что их хотя бы $2n$, но на самом деле их не больше. В это можно просто поверить, можно установить самостоятельно.
+
+В $D_n$ есть циклическая абелева подгруппа порядка $n$, состоящая из поворотов.
+
+\begin{tikzpicture}
+  \draw[gray, thick] (-1,-1.539) -- (-1.618,0.363);
+  \draw[gray, thick] (-1.618,0.363) -- (0,1.539);
+  \draw[gray, thick] (0,1.539) -- (1.618,0.363);
+  \draw[gray, thick] (1.618,0.363) -- (1,-1.539);
+  \draw[gray, thick] (1,-1.539) -- (-1,-1.539);
+
+  \draw[thick, densely dotted] (0, -1.839) -- (0, 1.839);
+
+  \filldraw[black] (0,0) circle (2pt) node[anchor=west] {Ось симметрии};
+  
+\end{tikzpicture}
+
+\item $\mathbb{T} < \mathbb{C}^*$
+
+$\mathbb{T} = \{ z\ :\ |z| = 1 \}$
+
+Подгруппа, так как произведение комплексных чисел с модулем $1$ будет иметь модуль $1$, все обратные тоже имеют модуль $1$.
+
+$\mu_n$ (группа (по умножению) корней из единицы степени $n$) < $\mathbb{T} < \mathbb{C}^*$ 
+
+Ранее отмечалось, что $\mu_n$ -- циклическая. Напомним, что $\zeta_n \cdot \zeta_1 = \zeta_{n+1}$
+
+$\mu_n =\ \langle \zeta_1 \rangle\ =\ \langle\zeta_{n-1}\rangle$
+\end{itemize} 
+
+\subsection{Подгруппа, порожденная подмножеством}
+Что такое циклическая подгруппа?
+
+$G$ -- группа, $g\in G$, тогда
+
+$\langle g \rangle\ :=\ \{\ g^n\ |\ n\in\ \mathbb{Z}\ \}$
+
+\begin{theorem-non}
+Это подгруппа.
+
+\begin{proof}
+Замкнутость: 
+
+$g^m\cdot g^n = g^{m+n}$
+
+Обратный: 
+
+$(g^m)^{-1} = g^{-m}$
+
+Нейтральный: 
+
+$e = g^0$
+
+\end{proof}
+\end{theorem-non}
+
+\begin{conj} Циклическая группа
+
+$G$ --- циклическая, если $\exists\ g:\ G = \langle g \rangle$
+\end{conj}
+
+\begin{conj} Порядок элемента
+
+  $\ord{g} = \min{ \{ n\in \mathbb{N} : g^n = e \} }$
+
+  $\ord{g} = +\infty \Longleftrightarrow \nexists n\in \mathbb{N} : g^n = e$
+\end{conj}
+
+\begin{theorem-non}
+
+  \begin{itemize}
+  \item $|\langle g \rangle| = \ord{g}$
+  \item $\ord{g} = n < +\infty \Longrightarrow \langle g \rangle = \{ g^0, g^1, \cdots, g^{n-1} \}$
+  \end{itemize}
+
+\begin{proof}
+  \begin{itemize}
+    \item $\ord{g} = +\infty$
+
+    $i \neq j \Longrightarrow g^i \neq g^j$ (так как $g^{i-j} \neq e$, иначе противоречие с порядком)
+
+    $\Longrightarrow |\langle g \rangle| = +\infty$
+    
+    \item $\ord{g} = n < +\infty$
+    
+    Начнем со второго утверждения. 
+    
+    $m = nq + r$, $0 \leq r \leq r - 1$
+    
+    $g^m = \equalto{(g^n)}{e}^q \cdot g^r = g^r$
+
+    То есть любая степень $g$ это степень $g$ в нужном диапазоне ($[0; n-1]$)
+
+    Таким образом, $|\langle g \rangle| \leq n$
+
+    Осталось увидеть, что $0 \leq i < j \leq n - 1 \Longrightarrow g^i\neq g^j $
+
+    Если $g^i = g^j$, то $g^{j-i} = e$ --- противоречие с определением порядка, так как $1 \leq j - i \leq n - 1$
+  \end{itemize}
+\end{proof}
+\end{theorem-non}
+
+\notice Циклическая группа единственна (с точностью до изоморфизма).
+
+$\ord{g} = +\infty \Longrightarrow \langle g \rangle \cong \mathbb{Z}$
+
+$\ord{g} = n \Longrightarrow \langle g \rangle \cong \mathbb{Z}/n \mathbb{Z}$
+
+Строгое доказательство будет изложено в дальнейшем.
+
+\begin{conj}
+  Подгруппа, порожденная подмножеством.
+
+  $\langle M \rangle = \{ g_1, \cdots, g_s\ |\ s \geq 0,\ g_1, \cdots, g_s \in M \cup M^{-1} \}$
+
+  $M^{-1} = \{ g^{-1}\ |\ g\in M \}$
+  
+\end{conj}
+
+\notice $\langle \{g\} \rangle \ =\ \langle g \rangle$
+\begin{theorem-non}
+  $\langle M \rangle$ --- подгруппа
+  \begin{proof}
+    Нейтральный:
+
+    $e\in \langle M \rangle$ хотя бы $s = 0$
+
+    Замкнутость: 
+
+    $(g_1 \cdots g_s)(g'_1 \cdots g'_t) = g_1 \cdots g_s g'_1 \cdots g'_t \in \langle M \rangle$
+
+    Обратный:
+    $(g_1 \cdots g_s)^{-1} = g_s^{-1} \cdots g_1^{-1} \in \langle M \rangle$  
+  \end{proof}
+  
+\end{theorem-non}
+\notice $H_i < G, i\in I \Longrightarrow \bigcap\limits_{i\in I} H_i < G$
+
+Это тривиально: произведение любых двух элементов, лежащих в пересечении, лежит в пересечении. Обратный к любому тоже лежит в каждой из подгрупп, значит, лежит в пересечении. Единица Тоже.
+
+\begin{theorem-non}
+  $\langle M \rangle = \bigcap\limits_{\substack{H < G, \\ M \subset H}} H $
+
+\begin{proof}
+  $\mbox{\Large$\subset$}$
+  \begin{gather*}
+    \begin{cases}
+      H < G \\
+      M \subset H
+    \end{cases}
+    \stackrel{?}{\Longrightarrow} \langle M \rangle \subset H \\
+    M \subset H \Longrightarrow M^{-1} \subset H \\
+    \Longrightarrow g_1 \cdots g_s \in H\ (g_i\in M \cap M^{-1}) \\
+    \Longrightarrow \langle M \rangle \subset H
+  \end{gather*}
+
+  $\mbox{\Large$\supset$}$
+  \begin{gather*}
+    \begin{cases}
+      \langle M \rangle < G \\
+      M \subset \langle M \rangle
+    \end{cases}
+    \Longrightarrow \langle M \rangle \supset \bigcap\limits_{\substack{H < G, \\ M \subset H}} H
+  \end{gather*}
+  
+\end{proof}
+\end{theorem-non}
+
+\notice Обозначение
+
+$\langle \{ g_1, \cdots, g_t \} \rangle = \langle g_1, \cdots, g_t \rangle$
+
+\notice Группы перестанвок и симметрии порождаются двумя элементами
+
+$S_n = \langle (1 2 \cdots n), (12) \rangle$
+
+$D_n = \langle R_1, R_0 \rangle $
+
+\subsection{Гомоморфизмы}
+
+\begin{conj}
+  Отображение $G \longrightarrow G'$ $G, G'$ --- группы
+
+  называется гомоморфизмом, если 
+
+  $\forall g_1, g_2 \in G$ $\varphi(g_1 \cdot g_2) = \varphi(g_1) \cdot \varphi(g_2)$
+\end{conj}
+
+Примеры:
+\begin{itemize}
+  \item $\mathbb{R} \longrightarrow \mathbb{C}$
+  
+  $\alpha \mapsto \cos{\alpha} + i\sin{\alpha}$
+
+  Согласитесь, что если перемножить два числа с аргументами $\alpha$ и $\beta$, то получится число с аргументом $\alpha + \beta$.
+
+  $(\cos{a} + i\sin{a})(\cos{b} + i\sin{b}) = \cos{a}\cdot\cos{b} - \sin{a}\cdot\sin{b} + i(\sin{a}\cdot\cos{b} + \sin{b}\cdot\cos{a}) = \cos(a + b) + i\sin(a + b)$
+
+  \item $G$ --- абелева группа, $m\in \mathbb{Z}$
+  
+  $G \longrightarrow G$
+
+  $g \mapsto g^m$
+
+  $(g_1 \cdot g_2)^m = g_1^m \cdot g_2^m$
+  
+  Абелевость нужна, чтобы переставить элементы местами в 
+  
+  $(g_1 \cdot g_2) \cdot (g_1 \cdot g_2) \cdot \cdots (g_1 \cdot g_2)$
+  % в планах красиво подчеркнуть, что тут m скобок
+
+  \item  $S_n \longrightarrow \mathbb{Z}^*$
+
+  $\sigma \mapsto \sign{\sigma}$
+
+  Знак произведения перестановок равен произведению знаков.
+\end{itemize}
+
+\begin{conj}
+  $\mathrm{Im}{\varphi} = \{ \varphi(g)\ |\ g\in G \}$
+
+  $\Ker{\varphi} = \{ g \in G\ |\ \varphi(g) = e \}$
+\end{conj}
+
+\begin{theorem-non}
+  Образ нейтрального элемента это нейтральный элемент:
+
+  \begin{proof}
+    $\varphi(e_G)\varphi(e_G) = e_{G'}$
+
+    $\varphi(e_G) = e_{G'}$
+  \end{proof}
+\end{theorem-non}
+
+\begin{theorem-non}
+  $\mathrm{Im}{\varphi} < G$, $\Ker{\varphi} < G$
+  \begin{proof}
+    Наличие обратного:
+
+    $\varphi(\equalto{g \cdot g^{-1}}{\varphi(g)\cdot \varphi(g^{-1})}) = \varphi(e_G) = e_{G'}$
+    
+    $\Longrightarrow \varphi(g)^{-1} = \varphi(g^{-1}) \in \mathrm{Im}{G}$
+
+    Наличие нейтрального:
+
+    $e_{G'} = \varphi(e_G) \in \mathrm{Im}{\varphi}$
+
+    Замкнутость очевидна из свойств гомоморфизма. 
+
+    Таким образом, $\mathrm{Im}{\varphi} < G'$
+  \end{proof}
+\end{theorem-non}

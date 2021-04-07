@@ -30,6 +30,7 @@
 \usepackage{hyphsubst}
 \usepackage{bookmark}
 \usepackage{amssymb}
+\usepackage{adjustbox}
 
 \graphicspath{ {./images/} }
 %%
@@ -189,6 +190,9 @@
 \newcommand\calloutup[3][1.5pt]{%
   \def\stacktype{L}\stackMath\stackunder[#1]{#2}{\callouttextup{#3}}%
 }
+\newcommand{\verteq}{\rotatebox{90}{$\,=$}}
+\newcommand{\equalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\verteq}{#2}}{#1}}
+
 \begin{document}
 
 \clearpage

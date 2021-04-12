@@ -1,1 +1,356 @@
 \section{Лекция номер 2}
+
+Время разнести это говно по полочкам.
+
+\subsection{Смежные классы}
+
+\begin{conj}
+    Пусть $G$ -- группа, $H$ -- подгруппа $G$, т.е. $H < G$;
+    $g_1, g_2 \in G$. Тогда $g_2 \sim g_1$, если $g_2 = g_1 h$ для
+    некоторого $h \in H$.
+\end{conj}
+
+\begin{theorem-non}
+    ``$\sim$'' --- отношение эквивалентности.
+\end{theorem-non}
+\begin{proof} $ $
+
+    \begin{itemize}
+        \item Рефлексивность:
+        
+        $g = ge$, но $H < G$, значит $e \in H$.
+
+        \item Симметричность:
+        
+        Если $g_2 = g_1 h$ для $h \in H$, то $g_1 = g_2 h^{-1}$. \\
+        $H < G \Rightarrow h^{-1} \in H$.
+
+        \item Транзитивность:
+        
+        Если $g_2 = g_1 h$, $g_3 = g_2 h'$, $h, h' \in H$, \\
+        то $g_3 = g_2 h' = (g_1 h) h' = g_1 (hh')$. \\
+        $H < G \Rightarrow hh' \in H$.
+
+    \end{itemize}
+\end{proof}
+
+\begin{conj} $ $\\
+    $G$ -- группа; $M$, $N$ -- множества; $g \in G$. Тогда \\
+    $gM := \{ gm \mid m \in M \}$. \\
+    $Ng := \{ ng \mid n \in N \}$. \\
+    $MN := \{ mn \mid m \in M, n \in N \}$. \\
+    $M^{-1} := \{ m^{-1} \mid m \in M \}$.
+\end{conj}
+
+\begin{conj} $ $\\
+    $G/\sim \,\, =: G/H$ -- \textbf{множество левых 
+    смежных классов} $G$ по $H$. \\
+    $[g] = \{ gh \mid h \in H \} =: gH$ -- 
+    \textbf{левый смежный класс элемента}. \\
+    $Hg := \{ hg \mid h \in H \}$ -- 
+    \textbf{правый смежный класс элемента}. \\
+    $H \backslash G$ -- \textbf{множество правых 
+    смежных классов} $G$ по $H$. \\
+\end{conj}
+
+\notice В некоторых учебниках по алгебре $gH$ называют
+правым смежным классом.
+
+\notice Если $h \in H$, то $hH = eH = H$.
+
+\notice Правые и левые смежные классы не обязательно равны. \\
+\begin{example}
+    $S_3 = \{e, (1 \; 2), (1 \; 3), (2 \; 3), 
+    (1 \; 2 \; 3), (1 \; 3 \; 2)\}$. \\
+    $H = \langle (1 \; 2) \rangle = \{e, (1 \; 2)$, \\
+    $eH = (1 \; 2)H = H = H(1 \; 2) = He$, \\
+    $(1 \; 3) H = \{ (1 \; 3), (1 \; 2 \; 3) \} = (1 \; 2 \; 3) H$, \\
+    $(2 \; 3) H = \{ (2 \; 3), (1 \; 3 \; 2) \} = (1 \; 3 \; 2) H$; \\
+    при этом $H (1 \; 3) = \{ (1 \; 3), (1 \; 3 \; 2) \}$.
+\end{example}
+
+\begin{conj}
+    $H < G$. \textbf{Индексом $H$ в $G$} называют
+    $(G : H) := \abs{G/H}$.
+\end{conj}
+\notice $(G : H)$ -- это некоторая мощность, которая в том числе 
+может быть бесконечной.
+
+\begin{theorem-non}
+    $\abs{G/H} = \abs{H\backslash G}$
+\end{theorem-non}
+\begin{proof} $ $
+
+    Рассмотрим отображение:
+    \begin{flalign*}
+        \varphi\colon G/H &\to H \backslash G &&\\
+        A &\mapsto A^{-1} = \{ a^{-1} \mid a \in A\} &&
+    \end{flalign*}
+    Убедимся, что отображение задано корректно.
+    $A = gH$ для нек. $g \in G$. \\ $A^{-1} = (gH)^{-1}
+    = \{ (gh)^{-1} \mid h \in H \} 
+    = \{ h^{-1}g^{-1} \mid h \in H \}
+    = H^{-1}g^{-1} = Hg^{-1} \in H \backslash G$.
+
+    Рассмотрим другое отображение:
+    \begin{flalign*}
+        \psi\colon H \backslash G &\to G/H &&\\
+        A &\mapsto A^{-1} = \{ a^{-1} \mid a \in A\} &&
+    \end{flalign*}
+    Аналогично, оно задано корректно. При этом нетрудно
+    убедиться, что 
+    $\psi \circ \varphi = \operatorname{id}_{G/H}$ и
+    $\varphi \circ \psi = \operatorname{id}_{H \backslash G}$.
+    Таким образом, $\varphi$ и $\psi$ -- взаимно обратные биекции,
+    значит, множества $G/H$ и $H \backslash G$ равномощны.
+
+\end{proof}
+
+\notice Если группа была конечной, то индекс подгруппы конечен.
+С другой стороны, если группа была бесконечной, то индекс не
+обязательно бесконечный. Например, $(\Z : m\Z) = m$.
+
+\subsection{Мультипликативность индекса, теорема Лагранжа и её следствия}
+
+\begin{theorem-non}
+    Пусть $G$ -- группа, $K < H < G$, $(G : H) < \infty$,
+    $(H : K) < \infty$. Тогда $(G : K) < \infty$ и
+    $(G : K) = (G : H) \cdot (H : K)$.
+\end{theorem-non}
+\begin{proof} $ $
+
+    Пусть $(G : H) = k$, $(H : K) = l$; \\
+    $g_1, \dots, g_k$ -- представители всех классов $G/H$; \\
+    $h_1, \dots. h_l$ -- представители всех классов $H/K$.
+
+    Ключевое утверждение: $\{ g_i h_j \mid i = 1..k, j = 1..l \}$
+    -- представители всех классов в $G/K$. Для этого надо
+    доказать:
+    \begin{itemize}
+        \item $\forall g \in G \; \exists i, j : g \in (g_i h_j) K$.
+        \begin{proof} $ $
+
+            $g \in G \Rightarrow \exists i : g \in g_i H$,
+            т.е. $g = g_i h$, где $h \in H$. \\
+            Аналогично, $h \in H \Rightarrow \exists j : h \in h_j K$.\\
+            Таким образом, $g = g_i h \in g_i h_j K$.
+        \end{proof}
+        \item $g_i h_j K \neq g_{i'} h_{j'} K$ при 
+        $(i, j) \neq (i', j')$.
+        \begin{proof} $ $
+
+            Предположим, $g_i h_j K = g_{i'} h_{j'} K$. \\
+            Тогда $g_i h_j = g_{i'} h_{j'} t$, где $t \in K$. \\
+            Но $h_j \in H$ и $h_{j'} t \in H$. \\ 
+            Значит, $g_i H = g_{i'} H \Rightarrow i = i'$. \\
+            Тогда сократим
+            на этот элемент и получим \\ $h_j = h_{j'} t
+            \Rightarrow h_j K = h_{j'} K \Rightarrow j = j'$.
+        \end{proof}
+    \end{itemize}
+\end{proof}
+
+\begin{example}
+    $G = \Z$, $H = m\Z$, $K = mn\Z$. Тогда $K < H < G$.
+    $(G : H) = m$, $(G : K) = mn$ $\Rightarrow$ $(H : K) = mn/m = n$.
+\end{example}
+
+$ $
+
+\follow Пусть $G$ -- конечная группа, $H < G$. 
+Тогда $\abs{G} = (G : H) \abs{H}$.
+\begin{proof} $ $
+
+    Пусть $K := \{ e \}$ (тривиальная подгруппа), \\
+    тогда $(G : K) = \abs{G}$, $(H : K) = \abs{H}$, \\
+    т.к. $gK = ge = g$, $hK = he = h$, где $g \in G, h \in H$. \\
+    Получаем, что $\abs{G} = (G : K) = (G : H)(H : K) =
+    (G : H)\abs{H}$.
+\end{proof}
+
+\begin{theorem-nonna}[Лагранжа]
+    Пусть $G$ -- группа,  $\abs{G} < \infty$, $H < G$. 
+    Тогда $\abs{H} \mid \abs{G}$.
+\end{theorem-nonna}
+\begin{proof}
+    Из предыдущего следствия: $\abs{G} = (G : H) \cdot \abs{H}$.
+\end{proof}
+
+\follow Пусть $G$ -- группа,  $\abs{G} < \infty$, $g \in G$.
+Тогда $\ord g \mid G$.
+\begin{proof}
+    $\ord g = \abs{\cycle g}$.
+\end{proof}
+
+\follow Пусть $G$ -- группа,  $\abs{G} < \infty$, $g \in G$.
+Тогда $g^{\abs{G}} = e$.
+\begin{proof}
+    $g^{\ord g} = e$ по определению $\Rightarrow g^{\abs{G}} =
+    (g^{\ord g})^{\abs{G}/\ord g} = e$.
+\end{proof}
+
+\follow (Теорема Эйлера)
+Пусть $m \in \N$, $a \in \Z$, $\gcd(a, m) = 1$.
+Тогда $a^{\varphi(m)} \equiv 1 \; (\operatorname{mod} m)$.
+\begin{proof} $ $\\
+    Пусть $G = (\Z/m\Z)^*$, $g = [a]_m$.
+    Т.к. $\gcd(a, m) = 1$, $g \in G$. \\
+    Из предыдущего следствия $[a]_m^{\abs{G}} = [1]_m$. \\
+    По определению функции Эйлера $\abs{G} = \abs{(\Z/m\Z)^*}= 
+    \varphi(m)$. \\
+    По определению классов $G$, $[a]_m^{\varphi(m)} = [1]_m$
+    $\Rightarrow$ $a^{\varphi(m)} \equiv 1 \; (\operatorname{mod} m)$.
+\end{proof}
+
+\subsection{Нормальные подгруппы и фактор-группы}
+
+\begin{conj}
+    Пусть $G$ -- группа, $H < G$. \\Тогда $H$ --
+    \textbf{нормальная подгруппа} $G$, если
+    $\forall g \in G \; \forall h \in H \quad
+    ghg^{-1} \in H$. \\
+    Обозначается $H \lhd G$.
+\end{conj}
+
+\notice Если $G$ абелева, то любая подгруппа нормальна.
+
+\begin{theorem-non}
+    Пусть $G, G'$ -- группы, $\varphi \colon G \to G'$ -- гомоморфизм.
+    Тогда $\Ker \varphi \lhd G$.
+\end{theorem-non}
+\begin{proof} $ $
+
+    Возьмём $h \in \Ker \varphi$, $g \in G$.\\
+    Тогда $\varphi(ghg^{-1}) = \varphi(g) \cdot 
+    \underbrace{\varphi(h)}_{= e}
+    \cdot \varphi(g^{-1}) =
+    \varphi(g) \cdot \varphi(g^{-1}) =
+    \varphi(g) \cdot \varphi(g)^{-1} = e$. \\
+    Из этого следует, что $ghg^{-1} \in \Ker \varphi$.
+\end{proof}
+
+\begin{theorem-non}
+    Пусть $G$ -- группа, $H < G$. Тогда эквивалентны:
+    \begin{enumerate}
+        \item $H \lhd G$
+        \item $\forall g \in G \quad gHg^{-1} \subset H$
+        \item $\forall g \in G \quad gHg^{-1} = H$
+        \item $\forall g \in G \quad gH = Hg$
+    \end{enumerate}
+\end{theorem-non}
+\notice Про 4-е свойство ещё говорят, что левое и правое
+разложение Лагранжа совпадают, где левое (правое) разложение Лангранжа
+--- разбиение группы в объединение её левых (правых) смежных классов.\\
+\textit{Замечание это от Жукова, термин этот не гуглится :(}
+
+\begin{proof} $ $
+
+    \begin{itemize}
+        \item ``$1 \Leftrightarrow 2$'': тривиально.
+        
+        $gHg^{-1} = \{ghg^{-1} \mid h \in H\}$, \\
+        поэтому
+        $\forall g \in G \;\; gHg^{-1} \subset H$
+        $\Longleftrightarrow $
+        $\forall g \in G \; \forall h \in H \;\;
+        ghg^{-1} \in H$
+
+        \item ``$3 \Rightarrow 2$'': очевидно.
+        
+        \item ``$2 \Rightarrow 3$'':
+        
+        $\forall g \in G \;\; gHg^{-1} \subset H$.
+        Значит, для $g^{-1}$ верно, что $g^{-1}Hg \subset H$. \\
+        Посмотрим на $g^{-1}Hg \subset H$, выполним домножения: \\
+        $g^{-1}Hg \subset H \Rightarrow g^{-1}H \subset Hg^{-1}
+        \Rightarrow H \subset gHg^{-1}$. \\
+        Получаем, что $gHg^{-1} = H$.
+
+        \item ``$3 \Leftrightarrow 4$'':
+        
+        $\equalto{gHg^{-1}g}{gH} = Hg \Leftrightarrow gHg^{-1} = H$
+    \end{itemize}
+\end{proof}
+
+\begin{example}
+    $\cycle {(1 \; 2)}$ не нормальна в $S_3$, но $A_3 \lhd S_3$.
+\end{example}
+
+\notice $(G : H) = 2 \Rightarrow H \lhd G$.
+\begin{proof} $ $\\
+    $H \in G/H \Rightarrow G/H = \{H, G - H\}$.\\
+    $H \in H\backslash G \Rightarrow 
+    H\backslash G = \{H, G - H\}$.\\
+    $G/H = H\backslash G \Rightarrow H \lhd G$.
+\end{proof}
+
+\begin{conj} $ $
+
+    Пусть $H \lhd G$. Введём на $G/H$ структуру группы:
+    \begin{flalign*}
+        ``*'' \colon G/H \times G/H &\to G/H &&\\
+        (A, B) &\mapsto AB &&
+    \end{flalign*}
+    где $AB = \{ ab \mid a \in A, b \in B \}$.
+
+    Такая группа называется \textbf{факторгруппой} группы $G$ по
+    нормальной подгруппе $H$.
+\end{conj}
+\begin{proof}
+    Убедимся в корректности определения.
+
+    Отметим, что т.к. $H \lhd G$, то 
+    $\forall g \in G \;\; gH = Hg$
+
+    Почему $AB \in G/H$? Пусть $A = gH$, $B = g'H$.\\
+    Тогда $AB = (gH)(g'H) = g(Hg')H = g(g'H)H = (gg')(HH) =
+    gg'H \in G/H$.
+
+    Проверим аксиомы группы:
+    \begin{itemize}
+        \item Ассоциативность:
+        
+        Пусть $A, B, C \in G/H$. Тогда
+        $(AB)C = A(BC) \Leftrightarrow \\ \Leftrightarrow
+        \{ (ab)c \mid a \in A, b \in B, c \in C \} =
+        \{ a(bc) \mid a \in A, b \in B, c \in C \}$.\\
+        Это верно, т.к. операция на элементах $G$ была ассоциативна,
+        т.е. $(ab)c = a(bc)$.
+
+        \item Наличие нейтрального:
+        
+        $eH$ -- нейтральный в $G/H$, так как:\\
+        $gH \cdot eH = gHH = gH$, \\
+        $eH \cdot gH = e(Hg)H = e(gH)H = (eg)(HH) = gH$.
+
+        \item Наличие обратного:
+        
+        $g^{-1} H$ -- обратный к $gH$, так как:\\
+        $gH \cdot g^{-1}H = g(Hg^{-1})H = g(g^{-1}H)H =
+        (gg^{-1})(HH) = eH$, \\
+        $g^{-1}H \cdot gH = g^{-1}(Hg)H = g^{-1}(gH)H =
+        (g^{-1}g)(HH) = eH$.
+
+    \end{itemize}
+\end{proof}
+
+\begin{example}
+    \begin{enumerate}
+        \item $\Z / m\Z$ -- совпадает с тем, что мы ранее определяли для
+        колец.
+        \item $G/G = \{eG\}$ -- тривиальная группа. Все элементы попадают
+        в один класс.
+        \item $G/\{e\} \cong G$.
+    \end{enumerate}
+\end{example}
+
+\notice Если $H \lhd G$, то $gH = g'H$ $\Longleftrightarrow$ 
+$g = g'h$, где $h \in H$ $\Longleftrightarrow$ 
+$g = \widetilde{h}g'$, где $\widetilde{h} \in H$.\\
+Элементы $g$ и $g'$ называются \textbf{сравнивыми} по нормальной
+подгруппе $H$.
+
+\notice $ghg^{-1}$ называется \textbf{сопряжённым} к $h$ при помощи $g$.
+Тогда определение нормальной подгруппы можно переформулировать так, 
+что нормальная подгруппа -- это та, что помимо всех своих элементов
+содержит все сопряжённые к ним.

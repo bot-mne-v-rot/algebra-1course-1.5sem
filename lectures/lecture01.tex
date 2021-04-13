@@ -415,7 +415,9 @@ $D_n = \langle R_1, R_0 \rangle $
 
 \begin{theorem-non}
   $\mathrm{Im}{\varphi} < G'$, $\Ker{\varphi} < G$
-  \begin{proof}
+  \begin{proof} \; \\
+    $\mathrm{Im}{\varphi} < G'$:
+    
     Наличие обратного:
 
     $\varphi(\equalto{g \cdot g^{-1}}{\varphi(g)\cdot \varphi(g^{-1})}) = \varphi(e_G) = e_{G'}$
@@ -429,5 +431,23 @@ $D_n = \langle R_1, R_0 \rangle $
     Замкнутость очевидна из свойств гомоморфизма. 
 
     Таким образом, $\mathrm{Im}{\varphi} < G'$
+    
+    $\Ker{\varphi} < G$:
+    
+    Наличие обратного:
+    
+    $g \in \Ker{\varphi} < G$
+    
+    $\varphi(g^{-1}) = \varphi(g)^{-1} = e_{G'}^{-1} = e_{G'} \Rightarrow g^{-1} \in \Ker{\varphi}$
+    
+    Наличие нейтрального:
+    
+    $e_{G'} = \varphi(e_G) \Rightarrow e_G \in \Ker{\varphi}$
+
+    Замкнутость:
+    
+    $g_1, g_2 \in =\Ker{\varphi}$
+    
+    $\varphi(g_1 g_2) = \varphi(g_1) \varphi(g_2) = e_{G'} \cdot e_{G'} = e_{G'} \Rightarrow g_1 g_2 \in \Ker{\varphi}$
   \end{proof}
 \end{theorem-non}

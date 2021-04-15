@@ -17,7 +17,7 @@
 
 \begin{theorem} (О факторгруппе факторгруппы)
     \begin{gather*}
-        \text{Пусть есть } H, K \lhd G, \text{причем } h \subset K \\
+        \text{Пусть есть } H, K \lhd G, \text{причем } H \subset K \\
         \text{Тогда } K/H \lhd G/H \text{ и } 
         (G/H)/(K/H) \cong G/K
     \end{gather*}
@@ -27,7 +27,7 @@
     Для начала рассмотрим гомоморфизм проекций на факторгруппу: 
     \begin{gather*}
         \pi_K : G \longrightarrow G/K \\
-        \text{Мы знаем, что }\Ker \pi_K = K \Longrightarrow H < \Ker \pi_K \\
+        \text{Мы знаем, что }\Ker \pi_K = K \Longrightarrow H \subset \Ker \pi_K \\
         \text{Так как } H \lhd G, \; \exists \text{ индуцированный гомоморфизм } 
         \varphi: G/H \longrightarrow G/K  \\
     \end{gather*}
@@ -44,7 +44,7 @@
 \end{proof}
 
 \follow \begin{enumerate}
-    \item Подгруппы $\Z$ -- это всевозможные $lZ$, где $l \in \N_0$ (то есть натуральные числа или 0). 
+    \item Подгруппы $\Z$ -- это всевозможные $l \Z$, где $l \in \N_0$ (то есть натуральные числа или 0). 
     \begin{proof}
         Было
     \end{proof}
@@ -219,7 +219,7 @@ $G \times G'. \; (g_1, g_1')(g_2, g_2') = (g_1g_2, g_1'g_2')$. Легко вид
         А значит $\varphi$ инъективен $\Longrightarrow$ биективен $\Longrightarrow$ является изоморфизмом. 
         \item[``Б] $\Longrightarrow$ А:'' 
         \begin{itemize}
-            \item[$\bullet$] $\Imm{\varphi} = H_1 H_2$. То есть из того, что $\Imm{\varphi} = G$ следует, что $H_1 h_2 = G$ 
+            \item[$\bullet$] $\Imm{\varphi} = H_1 H_2$. То есть из того, что $\Imm{\varphi} = G$ следует, что $H_1 H_2 = G$ 
             \item[$\bullet$] Пусть $h \in H_1 \cap H_2$. Тогда $\varphi(h, h^{-1}) = h h^{-1} = e \Longrightarrow h = e$ 
             (т. к. ядро тривиально)
             \item[$\bullet$] $\forall h_1 \in H_1, h_2 \in H_2: h_1 h_2 = \varphi((h_1, h_2)) = 
@@ -241,7 +241,7 @@ $G \times G'. \; (g_1, g_1')(g_2, g_2') = (g_1g_2, g_1'g_2')$. Легко вид
     \end{itemize}
 \end{theorem-non}
 \begin{proof}
-    \item[]``$1, 2, 3 \Longrightarrow 3'$:'' Возьмем $h \in H, g \in G$. Необходимо
+    \item[]``$1, 2, 3 \Longrightarrow 3'$:'' Возьмем $h \in H_1, g \in G$. Необходимо
     проверить, что $ghg^{-1} = H_1$
     
     Исходя из первого пункта представим $g$ как $h_1 \cdot h_2$ для некоторых 

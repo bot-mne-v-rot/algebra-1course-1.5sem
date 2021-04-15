@@ -394,60 +394,92 @@ $D_n = \langle R_1, R_0 \rangle $
 \end{itemize}
 
 \begin{conj}
-  $\mathrm{Im}{\varphi} = \{ \varphi(g)\ |\ g\in G \}$
+  $\Imm {\varphi} = \{ \varphi(g)\ |\ g\in G \}$
 
   $\Ker{\varphi} = \{ g \in G\ |\ \varphi(g) = e \}$
 \end{conj}
 
 \begin{theorem-non}
-  Образ нейтрального элемента это нейтральный элемент:
+  Образ нейтрального элемента в гомоморфизме -- 
+  это нейтральный элемент:
 
-  \begin{proof} \; \\
-    $e_G \cdot e_G = e_G$
-
-    $\varphi(e_G \cdot e_G) = \varphi(e_G)$
-
-    $\varphi(e_G) \cdot \varphi(e_G) = \varphi(e_G)$
-
-    $\varphi(e_G) = e_{G'}$
+  \begin{proof}
+    Пусть $\varphi \colon G \to G'$.
+    \begin{eqnarray*}
+      e_G &=& e_G \cdot e_G \\
+      \varphi(e_G) &=& \varphi(e_G \cdot e_G) \\
+      \varphi(e_G) &=& \varphi(e_G) \cdot \varphi(e_G)
+      \quad \mid \text{выполним сокращение} \\
+      e_{G'} &=& \varphi(e_G)
+    \end{eqnarray*}
   \end{proof}
 \end{theorem-non}
 
 \begin{theorem-non}
+  Пусть $\varphi \colon G \to G'$, $g \in G$.
+  Тогда $\varphi(g^{-1}) = \varphi(g)^{-1}$
+
+  \begin{proof}
+    \begin{eqnarray*}
+      \varphi(g^{-1}) \cdot \varphi(g) &=& \varphi(g^{-1}g) \\
+      \varphi(g^{-1}) \cdot \varphi(g) &=& \varphi(e_G) \\
+      \varphi(g^{-1}) \cdot \varphi(g) &=& e_{G'} \\
+      \Rightarrow \varphi(g^{-1}) &=& \varphi(g)^{-1}
+    \end{eqnarray*}
+  \end{proof}
+\end{theorem-non}
+
+
+\begin{theorem-non}
   $\mathrm{Im}{\varphi} < G'$, $\Ker{\varphi} < G$
-  \begin{proof} \; \\
-    $\mathrm{Im}{\varphi} < G'$:
-    
-    Наличие обратного:
+  \begin{proof} $ $
 
-    $\varphi(\equalto{g \cdot g^{-1}}{\varphi(g)\cdot \varphi(g^{-1})}) = \varphi(e_G) = e_{G'}$
-    
-    $\Longrightarrow \varphi(g)^{-1} = \varphi(g^{-1}) \in \mathrm{Im}{G}$
+    Докажем утверждение про образ гомоморфизма.
 
-    Наличие нейтрального:
+    \begin{itemize}
+      \item
+      Наличие обратного:
 
-    $e_{G'} = \varphi(e_G) \in \mathrm{Im}{\varphi}$
+      $\varphi(\equalto{g \cdot g^{-1}}{\varphi(g)\cdot \varphi(g^{-1})}) = \varphi(e_G) = e_{G'}$
+      
+      $\Longrightarrow \varphi(g)^{-1} = \varphi(g^{-1}) \in \mathrm{Im}{G}$
 
-    Замкнутость очевидна из свойств гомоморфизма. 
+      \item
+      Наличие нейтрального:
+
+      $e_{G'} = \varphi(e_G) \in \mathrm{Im}{\varphi}$
+
+      \item
+      Замкнутость очевидна из свойств гомоморфизма. 
+    \end{itemize}
 
     Таким образом, $\mathrm{Im}{\varphi} < G'$
-    
-    $\Ker{\varphi} < G$:
-    
-    Наличие обратного:
-    
-    $g \in \Ker{\varphi} < G$
-    
-    $\varphi(g^{-1}) = \varphi(g)^{-1} = e_{G'}^{-1} = e_{G'} \Rightarrow g^{-1} \in \Ker{\varphi}$
-    
-    Наличие нейтрального:
-    
-    $e_{G'} = \varphi(e_G) \Rightarrow e_G \in \Ker{\varphi}$
 
-    Замкнутость:
-    
-    $g_1, g_2 \in =\Ker{\varphi}$
-    
-    $\varphi(g_1 g_2) = \varphi(g_1) \varphi(g_2) = e_{G'} \cdot e_{G'} = e_{G'} \Rightarrow g_1 g_2 \in \Ker{\varphi}$
+    Теперь докажем утвержение про ядро.
+
+    \begin{itemize}
+      \item Наличие нейтрального:
+      
+      $\varphi(e_G) = e_{G'}$.
+      Таким образом, $e_G \in \Ker \varphi$.
+
+      \item
+      Пусть $g_1, g_2 \in \Ker \varphi$. Проверим замкнутость:
+
+      $\varphi(g_1 g_2) = \varphi(g_1) \cdot \varphi(g_2) =
+      e_{G'} \cdot e_{G'} = e_{G'}$
+
+      Таким образом $g_1 g_2 \in \Ker \varphi$.
+
+      \item
+      Проверим наличие обратного. 
+      Пусть $g \in \Ker \varphi$.
+      
+      $\varphi(g^{-1}) = \varphi(g)^{-1} = e_{G'}^{-1} = e_{G'}$.
+
+    \end{itemize}
+
   \end{proof}
+
+  \notice Очевидно, композиция двух гомоморфизмов -- гомоморфизм.
 \end{theorem-non}

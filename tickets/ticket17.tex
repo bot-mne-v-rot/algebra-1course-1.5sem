@@ -1,0 +1,82 @@
+\section{Внутреннее прямое произведение}
+\begin{theorem} Пусть $G$ -- группа, $H_1 < G, H_2 < G$, тогда два условия равносильны: 
+    \begin{itemize}
+        \item[А.] Выполняются 3 свойства: 
+        \begin{enumerate}
+            \item $H_1 H_2 = G$
+            \item $H_1 \cap H_2 = \{e\}$
+            \item $\forall h_1 \in H_1, \; \forall h_2 \in H_2 : h_1 h_2 = h_2 h_1$
+        \end{enumerate} 
+        \item[Б.] Следующее отображение является изоморфизмом групп:  
+        \begin{gather*}
+            \varphi : H_1 \times H_2 \longrightarrow G \\
+            (h_1, h_2) \longmapsto h_1 h_2
+        \end{gather*}
+    \end{itemize}
+\end{theorem}
+\begin{proof} \quad 
+    
+    \begin{itemize}
+        \item[``A] $\Longrightarrow$ Б:'' Для начала проверим, что $\varphi$ хотя-бы гомоморфизм.
+        \begin{gather*}
+            \varphi((h_1, h_2)(h_1', h_2')) = \varphi((h_1h_1', h_2 h_2')) = \\
+            h_1 h_1' h_2 h_2' = h_1 h_2 h_1' h_2' = \varphi((h_1, h_2)) \varphi((h_1', h_2'))
+        \end{gather*} 
+        Значит $\varphi$ -- гомоморфизм. $\Imm{\varphi} = G$, так как $G = H_1 H_2$. То есть $\varphi$ сюръективен. 
+
+        \begin{gather*}
+            \Ker{\varphi} = \{(h_1, h_2) \mid h_1, h_2 = e\} = \\
+            \{(h_1, h_1^{-1}) \mid h_1 \in H_1, h_1^{-1} \in H_2\} = \{(e, e)\} \text{ т. к. } H_1 \cap H_2 = \{e\}
+        \end{gather*}
+        
+        А значит $\varphi$ инъективен $\Longrightarrow$ биективен $\Longrightarrow$ является изоморфизмом. 
+        \item[``Б] $\Longrightarrow$ А:'' 
+        \begin{itemize}
+            \item[$\bullet$] $\Imm{\varphi} = H_1 H_2$. То есть из того, что $\Imm{\varphi} = G$ следует, что $H_1 H_2 = G$ 
+            \item[$\bullet$] Пусть $h \in H_1 \cap H_2$. Тогда $\varphi(h, h^{-1}) = h h^{-1} = e \Longrightarrow h = e$ 
+            (т. к. ядро тривиально)
+            \item[$\bullet$] $\forall h_1 \in H_1, h_2 \in H_2: h_1 h_2 = \varphi((h_1, h_2)) = 
+            \varphi((h_1, e) \cdot (e, h_2)) = \varphi((e, h_2) \cdot (h_1, e)) = 
+            \varphi((e, h_2)) \varphi ((h_1, e)) = h_2 h_1$
+        \end{itemize}
+    \end{itemize}
+\end{proof}
+
+Если подгруппы $H_1, H_2$ удовлетворяют условию теоремы, то $G$ -- внутреннее прямое произведение этих подгрупп. 
+
+\example $\R^*$ -- внутреннее прямое произведение $\R^*_+$ и $\{\pm 1\}$
+
+\begin{theorem-non}
+    $G$ - внутреннее прямое произведение $H_1$ и $H_2 \Longleftrightarrow$ выполняются 3 условия: 
+    \begin{itemize}
+        \item Пункты $1$) и $2$) из предыдущей теоремы
+        \item Пункт $3'$) $H_1, H_2 \lhd G$
+    \end{itemize}
+\end{theorem-non}
+\begin{proof}
+    \item[]``$1, 2, 3 \Longrightarrow 3'$:'' Возьмем $h \in H_1, g \in G$. Необходимо
+    проверить, что $ghg^{-1} = H_1$
+    
+    Исходя из первого пункта представим $g$ как $h_1 \cdot h_2$ для некоторых 
+    $h_1 \in H_1, h_2 \in H_2$
+
+    Тогда $ghg^{-1} = h_1 h_2 h h_2^{-1} h_1 ^{-1}$. Так как пункт 3 говорит, что $h_1$ и $h_2$ коммутируют, то это
+    в свою очередь будет равно $h_1 h h_2 h_2^{-1} h_1^{-1} = h_1 h h_1^{-1} \in H_1$ так как все три элемента лежат в $H_1$. 
+
+    Доказали, что $H_1 \lhd G$. Аналогично проверяется, что $H_2 \lhd G$
+    \item[]``$1, 2, 3' \Longrightarrow 3$:'' Возьмем $h_1 \in H_1, h_2 \in H_2$. Напишем коммутатор 
+    этих элементов (данное понятие будет определяться позднее). 
+    \begin{gather*}
+        h_1 \underbrace{h_2 h_1^{-1} h_2^{-1}}_{\text{попало в } H_1} \in H_1
+    \end{gather*} 
+    Но, с другой стороны: 
+    \begin{gather*}
+        \underbrace{h_1 h_2 h_1^{-1}}_{\text{попало в } H_2} h_2^{-1} \in H_2
+    \end{gather*} 
+    Значит $h_1 h_2 h_1^{-1} h_2^{-1} \in H_1 \cap H_2$. А по пункту 2, $H_1 \cap H_2 = \{e\}$. То есть: 
+    \begin{gather*}
+        h_1 h_2 h_1^{-1} h_2^{-1} = e \\
+        h_1 h_2 h_1^{-1} = e h_2 \\
+        h_1 h_2 = h_2 h_1
+    \end{gather*}
+\end{proof}

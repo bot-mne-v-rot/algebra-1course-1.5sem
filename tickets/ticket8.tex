@@ -1,0 +1,71 @@
+\section{Факторгруппа}
+\begin{conj} \quad
+
+    Пусть $H \lhd G$. Введём на $G/H$ структуру группы:
+    \begin{flalign*}
+        ``*'' \colon G/H \times G/H &\to G/H &&\\
+        (A, B) &\mapsto AB &&
+    \end{flalign*}
+    где $AB = \{ ab \mid a \in A, b \in B \}$.
+
+    Такая группа называется \textbf{факторгруппой} группы $G$ по
+    нормальной подгруппе $H$.
+\end{conj}
+\begin{proof}
+    Убедимся в корректности определения.
+
+    Отметим, что т.к. $H \lhd G$, то 
+    $\forall g \in G \;\; gH = Hg$
+
+    Почему $AB \in G/H$? Пусть $A = gH$, $B = g'H$.\\
+    Тогда $AB = (gH)(g'H) = g(Hg')H = g(g'H)H = (gg')(HH) =
+    gg'H \in G/H$.
+
+    Проверим аксиомы группы:
+    \begin{itemize}
+        \item Ассоциативность:
+        
+        Пусть $A, B, C \in G/H$. Тогда
+        $(AB)C = A(BC) \Leftrightarrow \\ \Leftrightarrow
+        \{ (ab)c \mid a \in A, b \in B, c \in C \} =
+        \{ a(bc) \mid a \in A, b \in B, c \in C \}$.\\
+        Это верно, т.к. операция на элементах $G$ была ассоциативна,
+        т.е. $(ab)c = a(bc)$.
+
+        \item Наличие нейтрального:
+        
+        $eH$ -- нейтральный в $G/H$, так как:\\
+        $gH \cdot eH = gHH = gH$, \\
+        $eH \cdot gH = e(Hg)H = e(gH)H = (eg)(HH) = gH$.
+
+        \item Наличие обратного:
+        
+        $g^{-1} H$ -- обратный к $gH$, так как:\\
+        $gH \cdot g^{-1}H = g(Hg^{-1})H = g(g^{-1}H)H =
+        (gg^{-1})(HH) = eH$, \\
+        $g^{-1}H \cdot gH = g^{-1}(Hg)H = g^{-1}(gH)H =
+        (g^{-1}g)(HH) = eH$.
+
+    \end{itemize}
+\end{proof}
+
+\begin{example}
+    \begin{enumerate}
+        \item $\Z / m\Z$ -- совпадает с тем, что мы ранее определяли для
+        колец.
+        \item $G/G = \{eG\}$ -- тривиальная группа. Все элементы попадают
+        в один класс.
+        \item $G/\{e\} \cong G$.
+    \end{enumerate}
+\end{example}
+
+\notice Если $H \lhd G$, то $gH = g'H$ $\Longleftrightarrow$ 
+$g = g'h$, где $h \in H$ $\Longleftrightarrow$ 
+$g = \widetilde{h}g'$, где $\widetilde{h} \in H$.\\
+Элементы $g$ и $g'$ называются \textbf{сравнивыми} по нормальной
+подгруппе $H$.
+
+\notice $ghg^{-1}$ называется \textbf{сопряжённым} к $h$ при помощи $g$.
+Тогда определение нормальной подгруппы можно переформулировать так, 
+что нормальная подгруппа -- это та, что помимо всех своих элементов
+содержит все сопряжённые к ним.

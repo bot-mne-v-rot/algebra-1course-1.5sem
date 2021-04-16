@@ -1,0 +1,125 @@
+\section{Применение теоремы о гомоморфизме к классификации циклических групп}
+\underline{Примеры нахождения изоморфизма:}
+\begin{enumerate}
+    \item $G := \C^* \; H := \mathbb{T} = \{ z \, | \, |z| = 1 \}$
+    
+    $\C^* / \mathbb{T} = ?$ 
+
+    $\varphi: \C^* \to \R^{*}$
+
+    $\quad \quad z \mapsto |z|$
+
+    $\Imm \varphi = \R^{*}_{+}$
+
+    $\Ker \varphi = \mathbb{T}$
+
+    По Т. о гомоморфизме, индуцированный гомоморфизм $\C^{*} / \mathbb{T} \to \R^{*}_{+}$~--- изоморфизм.
+
+    Т.о. $\C^* / \mathbb{T} \cong \R^{*}_+$
+
+    \notice $\R^{*}_+ \cong \R (a \mapsto \ln{a})$
+
+    \item $G / H := \C^* / \cycle{i}$
+    
+    $\ord i = 4, \, \cycle{i} = \{ i, -1, -i, 1 \}$
+    
+    $\varphi: \C^* \to \C^*$
+    
+    $\quad \quad z \mapsto z^4$
+
+    $\Ker \varphi = \cycle{i}$
+
+    $\Imm \varphi = \C^*$
+
+    $\Longrightarrow \C^* / \cycle{i} \cong \C^*$
+
+    \item $G / H := S_n / A_n \quad (A_n \vartriangleleft S_n)$
+    
+    $\varphi: S_n \to \Z^* = \{ 1, -1 \}$
+
+    $\quad \quad \sigma \mapsto \sign(\sigma)$
+
+    $\Ker \varphi = A_n$
+
+    $\Imm \varphi = \Z^*$
+
+    $\Longrightarrow S_n / A_n \cong \Z^{*}$
+\end{enumerate}
+
+\subsection*{Классификация циклических групп}
+
+\begin{theorem-non}
+    $G$~--- циклическая группа 
+
+    \begin{enumerate}
+        \item $G$~--- бесконечная $\Longrightarrow G \cong \Z$
+        \item $|G| = n < +\infty \Longrightarrow G \cong \Z / n \Z$
+    \end{enumerate}
+
+    \begin{proof}
+        
+        $G = \cycle{g}$
+
+        $\varphi: \Z \to G$ (очевидно, гомоморфизм)
+
+        $\quad \quad a \mapsto g^a$
+
+        \begin{enumerate}
+            \item
+            $G$~--- бесконечная $\Longrightarrow g^m \neq e \, \forall m \in \N$
+            
+            $\Longrightarrow g^{-m} \neq e \, \forall m \in \N$
+
+            Т.о. $\Ker \varphi = \{ e \} \Longrightarrow \varphi$~--- инъективен
+
+            $\Imm \varphi = \{ g^a \, | \, a \in \Z \} = \cycle{g} = G$
+
+            $\Longrightarrow \Z / \Ker \varphi \cong \Imm \varphi \Longrightarrow \Z \cong G$
+
+            \item
+            $|G| = n < +\infty \Longrightarrow \ord{g} = n$
+            
+            Посмотрим на ядро.
+
+            Знаем, что:
+            \begin{itemize}
+                \item $n \in \Ker \varphi$
+                \item $0 < m < n \Longrightarrow m \not \in \Ker \varphi$
+                \item $t \in \Z \; t = nq + r \, 0 \leqslant r \leqslant n - 1$
+                $r = 0 \Longrightarrow t \in \Ker \varphi$
+                $r \neq 0 \Longrightarrow r \not \in \Ker \varphi \Longrightarrow t \not \in \Ker \varphi$
+            \end{itemize}
+
+            Т.о. $\Ker \varphi = \{ nq \, | \, q \in \Z \} = n \Z$
+
+            $\Longrightarrow \Z / \Ker \varphi \cong \Imm \varphi \Longrightarrow \Z / n \Z \cong G$
+             
+        \end{enumerate}
+    \end{proof}
+
+    Второе доказательство:
+    \begin{proof}
+        
+        $G \cong \Z / \Ker \varphi$
+
+        Поищем, каким может быть ядро.
+
+        Знаем, что в $\Z$ идеалы выглядят так: $(n) \, n \in \N_{0}$
+
+        Любая подгруппа $H$ в $\Z$~--- идеал в $\Z:$
+
+        $la = \underbrace{a + \dots + a}_{\text{l}} \in H \quad l \in \N, a \in H$
+
+        $(-l)a = -(la) \in H$
+
+        $0 \cdot a = 0 \in H$
+
+        Любая подгруппа~--- идеал, а все идеалы главные.
+
+        $\Longrightarrow G \cong \Z / (n):$
+        \begin{itemize}
+            \item $n < +\infty \Longrightarrow G \cong \Z / n \Z$
+            \item Иначе $G \cong \Z$
+        \end{itemize}
+    \end{proof}
+\end{theorem-non}

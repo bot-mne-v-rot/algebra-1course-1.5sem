@@ -1,0 +1,69 @@
+\section{Подгруппа, порождённая подмножеством}
+\begin{conj}
+    Подгруппа, порожденная подмножеством.
+  
+    $\langle M \rangle = \{ g_1 \cdot \ldots \cdot g_s\ |\ s \geq 0,\ g_1, \ldots, g_s \in M \cup M^{-1} \}$
+  
+    $M^{-1} = \{ g^{-1}\ |\ g\in M \}$
+    
+\end{conj}
+  
+\notice $\langle \{g\} \rangle \ =\ \langle g \rangle$
+\begin{theorem-non}
+$\langle M \rangle$ --- подгруппа
+\begin{proof}
+    Нейтральный:
+
+    $e\in \langle M \rangle$ хотя бы $s = 0$
+
+    Замкнутость: 
+
+    $(g_1 \cdots g_s)(g'_1 \cdots g'_t) = g_1 \cdots g_s g'_1 \cdots g'_t \in \langle M \rangle$
+
+    Обратный:
+    $(g_1 \cdots g_s)^{-1} = g_s^{-1} \cdots g_1^{-1} \in \langle M \rangle$  
+\end{proof}
+
+\end{theorem-non}
+\notice $H_i < G, i\in I \Longrightarrow \bigcap\limits_{i\in I} H_i < G$
+
+Это тривиально: произведение любых двух элементов, лежащих в пересечении, лежит в пересечении. Обратный к любому тоже лежит в каждой из подгрупп, значит, лежит в пересечении. Единица Тоже.
+
+\begin{theorem-non}
+$\langle M \rangle = \bigcap\limits_{\substack{H < G, \\ M \subset H}} H $
+
+\begin{proof} \quad
+
+    $\mbox{\Large``$\subset$''}$
+    \begin{gather*}
+        \begin{cases}
+        H < G \\
+        M \subset H
+        \end{cases}
+        \stackrel{?}{\Longrightarrow} \langle M \rangle \subset H \\
+        M \subset H \Longrightarrow M^{-1} \subset H \\
+        \Longrightarrow g_1 \cdots g_s \in H\ (g_i\in M \cap M^{-1}) \\
+        \Longrightarrow \langle M \rangle \subset H
+    \end{gather*}
+
+    $\mbox{\Large``$\supset$''}$
+    \begin{gather*}
+        \begin{cases}
+        \langle M \rangle < G \\
+        M \subset \langle M \rangle
+        \end{cases}
+        \Longrightarrow \langle M \rangle \supset \bigcap\limits_{\substack{H < G, \\ M \subset H}} H
+    \end{gather*}
+
+    \end{proof}
+\end{theorem-non}
+
+\notice Обозначение
+
+$\langle \{ g_1, \cdots, g_t \} \rangle = \langle g_1, \cdots, g_t \rangle$
+
+\notice Группы перестановок и симметрии порождаются двумя элементами
+
+$S_n = \langle (1 2 \cdots n), (12) \rangle$
+
+$D_n = \langle R_1, R_0 \rangle $

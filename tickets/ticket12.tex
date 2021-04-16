@@ -1,0 +1,75 @@
+\section{Теорема о соответствии}
+
+\begin{theorem-non}
+    Образ и прообраз подгруппы.
+
+    $\varphi: G \to G'$~--- гомоморфизм групп.
+
+    \begin{enumerate}
+        \item $H < G \Longrightarrow \varphi(H) < G'$
+        \item $K < G' \Longrightarrow \varphi^{-1}(K) < G$
+    \end{enumerate}
+
+    \begin{proof} \quad
+        
+        \begin{enumerate}
+            \item 
+            $\varphi(H) \neq \varnothing \; (e_G \in H \Rightarrow e_{G'} \in \varphi(H))$
+        
+            $\varphi(h_1) \varphi(h_2) = \varphi(h_1h_2) \in \varphi(H) \quad h_1, h_2 \in H$
+
+            $\varphi(h)^{-1} = \varphi(h^{-1}) \in \varphi(H) \quad h \in H$
+            \item 
+            $\varphi^{-1}(K) \neq \varnothing \; (e_{G'} \in K \Rightarrow e_{G} \in \varphi^{-1}(K))$
+
+            $\varphi(g_1g_2) = \underbrace{\varphi(g_1)}_{\text{$\in K$}} \underbrace{\varphi(g_2)}_{\text{$\in K$}} \in K \quad g_1, g_2 \in \varphi^{-1}(K)$
+        \end{enumerate}
+        \end{proof}
+
+\end{theorem-non}
+
+\begin{theorem}
+    О соответствии.
+
+    $H \vartriangleleft G$
+
+    Тогда следующие два отображения являются взаимнообратными биекциями:
+    \begin{itemize}
+        \item
+        $\{ K < G \, | \, H \subset K \} \rightarrow \{ K' < G / H \}$
+
+        $K \mapsto \pi_H(K)$
+        \item
+        $\{ K' < G / H \} \rightarrow \{ K < G \, | \, H \subset K \} $
+
+        $K' \mapsto \pi^{-1}_{H}(K')$
+    \end{itemize}
+
+    При этом $K \vartriangleleft G \Longleftrightarrow \pi_{H}(K) \vartriangleleft G / H$
+    
+    \begin{proof}
+        Знаем, что $\pi_H(K) < G / H$ и $H \subset \pi^{-1}_{H}(K') < G$
+
+        Проверим, что они взаимнообратные:
+
+        $\pi^{-1}_{H}(\pi_{H}(K)) = \bigcup_{k \in K} kH \stackrel{H \subset K}{=} K$
+
+        
+        $\pi_H(\pi^{-1}_{H}(K')) = K' \quad (\pi^{-1}_{H}(K') < G / H)$
+
+        Проверим заявленную нормальность:
+
+        $K \vartriangleleft G \Longleftrightarrow \forall g \in G, k \in K: gkg^{-1} \in K 
+        \Longleftrightarrow \forall g \in G, k \in K: \pi_{H}(gkg^{-1}) \in \pi_{H}(K)$
+
+        $\Longleftrightarrow \underbrace{\forall g \in G, k \in K \; (gH)(kH)(gH)^{-1} \in \pi_H(K)}_{\text{*}}$
+
+        Но так как:
+        \begin{itemize}
+            \item $\{ kH \, | \, k \in K \} = \pi_H(K)$
+            \item $\{ gH \, | \, g \in G \} = G / H$
+        \end{itemize}
+        То $ * \Longleftrightarrow \pi_H(K) \vartriangleleft G / H$
+    \end{proof}
+
+\end{theorem}

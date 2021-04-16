@@ -1,0 +1,48 @@
+\section{Действие группы на множестве. Определение и примеры}
+\begin{conj}
+    Говорят, что задано действие группы $G$ на множестве $M$, если
+    \begin{enumerate}
+        \item задано отображение $(g, m) \mapsto gm$ из  $G \times M$ в $M$, обладающее двумя свойствами
+        \begin{enumerate}
+            \item $\forall g_1, g_2 \in G \;\; \forall m \in M : (g_1g_2)m = g_1(g_2m)$
+            \item $\forall m \in M \;\; em = m$
+        \end{enumerate}
+        \item задан гомоморфизм $\varphi: G \to S(M)$, где $S(M)$ - группа биекций $M$ на себя
+    \end{enumerate}
+\end{conj}
+Получим из одного определения другое.
+
+\underline{Определение 1 $\to$ Определение 2:} Определим наш гомоморфизм $\varphi$ так:
+\begin{gather*}
+    \varphi: G \to S(M) \\
+    g \mapsto (m \mapsto gm)
+\end{gather*} 
+Отображение $m \mapsto gm$ являестя биекцией, так как у него есть обратное отображение $m \mapsto g^{-1}m$.
+
+Изучим отображение $\varphi(g_1g_2)$. Это элемент $S(M)$, давайте применим его к какому-то $m$.
+\begin{gather*}
+    \varphi(g_1g_2)(m) \underbrace{=}_{\text{по опр. гом-ма}} (g_1g_2)m \underbrace{=}_{\text{св-во опр. 1}} g_1(g_2m) = \varphi(g_1)(g_2m) = \varphi(g_1)(\varphi(g_2)(m)) \\
+    \Rightarrow \varphi(g_1g_2) = \varphi(g_1) \circ \varphi(g_2)
+\end{gather*}
+Значит, гомоморфизм построен корректно.
+
+\underline{Определение 2 $\to$ Определение 1:} Определим наше отображение из $G \times M$ в $M$ так:
+\begin{gather*}
+    G \times M \to M \\
+    (g, m) \mapsto \varphi(g)(m)
+\end{gather*}
+Проверим, что сохранились свойства:
+\begin{enumerate}
+    \item \begin{gather*}
+        (g_1g_2)m \underbrace{=}_{\text{по опр. отображения}} \varphi(g_1g_2)(m) \underbrace{=}_{\text{св-во гом-ма}} (\varphi(g_1) \circ \varphi(g_2))(m) = g_1(g_2m)
+    \end{gather*}
+    \item \[ em = \varphi(e)(m) = id_m(m) = m \]
+\end{enumerate}
+
+\underline{Примеры:}
+\begin{enumerate}
+    \item $G = \R, M = \mathbb{C}$ \\ $gm := m(\cos g + i\sin g)$ -- поворот на комплексной плоскости на угол $g$
+    \item $G = GL_n(K)$ -- обратимые матрицы порядка $n$, $M = K^n$ -- столбцы \\ $gm := g * m$ - умножение матрицы на столбец
+    \item $G$ -- любая группа, $M = G$ \\ $gm := g * m$, где $*$ -- групповая операция \\ Это действие $G$ на себе левыми сдвигами.
+    \item $G$ -- любая группа, $M = G$ \\ $gm := m^g = gmg^{-1}$ \\ Это действие $G$ на себе сопряжениями.
+\end{enumerate}

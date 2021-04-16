@@ -1,0 +1,46 @@
+\section{Разложение конечной циклической группы в прямую сумму}
+\begin{conj} $ $\\
+    Пусть $A, B$ -- группы.\\
+    Тогда $A \oplus B := A \times B$ -- \textbf{прямая сумма} 
+    групп $A$ и $B$ в аддитивной записи.
+\end{conj}
+
+\begin{lemma}
+    Пусть $m, n \in \N$, $\gcd(m, n) = 1$.
+    Тогда $\Z/(mn)\Z \cong (\Z/m\Z) \oplus (\Z/n\Z)$.
+\end{lemma}
+\begin{proof}
+    Два доказательства:
+    \begin{itemize}
+        \item[I.] Рассмотрим отображение:
+        \begin{flalign*}
+            \varphi \colon \Z &\to (\Z/m\Z) \oplus (\Z/n\Z) &&\\
+            a &\mapsto ([a]_m, [a]_n) &&
+        \end{flalign*} 
+        Очевидно, $\varphi$ -- гомоморфизм.
+        $$\Ker \varphi = \{ a \mid a \equiv 0 \mod{m},
+        a \equiv 0 \mod{n} \} = \{ a \mid a \equiv 0 
+        \mod{\operatorname{lcm}(m, n)}\} = mn \Z$$
+
+        По теореме о гомоморфизме:
+        \begin{align*}
+            &\Z/\Ker \varphi \cong \Imm \varphi \Leftrightarrow
+            \Z/mn\Z \cong \Imm \varphi \Rightarrow 
+            \abs{\Imm \varphi} = mn; \\
+            &(\Z/m\Z) \oplus (\Z/n\Z) \subset \Imm \varphi,
+            \abs{(\Z/m\Z) \oplus (\Z/n\Z)} = mn \Rightarrow \\
+            &\Rightarrow \Imm \varphi = (\Z/m\Z) \oplus (\Z/n\Z)
+            \cong \Z / mn \Z
+        \end{align*}
+
+        \item[II.]
+        \begin{align*}
+            & \ord([1]_m, [1]_n) = \min\{ l \in \N \mid 
+            ([l]_m, [l]_n) = ([0]_m, [0]_n)\} = mn \Rightarrow \\
+            & \Rightarrow (\Z/m\Z) \oplus (\Z/n\Z) = 
+            \cycle{([1]_m, [1]_n)} \Rightarrow \\
+            & \Rightarrow \text{циклическая группа порядка } mn 
+            \cong \Z/mn\Z
+        \end{align*} 
+    \end{itemize}
+\end{proof}

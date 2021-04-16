@@ -1,0 +1,39 @@
+\section{Свойства внешнего прямого произведения}
+Пусть есть $G, G'$ -- группы. Построим новую группу 
+$G \times G'. \; (g_1, g_1')(g_2, g_2') = (g_1g_2, g_1'g_2')$. Легко видеть, 
+что $(G \times G', \; \cdot \; )$ -- группа. 
+
+\begin{theorem-non} 
+    Рассмотрим отображения: 
+    \begin{align*}
+        i_1: G \longrightarrow G \times G' &\qquad g \longmapsto (g, e) \\
+        i_2: G' \longrightarrow G \times G' &\qquad g' \longmapsto (e, g') \\
+        \pi_1: G \times G' \longrightarrow G &\qquad (g, g') \longmapsto g \\
+        \pi_2: G \times G' \longrightarrow G' &\qquad (g, g') \longmapsto g'
+    \end{align*}
+\end{theorem-non}
+\textbf{\textit{Fun facts: }}
+\begin{enumerate}
+    \item $i_1, i_2$ (вложения) -- мономорфизмы групп
+    
+    $\pi_1, \pi_2$ (проекции) -- эндоморфизмы групп
+    \item $\Imm{i_1} = \Ker{\pi_2} = G \times \{e\}$
+    
+    $\Imm{i_2} = \Ker{\pi_1} = \{e\} \times G$
+    \item $\pi_1 \circ i_1 = id_G, \quad \pi_2 \circ i_2 = id_{G'}$
+    
+    $\pi_1 \circ i_2 = e: G' \longrightarrow G, \; g' \longmapsto e$ (единичный гомоморфизм)
+
+    $\pi_2 \circ i_1 = e: G \longrightarrow G', \; g \longmapsto e$ (единичный гомоморфизм)
+\end{enumerate}
+
+Стоит также заметить, что $i_1, i_2$ индуцируют 
+\begin{gather*}
+    G \longrightarrow G \times \{e\} \text{ -- изоморфизм} \\
+    G' \longrightarrow \{e\} \times G' \text{ -- изоморфизм}
+\end{gather*}
+
+Бывает ситуации, когда у нас изначально есть некая группа, у нее две подгруппы и в какой-то момент становится 
+ясно, что группа устроена как прямое произведение этих самых подгрупп. В качестве примера такой группы можно взять 
+комплексные числа. Группа комплексных чисел по умножению изоморфна группе пар, где первый элемент пары -- 
+модуль комплексного числа, а второй -- тригонометрическая часть. 

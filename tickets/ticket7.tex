@@ -1,0 +1,80 @@
+\section{Нормальные подгруппы}
+\begin{conj}
+    Пусть $G$ -- группа, $H < G$. \\Тогда $H$ --
+    \textbf{нормальная подгруппа} $G$, если
+    $\forall g \in G \; \forall h \in H \quad
+    ghg^{-1} \in H$. \\
+    Обозначается $H \lhd G$.
+\end{conj}
+
+\notice Если $G$ абелева, то любая подгруппа нормальна.
+
+\begin{theorem-non}
+    Пусть $G, G'$ -- группы, $\varphi \colon G \to G'$ -- гомоморфизм.
+    Тогда $\Ker \varphi \lhd G$.
+\end{theorem-non}
+\begin{proof} $ $
+
+    Возьмём $h \in \Ker \varphi$, $g \in G$.\\
+    Тогда $\varphi(ghg^{-1}) = \varphi(g) \cdot 
+    \underbrace{\varphi(h)}_{= e}
+    \cdot \varphi(g^{-1}) =
+    \varphi(g) \cdot \varphi(g^{-1}) =
+    \varphi(g) \cdot \varphi(g)^{-1} = e$. \\
+    Из этого следует, что $ghg^{-1} \in \Ker \varphi$.
+\end{proof}
+
+\begin{theorem-non}
+    Пусть $G$ -- группа, $H < G$. Тогда эквивалентны:
+    \begin{enumerate}
+        \item $H \lhd G$
+        \item $\forall g \in G \quad gHg^{-1} \subset H$
+        \item $\forall g \in G \quad gHg^{-1} = H$
+        \item $\forall g \in G \quad gH = Hg$
+    \end{enumerate}
+\end{theorem-non}
+\notice Про 4-е свойство ещё говорят, что левое и правое
+разложение Лагранжа совпадают, где левое (правое) разложение Лангранжа
+--- разбиение группы в объединение её левых (правых) смежных классов.\\
+\textit{Замечание это от Жукова, термин этот не гуглится :(}
+
+\begin{proof} $ $
+
+    \begin{itemize}
+        \item ``$1 \Leftrightarrow 2$'': тривиально.
+        
+        $gHg^{-1} = \{ghg^{-1} \mid h \in H\}$, \\
+        поэтому
+        $\forall g \in G \;\; gHg^{-1} \subset H$
+        $\Longleftrightarrow $
+        $\forall g \in G \; \forall h \in H \;\;
+        ghg^{-1} \in H$
+
+        \item ``$3 \Rightarrow 2$'': очевидно.
+        
+        \item ``$2 \Rightarrow 3$'':
+        
+        $\forall g \in G \;\; gHg^{-1} \subset H$.
+        Значит, для $g^{-1}$ верно, что $g^{-1}Hg \subset H$. \\
+        Посмотрим на $g^{-1}Hg \subset H$, выполним домножения: \\
+        $g^{-1}Hg \subset H \Rightarrow g^{-1}H \subset Hg^{-1}
+        \Rightarrow H \subset gHg^{-1}$. \\
+        Получаем, что $gHg^{-1} = H$.
+
+        \item ``$3 \Leftrightarrow 4$'':
+        
+        $\equalto{gHg^{-1}g}{gH} = Hg \Leftrightarrow gHg^{-1} = H$
+    \end{itemize}
+\end{proof}
+
+\begin{example}
+    $\cycle {(1 \; 2)}$ не нормальна в $S_3$, но $A_3 \lhd S_3$.
+\end{example}
+
+\notice $(G : H) = 2 \Rightarrow H \lhd G$.
+\begin{proof} $ $\\
+    $H \in G/H \Rightarrow G/H = \{H, G - H\}$.\\
+    $H \in H\backslash G \Rightarrow 
+    H\backslash G = \{H, G - H\}$.\\
+    $G/H = H\backslash G \Rightarrow H \lhd G$.
+\end{proof}

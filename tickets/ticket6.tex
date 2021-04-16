@@ -1,0 +1,45 @@
+\section{Теорема Лагранжа и следствия из неё}
+\follow Пусть $G$ -- конечная группа, $H < G$. 
+Тогда $\abs{G} = (G : H) \abs{H}$.
+\begin{proof} $ $
+
+    Пусть $K := \{ e \}$ (тривиальная подгруппа), \\
+    тогда $(G : K) = \abs{G}$, $(H : K) = \abs{H}$, \\
+    т.к. $gK = ge = g$, $hK = he = h$, где $g \in G, h \in H$. \\
+    Получаем, что $\abs{G} = (G : K) = (G : H)(H : K) =
+    (G : H)\abs{H}$.
+\end{proof}
+
+\begin{theorem-nonna}[Лагранжа]
+    Пусть $G$ -- группа,  $\abs{G} < \infty$, $H < G$. 
+    Тогда $\abs{H} \mid \abs{G}$.
+\end{theorem-nonna}
+\begin{proof}
+    Из предыдущего следствия: $\abs{G} = (G : H) \cdot \abs{H}$.
+\end{proof}
+
+\follow Пусть $G$ -- группа,  $\abs{G} < \infty$, $g \in G$.
+Тогда $\ord g \mid G$.
+\begin{proof}
+    $\ord g = \abs{\cycle g}$.
+\end{proof}
+
+\follow Пусть $G$ -- группа,  $\abs{G} < \infty$, $g \in G$.
+Тогда $g^{\abs{G}} = e$.
+\begin{proof}
+    $g^{\ord g} = e$ по определению $\Rightarrow g^{\abs{G}} =
+    (g^{\ord g})^{\abs{G}/\ord g} = e$.
+\end{proof}
+
+\follow (Теорема Эйлера)
+Пусть $m \in \N$, $a \in \Z$, $\gcd(a, m) = 1$.
+Тогда $a^{\varphi(m)} \equiv 1 \; (\operatorname{mod} m)$.
+\begin{proof} $ $\\
+    Пусть $G = (\Z/m\Z)^*$, $g = [a]_m$.
+    Т.к. $\gcd(a, m) = 1$, $g \in G$. \\
+    Из предыдущего следствия $[a]_m^{\abs{G}} = [1]_m$. \\
+    По определению функции Эйлера $\abs{G} = \abs{(\Z/m\Z)^*}= 
+    \varphi(m)$. \\
+    По определению классов $G$, $[a]_m^{\varphi(m)} = [1]_m$
+    $\Rightarrow$ $a^{\varphi(m)} \equiv 1 \; (\operatorname{mod} m)$.
+\end{proof}

@@ -1,4 +1,49 @@
 \section{Строение конечных и конечно порождённых абелевых групп}
+\begin{conj} $ $\\
+    Пусть $A, B$ -- группы.\\
+    Тогда $A \oplus B := A \times B$ -- \textbf{прямая сумма} 
+    групп $A$ и $B$ в аддитивной записи.
+\end{conj}
+
+\begin{lemma}
+    Пусть $m, n \in \N$, $\gcd(m, n) = 1$.
+    Тогда $\Z/(mn)\Z \cong (\Z/m\Z) \oplus (\Z/n\Z)$.
+\end{lemma}
+\begin{proof}
+    Два доказательства:
+    \begin{itemize}
+        \item[I.] Рассмотрим отображение:
+        \begin{flalign*}
+            \varphi \colon \Z &\to (\Z/m\Z) \oplus (\Z/n\Z) &&\\
+            a &\mapsto ([a]_m, [a]_n) &&
+        \end{flalign*} 
+        Очевидно, $\varphi$ -- гомоморфизм.
+        $$\Ker \varphi = \{ a \mid a \equiv 0 \mod{m},
+        a \equiv 0 \mod{n} \} = \{ a \mid a \equiv 0 
+        \mod{\operatorname{lcm}(m, n)}\} = mn \Z$$
+
+        По теореме о гомоморфизме:
+        \begin{align*}
+            &\Z/\Ker \varphi \cong \Imm \varphi \Leftrightarrow
+            \Z/mn\Z \cong \Imm \varphi \Rightarrow 
+            \abs{\Imm \varphi} = mn; \\
+            &(\Z/m\Z) \oplus (\Z/n\Z) \subset \Imm \varphi,
+            \abs{(\Z/m\Z) \oplus (\Z/n\Z)} = mn \Rightarrow \\
+            &\Rightarrow \Imm \varphi = (\Z/m\Z) \oplus (\Z/n\Z)
+            \cong \Z / mn \Z
+        \end{align*}
+
+        \item[II.]
+        \begin{align*}
+            & \ord([1]_m, [1]_n) = \min\{ l \in \N \mid 
+            ([l]_m, [l]_n) = ([0]_m, [0]_n)\} = mn \Rightarrow \\
+            & \Rightarrow (\Z/m\Z) \oplus (\Z/n\Z) = 
+            \cycle{([1]_m, [1]_n)} \Rightarrow \\
+            & \Rightarrow \text{циклическая группа порядка } mn 
+            \cong \Z/mn\Z
+        \end{align*} 
+    \end{itemize}
+\end{proof}
 
 \begin{conj}
     $\Z/p^t\Z$ -- это $p$-примарная циклическая группа,
@@ -33,39 +78,6 @@
         (\Z/5\Z)^2 \oplus (\Z/2\Z)^3 \cong (\Z/10\Z)^2 \oplus (\Z/2\Z)
     \end{gather*}
 \end{example}
-
-\follow Пусть $K$ -- поле, $G < K^*$, $\abs{G} < \infty$.
-Тогда $G$ -- циклическая.
-
-\begin{proof} $ $
-    \textit{Далее аддитивная запись}
-     
-    $$G \cong \bigoplus_{i = 1}^m \Z/p_i^{l_i}\Z$$
-
-    Предположим, что среди $p_i$ есть совпадающие. НУО, $p_1 = p_2$.
-
-    В $(\Z/p_1^{l_1}\Z) \oplus (\Z/p_2^{l_2}\Z)$ рассмотрим 
-    $g = ([ap_1^{l_1-1}]_{p_1^{l_1}}, [bp_1^{l_2 - 1}]_{p_1^{l_2}})$,
-    где $0 \leqslant a, b \leqslant p_1 - 1$. \\
-    $p_1 g = ([0]_{p_1^{l_1}}, [0]_{p_1^{l_2}})$, значит $\ord g = p_1
-    \text{ или } 1$ (1 в случае $a = b = 0$). \\
-    Это означает, что $\{ g \in G \mid p_1 g = 0\} \geqslant p_1^2$
-    (мы перебираем все возможные $a$ и $b$). \\
-    При этом $\underbrace{\{ g \in G \mid p_1 g = 0 \}}_
-    {\text{группа кольца } \Rightarrow \text{ адд. запись}}
-    \subset \underbrace{\{ x \in K^* \mid x^{p_1} = 1\}}_
-    {\text{группа обратимых } \Rightarrow \text{ мульт. запись}}$
-
-    Но у $x^{p_1} - 1$ есть не более $p_1$ корней -- противоречие.
-
-    Таким образом, все $p_i$ различны $\Rightarrow$ все $p_i$
-    взаимно просты $\xRightarrow[]{\text{Л.}}$
-    $$\xRightarrow[]{\text{Л.}}
-    G \cong \bigoplus_{i = 1}^m \Z/p_i^{l_i}\Z \cong
-    \Z/(\prod_{i = 1}^m p_i^{l_i})\Z$$
-    А это значит, что $G$ -- циклическая.
-
-\end{proof}
 
 \begin{conj}
     \textbf{Конечнопорождённая группа} --- группа с 

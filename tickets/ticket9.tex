@@ -34,25 +34,25 @@ $\varphi: G \to G'$~--- гомоморфизм
 
 $\varphi$~--- инъекция $\Longleftrightarrow \Ker \varphi = \{ e \}$
 
-\begin{proof}
-    "$\Longrightarrow$"
+\begin{proof} \quad 
+
+    \begin{itemize}
+        \item[``$\Longrightarrow$'']: $\varphi$~--- инъекция $\Longrightarrow \abs{\varphi(e_{G'})^{-1}} \leqslant 1$
     
-    $\varphi$~--- инъекция $\Longrightarrow \abs{\varphi(e_{G'})^{-1}} \leqslant 1$
+        (не в точности $1$, так как $\varphi$ может и не быть сюръекцией, но точно не больше $1$ из-за инъекции)
+
+        $\varphi(e_{G'})^{-1} = \Ker \varphi \ni e_{G}$
+        (всегда, т.к. гомоморфизм переводит нейтральный в нейтральный)
+        
+        \item[``$\Longleftarrow$'']: $\Ker \varphi = \{ e \}$
+
+        Пусть $\varphi(g_1) = \varphi(g_2)$ для некоторых $g_1, g_2 \in G$
     
-    (не в точности $1$, так как $\varphi$ может и не быть сюръекцией, но точно не больше $1$ из-за инъекции)
+        Рассмотрим $\varphi(g_2^{-1}g_1) = \varphi(g_2^{-1})\varphi(g_1) = \varphi(g_2)^{-1}\varphi(g_1) = \varphi(g_2)^{-1}\varphi(g_2) = e_{G'}$
+    
+        $\Longrightarrow g_2^{-1}g_1 \in \Ker \varphi \Longrightarrow g_2^{-1}g_1 = e \Longrightarrow g_1 = g_2 \Longrightarrow \varphi$~--- инъекция. 
 
-    $\varphi(e_{G'})^{-1} = \Ker \varphi \ni e_{G}$
-    (всегда, т.к. гомоморфизм переводит нейтральный в нейтральный)
-
-    "$\Longleftarrow$"
-
-    $\Ker \varphi = \{ e \}$
-
-    Пусть $\varphi(g_1) = \varphi(g_2)$ для некоторых $g_1, g_2 \in G$
-
-    Рассмотрим $\varphi(g_2^{-1}g_1) = \varphi(g_2^{-1})\varphi(g_1) = \varphi(g_2)^{-1}\varphi(g_1) = \varphi(g_2)^{-1}\varphi(g_2) = e_{G'}$
-
-    $\Longrightarrow g_2^{-1}g_1 \in \Ker \varphi \Longrightarrow g_2^{-1}g_1 = e \Longrightarrow g_1 = g_2 \Longrightarrow \varphi$~--- инъекция. 
+    \end{itemize}
 \end{proof}
 
 \subsection*{Разложение гомоморфизма через канонический гомоморфизм}
@@ -72,7 +72,15 @@ $\varphi$~--- инъекция $\Longleftrightarrow \Ker \varphi = \{ e \}$
 
     Иными словами, гомоморфизм двух групп единственным образом раскладывается в 2 гомоморфизма:
 
-    $G \stackrel{\varphi}{\to} G'$ то же, что и $G \stackrel{\pi_{H}}{\to} G / H \stackrel{\varphi'}{\to} G'$
+    %$G \stackrel{\varphi}{\to} G'$ то же, что и $G \stackrel{\pi_{H}}{\to} G / H \stackrel{\varphi'}{\to} G'$
+
+    \[
+    \begin{tikzcd}[row sep=large, column sep=scriptsize]
+        G \arrow{rr}{\varphi} \arrow[swap]{rd}{\pi_H} & & G' \\
+            & G/H \arrow[swap,dashed]{ru}{\varphi'} & 
+    \end{tikzcd}
+    \]
+
 
     \begin{proof}
         $ $ \\
@@ -116,7 +124,14 @@ $\varphi$~--- инъекция $\Longleftrightarrow \Ker \varphi = \{ e \}$
 
     Иными словами, гомоморфизм двух групп единственным образом раскладывается в 2 гомоморфизма:
 
-    $G \stackrel{\varphi}{\to} G'$ то же, что и $G \stackrel{\tilde{\varphi}}{\to} K \stackrel{i_{K}}{\to} G'$
+    %$G \stackrel{\varphi}{\to} G'$ то же, что и $G \stackrel{\tilde{\varphi}}{\to} K \stackrel{i_{K}}{\to} G'$
+
+    \[
+    \begin{tikzcd}[row sep=large, column sep=scriptsize]
+        G \arrow{rr}{\varphi} \arrow[swap, dashed]{rd}{\tilde{\varphi}} & & G' \\
+            & K \arrow[swap]{ru}{i_K} & 
+    \end{tikzcd}
+    \]
 
     \begin{proof}
         $ $ \\
@@ -142,7 +157,14 @@ $\varphi$~--- инъекция $\Longleftrightarrow \Ker \varphi = \{ e \}$
 
     Иными словами, гомоморфизм двух групп единственным образом раскладывается в 3 гомоморфизма:
 
-    $G \stackrel{\varphi}{\to} G'$ то же, что и $G \stackrel{\pi_{H}}{\to} G/H \stackrel{\varphi''}{\to} K \stackrel{i_{K}}{\to} G'$
+    %$G \stackrel{\varphi}{\to} G'$ то же, что и $G \stackrel{\pi_{H}}{\to} G/H \stackrel{\varphi''}{\to} K \stackrel{i_{K}}{\to} G'$
+
+    \[
+    \begin{tikzcd}[row sep=huge, column sep=scriptsize]
+        G \arrow{rrrr}{\varphi} \arrow[swap]{dr}{\pi_H} & & & & G' \\
+        & G/H \arrow[red]{urrr}{\varphi'} \arrow[dashed]{rr}{\varphi''} & & K \arrow[swap]{ur}{i_K} 
+    \end{tikzcd}
+    \]
 
     \begin{proof}
         Воспользуемся двумя предложениями выше.

@@ -73,7 +73,8 @@ tlmgr install   \
   hyphsubst \
   datetime2-russian \
   bookmark \
-  amssymb
+  amssymb \
+  tikz-cd
   
 
 # Keep no backups (not required, simply makes cache bigger)

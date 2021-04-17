@@ -34,16 +34,11 @@
     $H \vartriangleleft G$
 
     Тогда следующие два отображения являются взаимнообратными биекциями:
-    \begin{itemize}
-        \item
-        $\{ K < G \, | \, H \subset K \} \rightarrow \{ K' < G / H \}$
-
-        $K \mapsto \pi_H(K)$
-        \item
-        $\{ K' < G / H \} \rightarrow \{ K < G \, | \, H \subset K \} $
-
-        $K' \mapsto \pi^{-1}_{H}(K')$
-    \end{itemize}
+    \begin{align*}
+        \{ K < G \, | \, H \subset K \} & \rightleftarrows  \{ K' < G / H \} \\
+        K &\mapsto \pi_H(K) \\
+        \pi^{-1}_{H}(K') &\mapsfrom K'
+    \end{align*}
 
     При этом $K \vartriangleleft G \Longleftrightarrow \pi_{H}(K) \vartriangleleft G / H$
     
@@ -51,25 +46,22 @@
         Знаем, что $\pi_H(K) < G / H$ и $H \subset \pi^{-1}_{H}(K') < G$
 
         Проверим, что они взаимнообратные:
-
-        $\pi^{-1}_{H}(\pi_{H}(K)) = \bigcup_{k \in K} kH \stackrel{H \subset K}{=} K$
-
-        
-        $\pi_H(\pi^{-1}_{H}(K')) = K' \quad (\pi^{-1}_{H}(K') < G / H)$
-
+        \begin{gather*}
+            \pi^{-1}_{H}(\pi_{H}(K)) = \bigcup_{k \in K} kH \stackrel{H \subset K}{=} K \\
+            \underbrace{\pi_H(\pi^{-1}_{H}(K'))}_{< G/H} = K'
+        \end{gather*}
         Проверим заявленную нормальность:
 
-        $K \vartriangleleft G \Longleftrightarrow \forall g \in G, k \in K: gkg^{-1} \in K 
-        \Longleftrightarrow \forall g \in G, k \in K: \pi_{H}(gkg^{-1}) \in \pi_{H}(K)$
-
-        $\Longleftrightarrow \underbrace{\forall g \in G, k \in K \; (gH)(kH)(gH)^{-1} \in \pi_H(K)}_{\text{*}}$
-
-        Но так как:
-        \begin{itemize}
-            \item $\{ kH \, | \, k \in K \} = \pi_H(K)$
-            \item $\{ gH \, | \, g \in G \} = G / H$
-        \end{itemize}
-        То $ * \Longleftrightarrow \pi_H(K) \vartriangleleft G / H$
+        \begin{gather*}
+            K \vartriangleleft G \Longleftrightarrow \forall g \in G, k \in K: gkg^{-1} \in K \Longleftrightarrow \\ 
+            \forall g \in G, k \in K: \pi_{H}(gkg^{-1}) \in \pi_{H}(K) \Longleftrightarrow \\
+            \forall g \in G, k \in K \; (gH)(kH)(gH)^{-1} \in \pi_H(K) \Longleftrightarrow \\
+            \begin{cases}
+                \{ kH \, | \, k \in K \} = \pi_H(K) \\
+                \{ gH \, | \, g \in G \} = G / H
+            \end{cases} \Longleftrightarrow \\
+            \pi_H(K) \vartriangleleft G / H
+        \end{gather*}
     \end{proof}
 
 \end{theorem}

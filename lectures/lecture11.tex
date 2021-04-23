@@ -1,0 +1,375 @@
+%Лекция 11 22.04.2021
+\begin{conj}
+    $A \in M(n, K)$ называется ортогональной, если $AA^T = E_n$
+    
+    Пусть $A = a_{ij}$
+
+    $(AA^T)_{ij} = \sum_{k = 1}^{n} a_{ik} \cdot a_{jk}$
+
+    Строки нашей матрицы друг другу ортогональны и нормированы.
+\end{conj}
+
+\begin{lemma}
+    $A$ ортогональная $\Longrightarrow A^T$ ортогональная
+
+    $A^T \cdot A^{TT} = \underbrace{A^T}_{\text{$A^{-1}$}}A = E^n$
+
+    $O(n, K) = \{ A \in M(n, K) \, | \, A$ ортогональная \}
+\end{lemma}
+
+\begin{theorem}()
+    $O(n, K) < GL(n, K)$
+    \begin{proof}
+    \emptyln
+
+    Наличие обратных очевидно из определения $O(n, K)$
+
+    $A, B \in O(n, K)$
+
+    $(AB)(AB)^T = A\underbrace{BB^T}_{\text{$E_n$}}A^T = AA^T = E_n$
+
+    $A \in O(n, K) \\
+    A^{-1}(A^{-1})^T = A^T \cdot A^{TT} = E_n$
+    \end{proof}
+    
+    Получили ортогональную группу степени $n$ над $K$.
+\end{theorem}
+
+\begin{theorem}()
+    $V$ --- евклидово пространство, $E$ --- ортонормированный базис, $E'$ --- какой-либо базис $V$ и $C$ --- матрица перехода от $E$ к $E'$
+
+    Тогда $E'$ ортонормированный $\Longleftrightarrow C \in O(n, K)$
+
+    \begin{proof}
+    \emptyln
+    $\gamma_E$ --- МГ скалярного произведения в базисе $E$
+
+    $\gamma_{E'} = C^T \gamma_E C, \quad \gamma_E = E_n$
+
+    $\gamma_{E'} = E_n \Longleftrightarrow C^TC = E_n \Longleftrightarrow C \in O(n, K)$
+    \end{proof}
+\end{theorem}
+% Заменить все T далее на значок ортонормирования
+\begin{conj}
+$U \subset V$ --- лин. подпространство евклидова пространства 
+
+Ортогональное дополнение к $U$ --- это $U^{\perp} = \{ v \in V \, | \, \forall u \in U: \, u \perp v \}$
+\end{conj}
+
+\begin{theorem}(Свойства ортогонального дополнения)
+    $\dim{V} < \infty$
+    \begin{enumerate}
+        \item $U^{\perp}$ лин. подпространство
+        \item $V = U \otimes U^{\perp}$
+        \item $U_1 \subset U_2 \Longrightarrow U_1^{\perp} \supset U_2^{\perp}$
+        \item $(U^{\perp})^{\perp} = U$
+        \item $(U_1 + U_2)^{\perp} = U_1^{\perp} \cap U_2^{\perp}$
+        \item $(U_1 \cap U_2)^{\perp} = U_1^{\perp} + U_2^{\perp}$
+        \item $V^{\perp} = 0, 0^{\perp} = V$
+    \end{enumerate}
+    \emptyln
+    \begin{proof}
+        \begin{enumerate}
+            \item Тривиально из определения \\
+            $(v_1 + v_2, u) = (v_1, u) + (v_2, u)$ \\
+            $(\alpha v, u) = \alpha(v, u)$
+            \item Пусть $f_1, \dots, f_m$ --- какой-либо базис $U$ \\
+            $f_{m + 1}, \dots, f_n$ --- его дополнение до базиса $V$
+
+            Согласно соответсвующему предложению, $\exists e_1, \dots, e_n$ --- ортонормированный базис $V$, т.ч.
+
+            $\forall l: \Lin(e_1, \dots, e_l) = \Lin(f_1, \dots, f_l)$
+
+            В частности $\Lin(e_1, \dots, e_m) = U$
+
+            $U^{\perp} = ?$
+
+            $v = \alpha_1 e_1 + \dots \alpha_n e_n \in U^{\perp} \Longleftrightarrow v T e_i, \, i = 1, \dots, m$
+
+            $(v, e_i) = \alpha_i \Longleftrightarrow \alpha_i = 0, i = 1, \dots, m$
+
+            $\Longleftrightarrow v \in \Lin(e_{m + 1}, \dots, e_n)$
+
+            $U^{\perp} = Lin(e_{m + 1}, \dots, e_n) \Longrightarrow U \otimes U^{\perp} = V$
+            
+            \item Очевидно из определения
+            \item $U \subset (U^{\perp})^{\perp}$ --- очевидно \\
+            $U \supset (U^{\perp})^{\perp}:$ \\
+            По свойству $2: \dim U^{\perp} = \dim V - \dim U$ \\
+            $\dim (U^{\perp})^{\perp} = \dim V - \dim U^{\perp} = \dim U$ \\
+            $\Longrightarrow U = (U^{\perp})^{\perp}$
+            \item $v \in (U_1 + U_2)^{\perp} \Longleftrightarrow v \in U_1^{\perp}$ и $v \in U_2^{\perp}$ (в одну сторону по определнию, в другую по линейности)
+            \item $(U_1 \cap U_2)^{\perp} = ((U_1^{\perp})^{\perp} \cap (U_2^{\perp})^{\perp})^{\perp} = ((U_1^{\perp} + U_2^{\perp})^{\perp})^{\perp} = U_1^{\perp} + U_2^{\perp}$
+            \item $\dim V^{\perp} = \dim V - \dim V = 0$ \\
+            $0^{\perp} = (V^{\perp})^{\perp} = V$
+        \end{enumerate}
+    \end{proof}
+\end{theorem}
+
+\begin{conj}
+    $U \subset V$ \\
+    $v = u_1 + u_2, \quad u_1 \in U, u_2 \in U^{\perp}$ \\
+    $u_1$ --- ортогональная проекция $U$ на $u_1$ \\
+    $u_2$ --- ортогональное дополнение $U$ по отношению к $u_1$ \\
+\end{conj}
+
+\begin{theorem}()
+    $\rho(u, v) = \norma{u - v}$
+
+    $M$ --- метрическое пространство, $x \in M, N \subset M$
+
+    $\rho(x, N) = inf_{\xi \in N} \rho(x, \xi)$ 
+\end{theorem}
+
+\begin{theorem}()
+    Пусть $V$ --- конечномерное евклидово пространство \\
+    $U \subset V$ --- подпространство \\
+    $v \in V, v = u_1 + u_2, \quad u_1 \in U, u_2 \in U^{\perp}$
+
+    Тогда $\rho(v, U) = \norma{u_2},$ \\
+    $\rho(v, U) = \rho(v, u_1)$
+
+    \begin{proof}
+    \emptyln
+        $z \in U$
+
+        $\rho(v, u_1 + z)^2 = \rho(u_1 + u_2, u_1 + z)^2 = \norma{z - u_2}^2 = (z - u_2, z - u_2) = ||z||^2 + ||u_2||^2 \geqslant ||u_2||^2$
+
+        Вспомним, что $z T u_2$
+
+        $\rho(v, u_2)^2 = ||u_2||^2$
+
+        Т.о. $inf_z \rho(v, u_1 + z) = ||u_2|| (\rho(v, u_1 + z) = \rho(v, U))$
+
+        Инфимум достигается при $z = 0$, т.е. на векторе $u_1: \rho(v, u_1) = ||u_2||$
+    \end{proof}
+\end{theorem}
+
+\subsection*{Унтарные пространства}
+
+\begin{conj}(Унитарные пространства)
+    $V$ --- ЛП / $\C$
+\end{conj}
+\begin{conj}
+    Полутролинейная форма на $V$ это 
+    $\B: V \times V \to \C$, т.ч.
+    \begin{enumerate}
+        \item $\B$ линейно по 1 аргументу
+        \item $\B(v, \alpha_1 w_1 + \alpha_2 w_2) = \bar{\alpha_1} \B(v, w_1) + \bar{\alpha_2}\B(v, w_2)$
+    \end{enumerate}
+    \underline{Примеры:}
+    \begin{enumerate}
+        \item $V = \C^n$ \\
+        $\B(\left(\begin{array}{c}
+        \alpha_1 \\ 
+        \vdots \\ 
+        \alpha_n
+        \end{array}\right)), 
+        \left(\begin{array}{c}
+        \beta_1 \\ 
+        \vdots \\ 
+        \beta_n
+        \end{array}\right)$
+        $) = \alpha_1 \bar{\beta_1} + \dots + \alpha_n \bar{\beta_n}$
+        \item $C_{\C} [0, 1]$ \\
+        $\B(f, g) = \int_{0}^{1} f \cdot \bar{g}$
+    \end{enumerate}    
+\end{conj}
+
+\begin{conj}
+    $E$ --- базис $V$
+
+    $[\B]_E = \B(e_i, e_j)$
+
+    $v = E \cdot b$
+    $w = E \cdot c$
+
+    $\B(v, w) = b^T \cdot [\B]_E \cdot \bar{c}$
+\end{conj}
+
+Fan fact again (as with bilin. forms):
+    $E' = EC$
+    $[\B]_{E'} = C^T \cdot [\B]_{E} \cdot \bar{C}$
+
+\begin{conj}
+    Эрмитовой формой на $V$ называется полутролинейная форма $\B$, т.ч.
+    
+    $\forall u, v: \B(v, u) = \bar{\B(u, v)} \Longleftrightarrow \B(e_i, e_j) = \bar{\B(e_j, e_i)} \forall i, j$
+ 
+\end{conj}
+
+Для таких форм справедлива теорема Лагранжа.
+Пусть $\dim V < \infty$, $\B$ ---  эрмитова форма на $V$
+
+Тогда $\exists$ базис $E$, т.ч. $[\B]_E$ диагональна.
+
+\notice $\B$ эрмитова $\Longleftrightarrow [\B]^*_E  = [\B]_E$
+    
+$A^* := \bar{A^T}$ --- матрица, сопряженная к $A$
+
+В частности, если $[\B]_E$ диагональна, то она вещественна.
+
+Для эрмитовой формы также справедлив закон инерции:
+
+Число положительных и число отрицательных чисел в диагональной матрице $[\B]_E$ --- инварианты $\B$.
+
+\begin{conj}
+    Скалярным произведением на $V$ называется положительно определённая эрмитова форма на V, т.е. такая, что
+    \begin{enumerate}
+        \item $\forall v 'in V: \B(v, v) \geqslant 0$
+        \item $\B(v, v) = 0 \Longleftrightarrow v = 0$
+    \end{enumerate}
+\end{conj}
+
+\begin{conj}
+    Унитарным пространством называется линейное пространство над $\C$ с фиксированным скалярным произведением.
+\end{conj}
+
+\begin{theorem}
+    Базис $e_1, \dots, e_n$ унитарного пространства V называется ортонормированным,
+    если $\forall i, j: \, (e_i, e_j)$ = символ кронекера{ij} ($\Longleftrightarrow \gamma_E = E_n$)
+\end{theorem}
+
+again fan fact:
+$E' = EC, \quad C \in GL(n, \C)$
+
+$\gamma_{E'} = C^T \cdot \gamma_E \bar{C}$
+
+$E'$ ортонормированный $\Longleftrightarrow \gamma_{E'} = E_n Longleftrightarrow C^T \cdot \bar{C} = E_n \Longleftrightarrow C^* \cdot C = E_n$
+
+\begin{conj}(Унитарная матрица)
+    $C \in GL(n, \C)$ называется унитарной, если $C^* \cdot C = E_n$
+\end{conj}
+
+Обозначение: $U(n, \C) := U(n) := \{ C \in GL(n, \C) \, | \, C$ --- унитарна \}
+
+\begin{theorem}(Унитарная группа степени $n$)
+    $U(n) < GL(n, \C)$ --- унитарная группа степени $n$
+\end{theorem}
+
+\begin{theorem}(Неравенство КБ)
+    $\forall u,v \in V:$
+    $$
+        |(u, v)|^2 \leqslant ||u|| \cdot ||v|| (||v|| = \sqrt{(v, v)})
+    $$
+    \begin{proof}
+    \emptyln
+    Осталось в качестве упражнения.
+    \end{proof}
+\end{theorem}
+
+\subsection*{Комплесификация}
+
+Пусть $V$ --- ЛН / $\R$ \\
+Оно определяет $V_{\C}$ --- ЛП / $\C$ \\
+$V_{\C} = V \times V$ \\
+
+\begin{itemize}
+    \item Сложение: $(v, w) + (v', w') = (v + v', w + w')$
+    \item Умножение на комплексное число: $(\alpha + i \beta)(v, w) = (\alpha v - \beta w, \alpha w + \beta v)$
+    Несложно проверить, что $V_{\C}$ с этими операциями --- ЛП / $\C$ (осталось на упражнение)
+\end{itemize}
+
+\begin{theorem}(Базис $V_{\C}$)
+    Пусть $e_1, \dots, e_n$ --- базис $V$ \\
+    Тогда $(e_1, 0), \dots, (e_n, 0)$ --- базис $V_{\C}$
+
+    \begin{proof}
+    \emptyln
+    $(\alpha + i \beta) \cdot (v, 0) = (\alpha v, \beta v)$
+    $\sum_{j=0}^{n} (\alpha_j + i \beta_j)(e_j, 0) = (\sum_{}^{} \alpha_j e_j, \sum_{}^{} \beta_j e_j)$
+
+    Т.о. $\Lin(e_j, 0), j = 1, \dots, n) = V_{\C}$
+
+    Если $\sum_{j=0}^{n} (\alpha_j + i \beta_j)(e_j, 0) = (\sum_{}^{} \alpha_j e_j, \sum_{}^{} \beta_j e_j) = 0$ \\
+    $\Longrightarrow \alpha_j = \beta_j = 0, \, j = 1, \dots, n$
+    \end{proof}
+\end{theorem}
+
+\follow $\dim V_{\C} = \dim V$
+
+$V_{\C}$ называется комплексификацией $V$
+
+$(v, w) = (v, 0) + (0, w) = (v, 0) + i(w, 0)$
+
+Можно отождествить $(v, 0) с v, тогда (v, w) = v + iw$
+
+Пусть $V$ евклидово пространство, $V_{\C}$ --- его комплесификация
+
+Положим $(v + iw, v' + iw') = (v, v') + (w, w') + i((w, v') - (v, w'))$
+
+\begin{theorem}(Получившееся определение является скалярным произведением на $V_{\C}$)
+    \begin{itemize}
+        \item Линейность по первому аргументу тривиальна
+        \item $(u, u') = \bar{(u', u)}$ (мнимая часть поменяет знак)
+        \item $(v + iw, v + iw) = (v, v) + (w, w) + 0 \geqslant 0$ \\
+        И равняется $0$ при $v = w = 0$
+    \end{itemize}
+\end{theorem}
+\notice $E$ --- базис $V$
+$(e_i, e_j)_V = (e_i, e_j)_{V_{\C}}$
+\begin{proof}
+\emptyln
+Очевидно, так как скалярное проивзедение будет таким же как и в V.
+\end{proof}
+Матрица Грама будет той же самой
+Если базис был ортонормированным, то и базис будет ортонормированным
+
+
+\paragraph{Двойственное пространство}
+\begin{conj}
+    $V$ --- ЛП / $K$ \\
+    Двойственным к $V$ пространством называют $V^* = \Hom(V, K)$ \\
+    Элементы $V^*$ называют линейными функционалами на $V$
+\end{conj}
+
+Пример
+$V = C[0, 1]$
+
+$f \to f(0)$ --- элемент $V^*$
+
+\begin{theorem}()
+    Пусть $\dim V = n < \infty$
+
+    Тогда $\dim V^* = n$
+
+    \begin{proof}
+    \emptyln
+    Пусть $V, W$ --- конечномерные
+
+    $\Hom(V, W) \cong M(m, n, K), \quad m = \dim V, n = \dim W$
+
+    $\Longrightarrow \dim \Hom(V, W) = mn$
+    \end{proof}
+\end{theorem}
+
+
+\begin{conj}
+    Пусть $e_1, \dots, e_n$ --- базис $V$
+    $e^i : V \to K$
+        $e_j \mapsto$ символ кронекера{ij}
+\end{conj}
+
+\begin{theorem}(Базис $V^*$)
+    $(e^1, \dots, e^n)$ --- базис $V^*$
+
+    \begin{proof}
+    \emptyln
+    $\alpha_1 e^1 + \dots + \alpha_n e^n = 0$ \\
+    $\Longrightarrow (\alpha_1 e^1 + \dots + \alpha_n e^n) (e_j) = 0 = \alpha_j e_j$
+    $\Longrightarrow \alpha_1 = \dots = \alpha_n = 0$
+    \end{proof}
+\end{theorem}
+
+\begin{conj}
+    $(e^1, \dots, e^n)$ --- двойственный базис к $e_1, \dots, e_n$
+\end{conj}
+
+упр.
+
+пусть$ E, E_1$--- базисы $V$
+
+$E^*, E^*_1$ соотв. двойственные базисы
+
+$C$ --- матрица перехода от $E$ к $E_1$, тогда матрица перехода от $E_1$ к $E$ равна $C^T$
+

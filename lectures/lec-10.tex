@@ -1,0 +1,270 @@
+\section*{Классификация билинейных форм}
+
+\subsection*{Ортогональность}
+
+\begin{conj}(Ортогональность векторов по отношению к билинейной форме)
+    $\B$~--- билинейная форма на $V$ \\
+    $u, v \in V$ \\
+    $u \perp v$ (ортогональны), если $\B(u, v) = 0$
+\end{conj}
+
+\notice $\B$~--- симметрическая билинейная форма
+$\Longrightarrow$ ортогональность~--- симмитрическое отношение.
+
+\begin{conj}(Ортогональный базис)
+    Базис $e_1, \dots, e_n$ пространства $V$ называется ортогональным,
+    если $e_i \perp e_j \, \forall i \neq j$
+\end{conj}
+
+\begin{theorem}(Теорема Лагранжа)
+    Пусть $\B$~--- симмитрическая билинейная форма на $V$, $\dim V = n < +\infty$
+
+    Тогда в $V$ существует ортогональный базис.
+
+    \begin{proof}
+    \emptyln
+        Индукция по $n:$ \\
+        $n = 1 \Longrightarrow$ любой базис ортогонален \\
+        Переход:
+        $\B = 0 \Longrightarrow$ любой базис ортогонален \\
+        $\B \neq 0 \Longrightarrow \exists e_1 \in V: \B(e_1, e_1) \neq 0$ \\
+        Предположим, что это не так, т.е. $\forall v \in V q(v) = 0 \, (q(v) = \B(v, v))$ \\
+        Но вспомним, что $\forall v, w: \, \B(v, w) = \frac{1}{2}( q(v + w) - q(v) - q(w) ) = \frac{1}{2}(0 - 0 - 0) = 0 ?!$ \\
+        Пускай $W = \{ w \in V \, | \, e_1 \perp w \}$~--- линейное подпространство (по определению билинейной формы) \\
+        Теперь мы хотим посчитать $\dim{W}$, для этого рассмотрим отображение: \\
+        $\lambda: V \to K$ \\
+        $\quad v \mapsto \B(v, e_1)$ \\
+        $\Imm{\lambda} \neq 0 \Longrightarrow \Imm{\lambda} = K$ (т.к. $K$~--- одномерное пространство, то его подпространство либо $0$, либо $K$) \\
+        $\Longrightarrow \dim{W} = \dim{\Ker{\lambda}} = \dim{V} - \dim{\Imm{\lambda}} = n - 1$ \\
+        Сузим $\B$ на $W \times W$, т.е. $\B' := \B |_{W \times W}$~--- симмитрическая билинейная форма на $W$. \\
+        По индукционному предположению у $W \exists$ ортогональный базис $e_2, \dots, e_n$ \\
+        $e_1 \not \in \Lin(e_2, \dots, e_n) = W$ (помним, что он сам себе не ортогонален, т.к. $\B(e_1, e_1) \neq 0$) \\
+        $\Longrightarrow e_1, e_2, \dots, e_n$~--- ЛНС $\Longrightarrow$ это искомый ортогональный базис $V$ ($e_1$ ортогонален всем остальным, а $e_2, \dots, e_n$ уже и так ортогональный базис)
+    \end{proof}
+\end{theorem}
+
+\notice Пусть $E$ ортогональный базис $V$ (по отношению к $\B$) $\Longleftrightarrow [\B]_E$ диагональная. \\
+Действительно, $\B(e_i, e_j) = 0 \Longrightarrow$ все элементы \textbf{не} на диагонали равны нулю.
+
+\notice Пусть $E = (e_1, \dots, e_n)$ ортогональный базис $V$, $E' = (\alpha_1 e_1, \dots, \alpha_n e_n), \quad \alpha_i \neq 0$ \\
+$[\B]_E =
+\left(\begin{array}{ccc}
+\lambda_1 & \dots & 0 \\ 
+\dots & \dots & \dots \\ 
+0 & \dots & \lambda_n
+\end{array}\right)
+\Longrightarrow [\B]_{E'} = 
+\left(\begin{array}{ccc}
+\alpha_1^2 \lambda_1 & \dots & 0 \\ 
+\dots & \dots & \dots \\ 
+0 & \dots & \alpha_n^2 \lambda_n
+\end{array}\right)$ (т.к. $\B(\alpha_i e_i, \alpha_i e_i) = \alpha_i^2 \B(e_i, e_i) = \alpha_i^2 \lambda_i$) 
+
+\begin{theorem}
+    Пусть $V$~--- конечномерное ЛП / $\C$ \\
+    $\B$~--- симмитрическая билинейная форма на $V$ \\
+    Тогда $\exists$ базис $E$ пространства $V$, т.ч.
+    $[\B]_E = \left(\begin{array}{cc}
+    E_r & 0 \\ 
+    0 & 0
+    \end{array}\right)$ для некоторого $r$, $r$~--- инвариант $\B$.
+    \begin{proof}
+        $\exists E_0 : [\B]_{E_0} = diag(\lambda_1, \dots, \lambda_n)$ \\
+        можно считать, что $\lambda_1, \dots, \lambda_r \neq 0, \lambda_{r + 1} = \dots = \lambda_n = 0$ \\
+        $\exists \alpha_j \in \C: \alpha^2_j = \lambda_j$ \\ 
+        $E_0 = (e_1, \dots, e_n)$ \\
+        $E = (\alpha^{-1}_1 e_1, \dots, \alpha^{-1}_r e_r, e_{r + 1}, \dots, e_n)$ \\
+        $[\B]_E = diag(\alpha^{-2}_1 \lambda_1, \dots, \alpha^{-2}_r \lambda_r, \lambda_{r + 1}, \dots, \lambda_n) = diag(1, \dots, 1, 0, \dots, 0)$ \\
+        $r = \rk \left(\begin{array}{cc}
+        E_r & 0 \\ 
+        0 & 0
+        \end{array}\right) = \rk{\B}$
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}(Закон инерции вещественной билинейной формы)
+    Пусть $V$~--- конечномерное ЛП / $\R$, $\B$~--- симмитричная билинейная форма на $V$,
+
+    тогда $\exists$ базис $E$ такой, что 
+
+    $[\B]_E = diag(\underbrace{1, \dots, 1}_{\text{s}},\underbrace{-1, \dots, -1}_{\text{t}}, 0, \dots, 0)$, 
+    при это $s$ и $t$ --- инварианты $\B$.
+
+    \begin{proof}
+    \emptyln
+    Существование $E$ доказывается аналогично предыдущему предложению (нужно взять квадратный корень из модуля, каждое число, кроме нуля, поделится на свой модуль).
+    
+    $s + t = \rk [\B]_E = \rk \B$~--- инвариант $\B$.
+
+    Предположим, что $s$~--- не инвариант $\B$ \\
+    Тогда $\exists E_1, E_2:$ \\
+    $[\B]_{E_1} = diag(\underbrace{1, \dots, 1}_{\text{s_1}},\underbrace{-1, \dots, -1}_{\text{t_1}}, 0, \dots, 0)$ \\
+    $[\B]_{E_2} = diag(\underbrace{1, \dots, 1}_{\text{s_2}},\underbrace{-1, \dots, -1}_{\text{t_2}}, 0, \dots, 0)$ \\
+    $s_1 \neq s_2$ (НУО $s_1 > s_2$) \\
+    $E_1 = (e_1, \dots, e_n)$ \\
+    $E_2 = (f_1, \dots, f_n)$ \\
+
+    $U_1 = \Lin (e_1, \dots, e_{s_1})$ \\
+    $U_2 = \Lin (f_{s_2 + 1}, \dots, f_n)$ \\
+
+    $\forall v \in U_1, v \neq 0: \B(v, v) > 0$ \\
+    Почему это так? $v = \alpha_1 e_1 + \dots + \alpha_{s_1} e_{s_1}$ \\
+    $\B(v, v) = \sum_{i = 1}^{s_1} \alpha^2_i > 0$ (т.к. $\B(e_i, e_i) = 1, \B(e_i, e_j) = 0, \, i \neq j)$ \\
+
+    $\forall v \in U_2: \B(v, v) \leqslant 0$ \\
+    $v = \alpha_{s_2+ 1} f_{s_2 + 1} + \dots + \alpha_nf_n$ \\
+    $\B(v, v) = \sum_{i = s_2 + 1}^{n} \alpha^2_i \B(f_i, f_i) = -\sum_{i = s_2 + 1}^{s_2 + t_2} \alpha^2_i \leqslant 0$ \\
+
+    Следовательно, $U_1 \cap U_2 = 0$ \\
+    Так как $\dim U_1 = s_1, \dim U_2 = n - s_2 \Longrightarrow \dim U_1 + \dim U_2 = s_1 + n - s_2 > n$ (т.к. НУО $s_1 > s_2$) \\
+    и $\dim U_1 \cap U_2 = \dim U_1 + \dim U_2 - \dim (U_1 + U_2) > 0 ?!$
+    \end{proof}
+\end{theorem}
+
+\begin{conj}
+    $(s, t)$~--- сигнатура $\B$
+\end{conj}
+
+\notice Если вы встретили формулировку "... билинейная форма ранга $r$ и сигнатуры $t$", то у нас будет $(r - t, t), \quad r - t$~--- количество единиц, а $t$~--- количество минус единиц.
+
+\underline{Пример:}
+$V = \mathbb{F}_p$
+$|\mathbb{F}^*_p / (\mathbb{F}^*_p)^2| = 2$ (квадратов вдвое меньше, чем элементов группы $\mathbb{F}_p$)
+Билинейных форм будет $3$:
+\begin{itemize}
+    \item 0
+    \item 1
+    \item $\varepsilon \not \in (\mathbb{F}_p)^2$
+\end{itemize}
+
+\subsection*{Евклидовы пространства}
+
+\begin{conj}(Положительно определенная билинейная форма)
+    Симмитрическая билинейная форма $\B$ на $V$~--- ЛП / $\R$ называется положительно определенной, если:
+    \begin{itemize}
+        \item $\forall v \in V: \B(v, v) \geqslant 0$
+        \item $\B(v, v) = 0$ при $v = 0$
+    \end{itemize}
+\end{conj}
+\notice Аналогично определяются отрицательно / неположительно / неотрицательно определенная симмитрическая билинейная форма.
+
+\begin{theorem}(Критерий определённости симмитрической билинейной формы)
+    Для сигнатуры $(s, t)$ и размерности $n$
+    \begin{itemize}
+        \item Положительная определённость $\Longleftrightarrow s = n$
+        \item Неотрицательная определённость $\Longleftrightarrow t = 0$
+        \item Отрицательная определённость $\Longleftrightarrow t = n$
+        \item Неположительная определённость $\Longleftrightarrow s = 0$
+    \end{itemize}
+    \begin{proof}
+    \emptyln
+    Оставлено в качестве упражнения.
+    \end{proof}
+\end{theorem}
+
+\begin{conj}(Евклидово пространство)
+    Евклидово пространство это ЛП $V / \R$ с фиксированной положительно определенной симмитрической билинейной формой $(\, , \,)$~--- скалярным произведением.
+\end{conj}
+
+\notice В определении нет конечномерности (т.е. евклидово пространство может быть бесконечномерным) \\
+\begin{enumerate}
+    \item $V = R^n$ \\
+    $(\left(\begin{array}{c}
+    \alpha_1 \\ 
+    \vdots \\ 
+    \alpha_n
+    \end{array}\right)
+    , \left(\begin{array}{c}
+    \beta_1 \\ 
+    \vdots \\ 
+    \beta_n
+    \end{array}\right)
+    ) ) = \alpha_1 \beta_1 + \dots + \alpha_n \beta_n$
+    \item $V = C[0, 1]$ \\
+    $(f, g) = \int_{0}^{1} fg $
+\end{enumerate}
+
+\begin{conj}(Длина (или норма) вектора)
+    $V$~--- евклидово пространство, $v \in V$ \\
+    $|v| = \sqrt{(v, v)}$~--- длина (норма) вектора.
+\end{conj}
+
+\begin{theorem}(Неравенство Коши-Буняковского)
+    Пусть $v, w \in V$, тогда \\
+    $|(v, w)| \leqslant |v| \cdot |w|$ 
+    \begin{proof}
+    \emptyln
+    Возьмём $t \in \R$, рассмотрим \\
+    $(v + tw, v + tw) \geqslant 0$ \\
+    $(v + tw, v + tw) = (v, v) + t^2 (w, w) + t((v,w) + (w, v)) = |w|^2t^2 + 2(v, w)t + |v|^2$ ~--- квадратный многочлен относительно $t$ \\
+    $D \leqslant 0$ \\
+    $(v, w)^2 - |w|^2 \cdot |v|^2 \leqslant 0$ \\
+    $(v, w)^2 \leqslant |w|^2 \cdot |v|^2$ \\
+    $\Longrightarrow |(v, w)| \leqslant |v| \cdot |w|$ 
+    \end{proof}
+\end{theorem}
+
+\follow Пусть $v, w \in V$ \\
+Тогда $|v + w| \leqslant |v| + |w|$
+\begin{proof}
+\emptyln
+$|v + w|^2 = (v + w, v + w) = (v, v) + (w, w) + 2(v, w) \leqslant |v|^2 + |w|^2 + 2 \cdot |v| \cdot |w| = (|v| + |w|)^2$ \\
+$\Longrightarrow |v + w| \leqslant |v| + |w|$
+\end{proof}
+
+\begin{conj}(Метрика на евклидовом пространстве)
+    $\rho(v, w) = |v - w|$ \\
+    $\rho$~--- метрика на $V$ \\
+    т.е. $\rho: V \times V \to \R_{\geqslant 0}$ и
+    \begin{enumerate}
+        \item $\rho(v, w) = 0 \Longleftrightarrow v = w$
+        \item $\rho(v, w) = \rho(w, v)$
+        \item $\rho(v, w) \leqslant \rho(v, u) + \rho(u, w)$ \\
+        \begin{proof}
+            $u - w = (u - v) + (v - w) \Longrightarrow |u - w| \leqslant |u - v| + |v - w|$ (по неравенству КБ)
+        \end{proof}
+    \end{enumerate}
+\end{conj}
+
+\begin{conj}(Угол между векторами)
+    Пусть $v, w \neq 0 \Longrightarrow$ угол между $v, w$ это $\alpha \in [0, \pi]$, т.ч. \\
+    $(v, w) = |v| \cdot |w| \cdot \cos{\alpha}$
+
+    \begin{proof}
+    $-1 \leqslant \frac{(v, w)}{|v| \cdot |w|} \leqslant 1 \Longrightarrow \exists ! \alpha \in (0, \pi): \, \cos{\alpha} = \frac{(v, w)}{|v| \cdot |w|}$
+    \end{proof}
+\end{conj}
+
+\begin{conj}(Ортонормированный базис)
+    Базис $E$ евклидова пространства $V$ называется ортонормированным, если \\
+    $E = (e_1, \dots, e_n)$ и $\forall i, j: (e_i, e_j) = \delta_{ij}$ (Символ кронекера, т.е. $1$, если они совпадают, иначе $0$).
+\end{conj}
+
+\begin{theorem}(Построение ортонормированного базиса)
+    Пусть $f_1, \dots, f_n$~--- произвольный базис $V$
+
+    Тогда существует ортонормированный базис $V: e_1, \dots, e_n$, т.ч. \\
+    $e_j \in \Lin (f_1, \dots, f_j)$ (или по-другому $\Lin (e_1, \dots, e_j) = \Lin (f_1, \dots, f_j)$)
+
+    \begin{proof}
+    \emptyln
+    $e_1 = \frac{1}{|f_1|} \cdot f_1$ \\
+
+    Пусть $e_1, \dots, e_k$ уже построены, но $k < n$ \\
+    
+    $e^0_{k + 1} = f_{k + 1} + \alpha_1 e_1 + \dots + \alpha_{k} e_k \in \Lin (f_1, \dots, f_k)$ \\
+    Хотим, чтобы $(e^0_{k + 1}, e_j) = 0, \, j = 1, \dots, k$ \\
+
+    $(e^0_{k + 1}, e_j) = (f_{k + 1}, e_j) + \alpha_j \Longrightarrow \alpha_j = - (f_{k + 1}, e_j)$ \\
+    Таким образом $e^0_{k + 1} = f_{k + 1} - \sum_{j = 1}^{k} (f_{k + 1}, e_j)$ \\
+    Тогда $e_{k + 1} = \frac{1}{|e^0_{k + 1}|} e^0_{k + 1}$ (от умножения на скаляр свойство ортонормированности не исчезает) \\
+
+    $(e_{k + 1}, e_1) = \dots = (e_{k + 1}, e_k) = 0$ \\
+    $(e_{k + 1}, e_{k + 1}) = 1$
+    \end{proof}
+\end{theorem}
+
+\notice Такое построение называется ортогонализацией Грама-Шмидта
+
+\notice Пусть $[\B]_{E'} = C^T \cdot [\B]_E \cdot C, \quad [\B]_E = E_n$, т.е. $E$~--- ортонормированный базис
+$E'$ будет тоже ортонормированным, если $C^TC = E_n$

@@ -1,0 +1,50 @@
+\subsection*{Нормальные операторы}
+Пусть $\mathcal{A} \in \End{V}$. Построим его комплексификаицию. 
+$\mathcal{A}_\C \in \End{V_\C}$. 
+\begin{gather*}
+    \mathcal{A}_\C(v + iw) = \mathcal{A}v + i \mathcal{A} w
+\end{gather*}
+$E$ -- базис $V$ \qquad $[\mathcal{A}_\C]_E = [\mathcal{A}]_E \Longrightarrow \chi_{\mathcal{A}_\C} = \chi_{\mathcal{A}}$ 
+
+\begin{lemma}
+    $(\mathcal{A}_{\C})^* = (\mathcal{A}^*)_\C$
+\end{lemma}
+\begin{proof}
+    Достаточно доказать, что: 
+    \begin{gather*}
+        (\mathcal{A}(v + iw), v' + i w') \overset{?}{=} (v + iw, (\mathcal{A}^*)_\C (v' + iw')) \\
+        (\mathcal{A} v, v') + (\mathcal{A} w, w') + i ((\mathcal{A}w, v') - (\mathcal{A} v, w')) = 
+        (\mathcal{A} v, v') + (\mathcal{A} w, w') + i ((\mathcal{A}w, v') - (\mathcal{A} v, w'))
+    \end{gather*}
+\end{proof}
+\follow $\mathcal{A}$ нормальный $\Longrightarrow \mathcal{A}_\C$ нормальный
+\begin{gather*}
+    \chi_{\mathcal{A}} \in \R[x] \qquad \chi_{\mathcal{A}} (z) = 0 \Longrightarrow \chi_\mathcal{A} (\bar z) = 0 \\
+    \chi_\mathcal{A} = \pm \prod\limits_{p=1}^s (x - \mu_p)^{a_p} \prod\limits_{q = 1}^t (x - \lambda_q)^{b_q} (x - \bar \lambda_q)^{b_q} \\
+    \mu_p \in \R, \lambda_q \notin \R
+\end{gather*}
+
+\begin{lemma} \quad
+
+    Пусть $v_1 + i w_1, \dots, v_l + i w_l$ -- базис $\lambda$
+    
+    Тогда $v_1 - i w_1, \dots, v_l - i w_l$ -- базис $\bar \lambda$
+
+    Если первый базис ортонормированный, то и второй базис ортонормированнный. 
+\end{lemma}
+\begin{proof}
+    \begin{gather*}
+        v + iw \in V_\lambda \Longrightarrow v - iw \in V_{\bar \lambda} \\
+        V_\lambda = \Lin{(v_1 + i w_1, \dots)} \Longrightarrow V_{\bar \lambda} = \Lin{(v_1 - i w_1, \dots)} \\
+        v + iw = \sum_{j = 1}^l (\alpha_j + i p_j)(v_j + i w_j) \Longrightarrow \\
+        v - iw = \sum(\alpha_j - i p_j) (v_j - i i w_j)
+    \end{gather*}
+    Линейная независимость -- аналогично
+    \begin{gather*}
+        (v_j + i w_j, v_k + i w_k) = \delta_{jk} \Longrightarrow \\
+        (v_j - i w_j, v_k - i w_k) = \delta_{jk}
+    \end{gather*}
+
+    $V_\C = V_{\mu_1} \oplus \dots \oplus V_{\mu_s} \oplus V_{\lambda_1} \oplus V_{\bar \lambda_1} \oplus \dots \oplus V_{\lambda_t} \oplus $
+\end{proof}
+

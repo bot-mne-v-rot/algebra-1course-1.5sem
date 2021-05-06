@@ -74,7 +74,8 @@ tlmgr install   \
   datetime2-russian \
   bookmark \
   amssymb \
-  tikz-cd
+  tikz-cd \
+  extarrows
   
 
 # Keep no backups (not required, simply makes cache bigger)

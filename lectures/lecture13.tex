@@ -1,0 +1,359 @@
+\section*{Нормальные операторы в евклидовом пространстве}
+
+Вспомним, что мы научились делать:
+
+    По любому пространтсву $V / \R$ мы можем построить комплисификацию $V_{\C} / \C$ (той же размерности) \\
+    Его мы можем представлять себе как $ \{ v + iw \, | \, v,w \in V \}, \quad i^2 = -1 $ \\
+    $v_1, \dots, v_n \in V: v_1, \dots, v_n$ --- базис $V$ $\Longleftrightarrow v_1, \dots, v_n$ --- базис $V_{\C}$, $\quad v + i \cdot 0 = v$
+    Действительно, если $\alpha_1 v_1 + \dots + \alpha_n v_b = 0 \Longrightarrow \alpha_1 = \dots = \alpha_n = 0$
+    
+
+\subsection*{Операторы на классификациях}
+
+\begin{conj}
+$ \A \in \End{V} $
+
+$ \A_{\C} \in \End{V_{\C}}  $ --- опреатор комплисификации
+
+$ \A_{\C}(v + iw) = Av + iAw $
+
+Тривиальная проверка, которую лектор опустил.
+\end{conj}
+
+\begin{conj}
+E --- базис V
+
+$[\A_{\C}]_{E} = [\A]_{E}$ т.к. базисные вектора вещественные, т.е. мнимая часть $ = 0$
+
+Отсюда следует, что $\Xi_{\A_{\C}} = \Xi_{\A}$
+\end{conj}
+
+\begin{theorem}() %поменять на лемму
+    $ (\A_{\C})^* = (\A)^*_{\C} $
+
+    \begin{proof}
+    $ $ \\
+    Достаточно доказать, что выполняется характеристическое свойство.
+
+    $(\A(v + iw), v' + iw') \stackrel{?}{=} (v + iw, (\A^*)_{\C}(v' + iw'))$
+
+    $(A v, v') + (A w, w') + i ((A w, v') - (A v, w')) = (v, A^* v') + (w, A^* w') + i ( (w, A^* v') - (v, A^* w') )$ 
+    \end{proof}
+\end{theorem}
+
+\follow $\A $ норм $ \Longrightarrow A_{\C} $ норм (используется факт, что комплификация композиции это композиция комплификаций)
+
+
+\begin{theorem}
+    $ \A $ --- норм опреатор в евклидовом пространстве $ V $ \\
+    $ \Xi_{\A} \in \R[x] $ \\
+    $ \Xi_{\A}(z) = 0 \Longrightarrow \Xi_{\A}(\bar{z}) = 0 $ \\
+    $ \Xi_{\A} = \pm \prod_{p = 1}^{s} (x - \mu_p)^{a_p} \prod_{q = 1}^{t} (x - \lambda_q)^{b_q} (x - \bar{\lambda_q})^{b_q}$, где $\mu_p \in \R , \lambda_q \not \in \R$ \\
+\end{theorem}
+
+lemma
+
+Пусть $v_1 + iw_1, \dots, v_l + iw_l$~--- базис $V_{\lambda}$, $\quad \lambda \not \in \R$ \\
+Тогда $v_1 - iw_1, \dots, v_l - iw_l$~--- базис $V_{\bar{\lambda}}$
+
+$ (V_{\lambda} = \Ker{\A_{\C} - \lambda \epsilon}) $ % единичный оператор 
+
+Более того, если первый базис ортонормированный, то и второй ортонормированный.
+
+\begin{proof}
+$ $ \\
+$v + iw \in V_{\lambda} \Longrightarrow v - iw \in V_{\bar{\lambda}}$ % он оставил без доказательства 
+
+$ V_{\lambda} = \Lin(v_1 + iw_1, \dots ) \Longrightarrow V_{\bar{\lambda}} = \Lin(v_1 - iw_1, \dots) $
+
+$ v + iw = \sum_{j = 1}^{l} (\alpha_j + i \beta_j) (v_j + i w_j) \Longrightarrow v - iw = \sum_{}^{} (\alpha_j - i \beta_j) (v_j - i w_j) $
+
+ЛНЗ -- аналогично
+
+
+\textbf{Второе утверждение} 
+
+$ (v_j + i w_j, v_k + iw_k) = \delta_{jk} \Longrightarrow  (v_j - i w_j, v_k - iw_k) = \delta_{jk}$ (применили комлпексное сопряжение)
+\end{proof}
+
+\begin{theorem}()
+
+    Пусть $\A$~--- нормальный оператор в конечномерном евклидовом пространстве $V$ 
+       
+    Тогда в некотором ортонормированном базисе матрица $\A$ блочно-диагональная и все блоки имеют вид $(\mu)$~--- блок 1х1 или $\left(\begin{array}{cc}
+        \alpha & \beta \\ 
+        -\beta & \alpha
+        \end{array}\right)$
+\begin{proof}
+    $ \A $ ~--- нормальный оператор
+
+    $V_{\C} = V_{\mu_1} \otimes \dots \otimes V_{\mu_s} \otimes V_{\lambda_1} \otimes V_{\bar{\lambda_1}} \otimes \dots \otimes V_{\lambda_t} \otimes V_{\bar{\lambda_t}}$
+
+    В каждом из вещественных слагаемых $V_{\mu_i}$ и паре слагаемых $V_{\lambda_i}$ и $V_{\bar{\lambda_i}}$ выберем новый базис 
+
+    \textbf{Вещественные слагаемые} 
+
+    Заметим, что в каждом таком кусочке можно выбрать вещественный базис.
+
+    В $V_{\mu_p}$ выберем произвольный базис: \\
+    $v_1 + iw_1, \dots, v_l + i w_l$ \\
+    $\Longrightarrow V_{\mu_p} = \Lin (v_1, w_1, \dots, v_l, w_l)$ \\
+    Из этого набора можно выбрать базис $V_{\mu_p}: u_1, \dots, u_l$ \\
+    Ортог-ия (Грама-Шмидта) + нормирование $\Longrightarrow \tilde{u_1}, \dots, \tilde{u_p}$~--- ортонормированный, вещественный базис $V_{\mu_p}$
+
+    $ [ \A \, |_{V_{\mu_p} }]_{\dots} = diag (\underbrace{\mu_p, \dots, \mu_p}_{\text{$ l $ раз}} ) $
+
+    \textbf{Теперь о парах}
+    
+    $ \A |_{V_{\lambda_q} \otimes V_{\lambda_{\bar{q}}}} $
+
+    $v_1 + iw_1, \dots, v_l + iw_l$~--- ортонормированный базис $V_{\lambda_q}$\\
+    По одной из предыдущих лемм мы знаем, что $v_1 - iw_1, \dots, v_l - iw_l$~--- ортонормированный базис $V_{\bar{\lambda_q}}$ 
+
+    Выберем новый базис в сумме этих подпространств следующим образом: \\
+    $ \Lin (v_1, w_1, \dots, v_l, w_l) = V_{\lambda_q} \otimes V_{\bar{\lambda_q}} $ \\
+    
+    \[ \dim(V_{\lambda_q} \otimes V_{\lambda_{\bar{q}}}) = 2l \Longrightarrow \text{это базис}  \]
+    
+    Для краткости обозначим $u_j := v_j + iw_j$
+
+    Знаем, что \begin{itemize}
+        \item $(u_j, u_j) = 1$
+        \item $(u_j, u_r) = 0, \quad j \neq r$
+        \item $(u_j, \bar{u_j}) = 0$
+        \item $(u_j, \bar{u_r}) = 0, \quad j \neq r$
+    \end{itemize}
+    Последние два равенства верны, потому что это собственные вектора нормиального оператора
+
+    Если теперь перейти от введённого обозначения $u_j$ и расписать по линейности, то получим
+    
+    \begin{itemize}
+        \item $ (v_j, v_j) + (w_j, w_j) = 1  $
+        \item $ (u_j, \bar{u_j}) = 0 = (v_j + iw_j, v_j - iw_j) = (v_j, v_j) - (w_j, w_j) + i ( (w_j, v_j) + (v_j, w_j) )$
+        \item $(u_j, u_r) = 0 = (v_j, v_r) + (w_j, w_r) + i ( (w_j, v_r ) - (v_j, w_r) )$
+        \item $(u_j, \bar{u_r}) = 0 = (v_j, v_r) - (w_j, w_r) + i ( (w_j, v_r ) + (v_j, w_r) )$
+    \end{itemize}
+    
+    Раз последние два равенства равны нулю, то что вещественные, что мнимые части равны нулю $\Longrightarrow (v_j, v_r) = (w_j, w_r) = (w_j, v_r) = (v_j, w_r) = 0$ \\
+    Из второго следует, что $(v_j, w_j) = 0$ \\
+    Из первого равенства мы понимаем, что $(v_j, v_j) = (w_j, w_j) = \frac{1}{2}$
+
+    Мы получили ортогональный базис в наборе из $2l$ векторов, где каждый вектор ортогонален каждому, кроме себя, но он не нормированн (длина будет равна $ \frac{1}{\sqrt{2}} $) \\
+    Ну и ортонормируем: $\tilde{v_j} = \sqrt{2} \cdot v_j, \tilde{w_j} = \sqrt{2} \cdot w_j$ 
+
+
+    $ \tilde{v_1}, \tilde{w_1}, \dots, \tilde{v_l}, \tilde{w_l} $~--- ортонормированный базис $V_{\lambda_q} \otimes V_{\lambda_{\bar{q}}}$
+
+    Как будет выглядеть матрица для нашего оператора в этом базисе? \\
+    Пусть $\lambda_q = \alpha_q + i \beta_q$
+    Посмотрим на $\A_{\C}(v_j + iw_j) = (\alpha_q + i \beta_q) (v_j + iw_j)$ \\
+    $Av_j = \alpha_q v_j -  \beta_q w_j$ \\
+    $Aw_j = \beta_q v_j + \alpha_q w_j$ \\
+    $\Longrightarrow $ аналогично для $A\tilde{v_j}, A\tilde{w_j}$
+
+
+    Итог: 
+
+    Пусть $U_q = \Lin (\underbrace{\tilde{v_1}, \tilde{w_1}, \dots, \tilde{v_l}, \tilde{w_l}}_{\text{$ E_q $}} )$
+    
+    $[\A |_{U_q}]_{E_q} = \left(\begin{array}{ccccc}
+    \alpha_q & \beta_q & 0 & \dots & 0 \\ 
+    -\beta_q & \alpha_q & 0 & \dots & 0 \\ 
+    0 & 0 & \dots & 0 & 0 \\ 
+    \vdots & \vdots & \vdots & \vdots & \vdots \\
+    0 & 0 & 0 & \alpha_q & \beta_q \\ 
+    0 & 0 & 0 & -\beta_q & \alpha_q
+    \end{array}\right)$
+\end{proof} 
+\end{theorem}
+
+
+\notice
+
+Первый частный случай:
+
+    $\A = \A^* \Longrightarrow [\A]_{E} = [\A]^T_{E}$ \\
+    $\left(\begin{array}{cc}
+    \alpha & \beta \\ 
+    -\beta & \alpha
+    \end{array}\right) = \left(\begin{array}{cc}
+    \alpha & -\beta \\ 
+    \beta & \alpha
+    \end{array}\right) \Longrightarrow \beta = 0 \Longrightarrow [\A]_{E}$
+
+    Таким образом: $\A$ самосопр. $\Longleftrightarrow$ матрица $\A$ в некотором ортонормированном базисе диагональна
+
+Второй частный случай:
+
+    $\A \A^* = \epsilon$ % id 
+    $\Longleftrightarrow [\A]_{E} \cdot [\A]^T_{E} \Longleftrightarrow $ для всех блоков $B: BB^T = E_{\dots}$
+
+    $B = (\mu) \Longrightarrow \mu^2 = 1 \Longrightarrow \mu = \pm 1$
+
+    $B = \left(\begin{array}{cc}
+    \alpha & \beta \\ 
+    -\beta & \alpha
+    \end{array}\right) \Longrightarrow BB^T = E_2 = \left(\begin{array}{cc}
+    \alpha^2 + \beta^2 & 0 \\ 
+    0 & \alpha^2 + \beta^2
+    \end{array}\right) \Longleftrightarrow \alpha^2 + \beta^2 = 1$
+
+$ \Longrightarrow \exists \varphi : \begin{cases}
+    \alpha = \cos{\varphi} \
+    \beta = \sin{\varphi}
+\end{cases} $
+
+Т.о.: $\A$ ортогональный оператор $\Longleftrightarrow$ матрица $\A$ в некотором ортонормированном базисе имеет блочно-диагональный вид с блоками вида $(\pm 1)$ и $( \left(\begin{array}{cc}
+\cos{\varphi} & \sin{\varphi} \\ 
+-\sin{\varphi} & \cos{\varphi}
+\end{array}\right) )$
+
+Можно воспользоваться тем, что $\left(\begin{array}{cc}
+1 & 0 \\ 
+0 & 1
+\end{array}\right) = \left(\begin{array}{cc}
+\cos{0} & \sin{0} \\ 
+-\sin{0} & \cos{0}
+\end{array}\right)$
+
+$ \left(\begin{array}{cc}
+-1 & 0 \\
+0 & -1
+\end{array}\right)$
+$= \left(\begin{array}{cc}
+    \cos{\pi} & \sin{\pi} \\
+    -\sin{\pi} & \cos{\pi}
+    \end{array}\right)$
+
+$[\A]_{E} = \left(\begin{array}{cccc}
+R_{\varphi_1} &  &  & 0 \\ 
+ & \ddots &  &  \\ 
+ &  & R_{\varphi_m} &  \\ 
+0 &  &  & D
+\end{array}\right)$
+
+$D = ()$ или $(\pm 1)$ или $\left(\begin{array}{cc}
+    1 & 0 \\ 
+    0 & -1
+    \end{array}\right)$
+
+В частност, если $\dim V = 3$, $| \A | = 1 \Longrightarrow$ в некотором $E : [\A]_{E} = \left(\begin{array}{cc}
+R_{\varphi} & 0 \\ 
+0 & 1 
+\end{array}\right)$ ($| \A |$~--- определитель оператора) %красивая А, странно, но он так пишет 
+
+Вспомним, что $AA^T = E_n \Longrightarrow |A| = \pm 1$
+
+\begin{theorem}(Характеристика ортогональных операторов)
+    Пусть $V$ евклидово пространство, $\A \in \End{V}$ 
+
+    Тогда эквивалентны следующие утверждения:
+    \begin{enumerate}
+        \item $\A$ ортогонален
+        \item $\forall v, w \in V: (\A v, \A w) = (v, w)$
+        \item $\forall v \in V: ||\A v|| = || v || $
+    \end{enumerate}
+    \begin{proof}
+        $1 \to 2$
+
+        $\A^* \A = \epsilon$ \\ % id
+        $(\A v, \A w) = (v, \A^*\A w) = (v, w)$
+
+        $2 \to 3 $
+
+        $||Av|| = \sqrt{(Av, Av)} = \sqrt{(v, v)} = ||v||$
+
+        $3 \to 2$
+        
+        $2(v, w) = ||v + w||^2 - ||v||^2 - ||w||^2$
+
+        $2(Av, Aw) = ||Av + Aw||^2 - ||Av||^2 - ||Aw||^2$
+        
+        $\Longrightarrow (Av, Aw) = (v, w)$
+
+        $2 \to 1$
+
+        Нужно доказать, что $\forall v \in V: \, \A^* \A v = v$
+
+        $w \in V: \, (w, \A^* \A v) = (\A w, \A v) = (w, v)$ \\
+        $(\A^* \A v - v) \perp w$ \\
+        $\A^* \A v - v \in V^{\perp} = 0$ \\
+        $\A^* \A v = v$
+    \end{proof}    
+\end{theorem}
+
+
+\section*{Операторы проектирования}
+
+Пусть у нас есть такое векторное пространство $V = W_1 \otimes W_2$
+
+\begin{conj}(Оператор проектирования)
+    Оператор $\A \in \End{V}:$ \\
+    $\A(w_1 + w_2) = w_1$~--- оператор проектирования на $W_1$ вдоль $W_2$
+\end{conj}
+
+\begin{theorem}()
+    $\A \in \End{V}$ \\
+    Тогда эквивалентны два утверждения:
+    \begin{enumerate}
+        \item $\A$~--- оператор проектирования (т.е. $\exists W_1, W_2$, т.ч. $W_1 \otimes W_2$ и $\A \dots $ на $W_1$ вдоль $W_2$)
+        \item $\A^2 = \A$ (идемпотентность)
+    \end{enumerate}
+    \begin{proof}
+        $1 \to 2$ \\
+        $\A^2 (w_1 + w_2) = \A(w_1) = \A(w_1 + 0)= w_1 = \A(w_1 + w_2)$
+
+        $2 \to 1$
+
+        $W_1 = \Imm{\A}$
+        $W_2 = \Ker{\A}$
+
+        Проверим, что $V = W_1 \otimes W_2$ \\
+        $v = \underbrace{\A v }_{\text{$ \in W_1 $}} + \underbrace{(v - \A v)}_{\text{$ \in W_2 $}} $ \\
+        т.к. $A(v - Av) = Av - A v = 0$
+
+        $w \in W_1 \cap W_2$ \\
+        Раз $w \in W_1$, то $Aw = A^2 w = Av = w$ \\
+        Но при этом $w \in W_2$, а значит $Aw = 0$
+
+        Осталось доказать, что $A(\underbrace{w_1}_{\text{$ w_1 $}}  + \underbrace{w_2}_{\text{$ w_2 $}} ) = \underbrace{A w_1}_{\text{$ w_1 $}}  + \underbrace{A w_2}_{\text{$ 0 $}}  $ т.е. это оператор проектирования.
+        
+    \end{proof}
+\end{theorem}
+
+\begin{conj}
+    Пусть $V$ --- евклидово или унитарное, $W \subset V$~--- подпространство \\
+    Оператор проектирования на $W$ вдоль $W^{\perp}$ называется оператором ортогонального проектирования
+\end{conj}
+
+\begin{theorem}(Характеристика оператора ортогонального проектирования)
+
+    $\A \in \End{V}$
+
+    Тогда эквивалентны следующие условия:
+    \begin{enumerate}
+        \item $\A$ оператор ортогонального проектирования
+        \item $\A$ самоспопряжённый идемпотентный
+    \end{enumerate}
+
+    \begin{proof}
+    $ $ \\
+    $ 1 \to 2 $
+
+    $ \A = \A^2 $ знаем \\
+    Пусть $e_1, \dots, e_m$ --- ортонормированный базис $W$, а $e_{m + 1}, \dots, e_n$ ортонормированный базис $W^{\perp}$ \\
+    $E = (e_1, \dots, e_n)$ \\
+    $[\A]_E = \left(\begin{array}{cc}
+    E_m & 0 \\ 
+    0 & 0
+    \end{array}\right)$ \\
+    $[\A]^*_E = \left(\begin{array}{cc}
+    E_m & 0 \\ 
+    0 & 0
+    \end{array}\right) = [\A]_E \Longrightarrow \A^* = \A$
+
+    $2 \to 1$
+
+    В следующий раз
+    \end{proof}
+\end{theorem}

@@ -5,9 +5,9 @@
     \[ Z(G) = \{ g \in G \, | \, \forall h \in G : gh = hg \} \]
 \end{conj}
 
-\begin{theorem-non}
+\begin{theorem}
     Центр группы является ее нормальной подгруппой.
-\end{theorem-non}
+\end{theorem}
 \begin{proof} \quad \\
     \begin{itemize}
         \item Замкнутость остносительно операции: 
@@ -52,9 +52,9 @@
     Коммутант -- подгруппа, порожденная всеми коммутаторами группы. Обозначается как $[G, G]$.
 \end{conj}
 
-\begin{theorem-non}
+\begin{theorem}
     Коммутант является нормальной подгруппой.
-\end{theorem-non}
+\end{theorem}
 \begin{proof}
     Это подгруппа по определнию, значит, осталось проверить нормальность.
     Сперва проверим, что сопряжение коммутатора дает коммутатор. \\
@@ -68,14 +68,14 @@
     \[ ([g_1, h_1][g_2, h_2]\dots[g_m, h_m])^a = [g_1^a, h_1^a][g_2^a, h_2^a]\dots[g_m^a, h_m^a] \in [G, G] \]
 \end{proof}
 
-\begin{theorem-non}
+\begin{theorem}
     Пусть $H \lhd G$. 
     Тогда следующие 2 утверждения эквивалентны: 
     \begin{enumerate}
         \item $G / H$ абелева группа
         \item $H \supset [G, G]$
     \end{enumerate}
-\end{theorem-non}
+\end{theorem}
 \begin{proof} \quad \\
     \begin{gather*}
         \begin{split}
@@ -98,9 +98,9 @@ $G^{(k)} = \begin{cases}
     [G^{(k - 1)}, G^{(k - 1)}], & k > 0
  \end{cases}$.
  
-\begin{theorem}
+\begin{theorem-non}
     Группа разрешима, если и только если ее ряд коммутантов заканчивается на тривиальной группе (иными словами, $\exists n : G^{(n)} = \{e\}$).
-\end{theorem}
+\end{theorem-non}
 \begin{proof} \quad \\
      $"\Leftarrow":$ Ряд коммутантов подходит в определение разрешимой группы:
      \[ \{e\} = G^{(n)} < \dots < G^{(1)} < G^{(0)} = G \]
@@ -187,9 +187,9 @@ $G^{(k)} = \begin{cases}
     Тогда орбита элемента $m$ -- это множество $Gm = \{gm\; | \; g \in G\}$.
 \end{conj}
 
-\begin{theorem-non}
+\begin{theorem}
     Орбиты двух элементов $M$ либо не пересекаются, либо совпадают.
-\end{theorem-non}
+\end{theorem}
 \begin{proof}
     \begin{gather*}
         h \in Gm_1 \cap Gm_2 \\
@@ -223,7 +223,7 @@ $G^{(k)} = \begin{cases}
     Стабилизатором элемента $m$ называется множество $St_m = \{ g \in G \; | \; gm = m \}$.
 \end{conj}
 
-\begin{theorem-non} \quad 
+\begin{theorem} \quad 
 
     \begin{enumerate}
         \item $St_m < G$ (поэтому стабилизатор иногда называют стационарной подгруппой) 
@@ -233,7 +233,7 @@ $G^{(k)} = \begin{cases}
             gSt_m \mapsto gm
         \end{gather*}
     \end{enumerate}
-\end{theorem-non}
+\end{theorem}
 \begin{proof} \quad \\
     \begin{enumerate}
         \item Легко проверить замкнутость относительно умножения, существование нейтрального и обратного.
@@ -271,10 +271,10 @@ $G^{(k)} = \begin{cases}
     \item $St_g = \{ g \in G \, | \; hg = gh \} = Z_g$ -- централизатор элемента $g$ 
 \end{enumerate}
 
-\begin{theorem-non}
+\begin{theorem}
     Пусть $G$ -- конечная $p$-группа (т.е. $|G| = p^n, p$ -- простое).
     Тогда у нее нетривиальный центр: $Z(G) \neq \{ e \}$.
-\end{theorem-non}
+\end{theorem}
 \begin{proof}
     Пусть $G$ действует на себе сопряжением. 
     Из следствия мы знаем, что длина орбиты является делителем порядка группы. 

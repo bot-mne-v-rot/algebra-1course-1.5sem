@@ -1,1 +1,460 @@
 \section{Лекция номер 8}
+
+\begin{theorem}(О диоганолизации оператора и Характеристический многочлене)
+    Пусть $\A \in \End{V}$
+
+    Тогда эквивалентны 2 увтерждения:
+    \begin{enumerate}
+        \item $\A$ диагонализируемый
+        \item $\chi{\A}$ раскладывается на линейные множители
+        и для любого собственного значения $\lambda: \, g_{\lambda} = a_{\lambda}$
+    \end{enumerate}
+
+    \begin{proof} \quad
+
+    \quad$1 \Longrightarrow 2: $
+
+    $[\A]_{E} = diag (\lambda_1, \dots, \lambda_n)$ \\
+    $\chi_{\A} = \prod_{i = 1}^{n} (\lambda_i - x)$ \\
+    $g_{\lambda}$ --- число вхождений $\lambda$ в $(\lambda_1, \dots, \lambda_n)$ \\
+    $a_{\lambda}$ --- то же самое.
+
+    \quad$2 \Longrightarrow 1: $
+    
+    Пусть $\lambda_1, \dots, \lambda_m$ --- все собственные значения. (без повторений) \\
+    Тогда $a_{\lambda_1} + \dots + \alpha_{\lambda_m} = n \Longrightarrow g_{\lambda_1} + \dots + g_{\lambda_m} = n \Longrightarrow \A$ диагонализируем.
+
+    \end{proof}
+\end{theorem}
+
+\vspace*{5mm}
+
+С помощью этого предложения мы теперь видим две причины, по которым оператор может быть не диагонализируем:
+\begin{enumerate}
+    \item Характеристический многочлен может не раскладываться на линейные множители (поле $K$ не является алгебраически замкнутым)
+    \item Алгебраическая и геометрическая кратности просто напросто отличаются
+\end{enumerate}
+
+\underline{Рассмотрим примеры:}
+\begin{enumerate}
+    \item $ K = \R, V$ --- двумерное, $E$ --- базис \\
+    $ [\A]_{E} = \left(\begin{array}{cc}
+    0 & 1 \\ 
+    -1 & 0
+    \end{array}\right)$ \\
+    $ \chi_{\A} =
+    \begin{vmatrix*}
+        -x & 1 \\
+        -1 & -x
+    \end{vmatrix*} = x^2 + 1$ \\
+    нет корней $ \Longrightarrow \A$ не диагонализируемый
+
+    \item $ K = \C, V$ --- двумерное, $E$ --- базис \\
+    $ [\A]_{E} = \left(\begin{array}{cc}
+        0 & 0 \\ 
+        1 & 0
+    \end{array}\right)$ \\
+    То есть наш оператор действует так: $e_1 \mapsto e_2 \mapsto 0$
+    $\chi_{\A} = x^2 \Longrightarrow a_o = 2$ \\
+    $g_0 = 1$, так как собственное подпространство $V_0 = \Lin (e_2)$ \\
+    Получили, что $g_0 < a_0 \Longrightarrow \A$ не диагонализируемый
+\end{enumerate}
+
+\vspace*{5mm}
+
+Тем не менее, ситуация номер 2 ставится "под контроль".
+
+Если наш характеристический многочлен раскладывается на линейные множители, то оператор можно привести к нужному виду. Т.е. найти такой базис, где матрица у нас имеет Жорданов вид.
+
+Поиск такого базиса называется приведением оператора к Жордановой форме.
+
+\subsection{Жорданова форма}
+
+\begin{conj}(Жорданова клетка)
+
+    Жорданова клетка порядка $ m $ с собственным значением $ \lambda $: \\
+    $ J_m(\lambda) = \left(\begin{array}{cccc}
+    \lambda &  &  & 0 \\ 
+    1 & \lambda &  &  \\ 
+     & \ddots & \ddots &  \\ 
+    0 &  & 1 & \lambda
+    \end{array}\right) \in M(m, K) $
+    
+    (на главной диагонали --- $\lambda$, под ней единицы, остальные нули)
+\end{conj}
+
+\vspace*{3mm}
+Посмотрим на характеристический многочлен:
+    \[  \chi(\lambda) = (\lambda - x)^m \]
+Видно, что: $ a_{\lambda} = m $
+
+Обозначим за $\A = J_m \cdot$ оператор умножения на эту матрицу
+
+Тогда $ g_{\lambda} = \dim \Ker(\A - \lambda\mathcal{E}) = \dim \Ker(J_{m}(0))$
+
+То есть матрица оператора $\A - \lambda\mathcal{E} = J_{m} (0)$ имеет вид:
+$ \left(\begin{array}{cccc}
+0 &  &  & 0 \\
+1 & 0 &  &  \\
+ & \ddots & \ddots & 0 \\ 
+0 &  & 1 & 0
+\end{array}\right) $
+
+А значит, оператор будет действовать так: $e_1 \mapsto e_2 \mapsto \dots \mapsto e_m \mapsto 0$
+
+$\Longrightarrow \dim \Ker(J_{n}(0)) = \dim \Lin (e_m) = 1 = g_{\lambda}$
+
+\begin{conj}(Жорданова матрица)
+    Жорданова матрица это блочно-диагональная матрица, у которой блоки --- Жордановы клетки.
+
+    У блоков могут быть одинаковые, а могут быть и разные собственные значения
+\end{conj}
+
+\begin{theorem}()
+    Если характеристический многочлен, можно разложить на линейные множители,
+    то в некотором базисе матрица линейного оператора становится Жордановой.
+
+    Ввиду малого количества времени, мы эту теорему не докажем.
+\end{theorem}
+
+\vspace*{5mm}
+
+\subsection*{Аннулирующие многочлены}
+
+Сейчас мы будем заниматься тем, что будем подставлять линейные операторы в многочлены.
+Это инструмент для изучения линейных операторов.
+
+\vspace*{3mm}
+
+В пределах этого параграфа мы зафиксируем линейный оператор $\A \in \End V$ над конечномерным линейном пространстве $V$ над полем $K$
+
+\vspace*{3mm}
+
+\begin{conj} (Подстановка оператора в многочлен)
+    $ f \in K[x], f = a_m x^m + \dots + a_1x + a_0 $
+    \[ f(\A) = a_m \A^m + \dots + a_1\A + a_0 \mathcal{E}_V \in \End V \quad (\A^i --- \text{композиция}  i \text{операторов} ) \]
+\end{conj}
+
+\begin{theorem}(Свойства подстановки оператора в многочлен) \quad
+    $ f, g \in K[x] $
+    \begin{enumerate}
+        \item $ (fg)(\A) = f(\A) g(\A) $
+        \item $ f(\A) g(\A) = g(\A) f(\A) $
+        \item $ \Ker \A , \Imm \A$  ---  $\A $ инвариантные подпространства
+    \end{enumerate}
+    \begin{proof} \quad
+    
+    \begin{enumerate}
+        \item По определению
+        \item Следует из первого через $fg = gf$
+        \item Пусть $g = x$
+        \quad Сперва про ядро: \\
+        \begin{gather*}
+            v \in \Ker f(\A) \\
+            \A v = g(\A) (v) \\
+            f(\A) (\A v) = f(\A) g(\A) (v) = g(\A) \cdot \underbrace{f(\A) (v)}_{\text{$ 0 $}} = 0 \Longrightarrow \A v \in \Ker f(\A) \\
+        \end{gather*}
+        \quad Теперь про образ \\
+        \begin{gather*}
+            v \in \Imm f(\A) \\
+            v = f(\A) (w) \\
+            \A v = g(\A) f(\A) (w) = f(\A) g(\A) (w) \in \Imm f(\A)
+        \end{gather*}
+    \end{enumerate}
+    \end{proof}
+\end{theorem}
+
+Вспомним, что кольцо многочленов является Евклидовым кольцом, что в свою очередь является Областью Главных Идеалов (т.е. любой идеал Евклидова кольца главный, т.е. порождён одним элементом)
+
+\begin{theorem}()
+    В Евклидовом кольце любой идеал главный
+
+    \begin{proof}
+    $ $ \newline
+    $ I \subset R $ идеал $ (I < R, bI \subset I \forall b \in R) $ \\
+    $ \nu $ --- Евклидова норма 
+
+    Пусть $ I = 0 \Longrightarrow I = (0) $ --- главный идеал
+
+    Пусть $ I \neq 0 \Longrightarrow $ пусть $ a \in I $ с минимальной евклидовой нормой, т.ч. $ \nu(a) = c $ \\
+    \quad Докажем, что $I = (a):$
+    $ (a) \subset I $ --- очевидно \\
+    Пусть $ b \in I, b = aq + r $ и тогда у нас либо $ \nu(r) < \nu(a) $, либо $ r = 0 $ \\
+    Первый случай невозможен, т.к. $ \nu(a) $ минимальна. Значит остаток равен нулю, тогда $b = aq$, т.е. $b \in (a)$
+    \end{proof}
+\end{theorem}
+
+Сейчас мы этот факт будем использовать.
+
+\vspace*{5mm}
+
+\begin{conj}(Аннулятор оператора)
+    Пусть $f \in K[x]$ \\
+    $f$ аннулятор (аннулирующий многочлен) $\A$, если $f(\A) = 0$ \\
+\end{conj}
+
+\begin{theorem}(О множестве аннуляторов оператора)
+
+    Обозначим $I = \{ f | f --- \text{ аннулятор } \A \}$ \\
+    $I$ --- главный идеал в $K[x]$
+
+    \begin{proof}
+    $ $ \newline
+    \quad $ I $ --- идеал 
+    Пусть $ f \in I $
+
+    Для произвольного $h \in I: \, (f + h)(\A) = f(\A) + h(\A) = 0$ (подставили оператор в сумму многочленов по определению)
+
+    Для произвольного $g \in K[x]: \, (gf)(\A) = g(\A) f(\A) = 0 \Longrightarrow gf \in I $
+
+    \quad Главный т.к. $K[x]$ Евклидово кольцо 
+    \end{proof}
+\end{theorem}
+
+\vspace*{3mm}
+
+\underline{Историческая справка}
+Порождающий элемент главного идеала определён с точностью до ассоциированности: $ (a) = (a') \Longleftrightarrow a \sim a' $
+
+\vspace*{3mm}
+
+Вернёмся к нашему идеалу: $I = (\mu_{\A})$ для некоторого многочлена $\mu_{\A}$
+
+\notice Можно считать, что $\mu_{\A}$ унитарный (т.е. с главным коэффициентом $1$) из соображений ассоциированности, что по факту значит для нас, что порождающий элемент может быть домножен на ненулевую константу.
+
+\begin{conj}(Минимальный многочлен оператора)
+    $\A \in \End V$ \\
+    $ I = \{ f | f$ --- аннулятор $\A \} $ \\
+    $I = (\mu_{\A}) $ \\
+    $\mu_{\A}$ --- минимальный многочлен оператора $\A$
+\end{conj}
+
+\notice А вдруг это нулевой идеал? О каком унитарном многочлене вообще тогда речь?
+
+Такого быть не может! Дело в том, что оператор образует конечномерное пространство, т.е. $\dim End V = n^2 (\dim V = n)$
+
+$\Longrightarrow \mathcal{E}, \A, \A^2, \dots, \A^{n^2}$ --- ЛЗС (т.к. мы перечислили $n^2 + 1$ элемент нашего пространства)
+
+$\Longrightarrow \exists \alpha_0, \alpha_1, \dots, \alpha_{n^2}$ не все $0$, т.ч. 
+\[ \alpha_0 \mathcal{E} + \alpha_1 \A \dots + \alpha_{n^2} \A^{n^2} = 0 \]
+\[ \Longrightarrow f = \alpha_0 + \alpha_1 x + \dots + \alpha_{n^2} x \text{--- ненулевой аннулятор $\A$} \]
+
+\begin{conj}(Аннулятор вектора по отношению к данному оператору)
+    Пусть $v \in V, \A \in \End V$
+
+    Говорят, что $f \in K[x]$ --- аннулятор вектора $v$ (по отношению к оператору $\A$), если $f(\A) (v) = 0$
+
+\end{conj}
+
+\begin{conj}(Минимальный аннулятор вектора)
+
+    Обозначим $I_v = \{ f \, | \, f(\A) (v) = 0 \}$ 
+
+    Легко убедиться, что это тоже главный идеал в $K[x]$
+
+    $I_v = (f_0), \, f_0$ --- минимальный аннулятор $v$
+
+    Очевидно, $I_v \neq 0$ (вспомним про отсутствие нулевых аннуляторов у оператора)
+\end{conj}
+
+\vspace*{5mm}
+
+Зачем нам нужен минмальный аннулятор вектора?
+
+Мы держим перед собой цель: постараться разбить наше пространство в прямую сумму инвариантных подпространств.
+
+Допустим мы взяли вектор, всегда есть самое маленькое инвариантное подпространство,
+которое этот вектор содержит, так называемое циклическое подпространство, порождённое этим вектором...
+
+А давайте новый параграф начнём.
+
+\subsection{Циклические подпространства}
+
+\begin{conj}(Циклическое подпространство)
+    Пусть $ v \in V  $
+
+    $ L_v := \Lin (v, \A v, \A^2 v, \dots ) $
+
+    $ L_v $  минимальное линейное подпространство $V$, инвариантное относительно $\A$
+
+\end{conj}
+
+\begin{theorem}()
+    Пусть $d = \deg \mu_{\A, v}$ (минимальный аннулятор $v$ относительно $\A$)
+
+    Тогда $v, \A v, \A^2 v, \dots, \A^{d - 1} v $ --- базис $L_v$
+
+    \begin{proof}
+    $ $ \newline
+    \quad ЛНЗ \\
+    Предположим, что $v, \A v, \A^2 v, \dots, \A^{d - 1} v $ --- ЛЗС \\
+    $\beta_0 v + \dots + \beta_{d - 1} \A^{d - 1} v = 0$ \\
+    Пусть $ f = \beta_0 + \beta_1 x + \dots + \beta_{d - 1} x^{d - 1} $ \\
+    $ f(\A)(v) = 0 \Longrightarrow  \underbrace{\mu_{\A, v} | f}_{\text{$ \deg{ \mu_{\A, v}}= d \leqslant \deg{f} = d - 1 $}}  \Longrightarrow f = 0 \Longrightarrow \beta_0 = \dots = \beta_{d - 1}$
+
+    \quad Размер линейной оболочки \\ 
+    $ W = \Lin (v, \A v, \dots, \A^{d - 1} v) $ \\
+    Докажем, что если $m \leqslant 0 \Longrightarrow A^m v \in W$ \\
+    Для $ m \leqslant d - 1$ --- тривиально \\
+    Для $m > d - 1$ будем действовать по индукции: \\
+    \quad База $m = d$ \\
+    Заметим, что $\mu_{\A, v} = x^d + \alpha_{d - 1} x^{d - 1} + \dots + \alpha_0$ \\
+    $\mu_{\A, v}(\A)(v) = \A^dv + \alpha_{d - 1} \A^{d - 1}v + \dots + \alpha_1 \A v + \alpha_1 v = 0$ \\
+    $\Longrightarrow \A^d v = - \alpha_{d - 1} \A^{d - 1}v - \dots - \alpha_1 \A v - \alpha_0 v \in W (*)$ 
+
+    \quad Индукционный переход $m \to m + 1:$ \\
+    По ИП $\A^m v = \gamma_0 v + \gamma_1 \A v + \dots + \gamma_{d - 1} \A^{d - 1} v$ (подействуем слева и справа $\A$)
+    $\Longrightarrow \A^{m + 1} v = \gamma_0 \A v + \gamma_1 \A^2 v + \dots + \gamma_{d - 1} \underbrace{\A^{d} v}_{\text{$ \in W $}}  \in W$
+
+    Т.о. $v, \A v, \dots, \in W \Longrightarrow L_v = W$
+    \end{proof}
+\end{theorem}
+
+\begin{conj}(Индуцированный оператор)
+    $\A |_{L_{v}}$ --- индуцированный оператор $\A$ на $L_v$
+\end{conj}
+
+\vspace*{3mm}
+Давайте теперь поймём, как будет выглядеть матрица соответсвующего индуцированного оператора.
+\vspace*{3mm}
+
+\begin{conj}
+    Есть пространство $ L_v, E: v, \A v, \dots, \A^{d - 1}v $ --- базис 
+
+    Посчитаем матрицу $[\A |_{L_{v}}] = 
+    \left(\begin{array}{ccccc}
+        0 & 0 & \dots & 0 & -\alpha_0 \\ 
+        1 & 0 & \dots & 0 & -\alpha_1 \\ 
+        0 & 1 & \dots & 0 & -\alpha_2 \\ 
+        \vdots & \vdots & \vdots & \vdots & \vdots \\ 
+        0 & 0 & 0 & 1 & -\alpha_{d - 1}
+    \end{array}\right)$ --- сопровождающая матрица многочлена $\mu_{\A, v}$
+        
+    Про последний столбец: $\A(\A^{d - 1}v) = \A^d v \stackrel{(*)}{=} - \alpha_{d - 1} \A^{d - 1}v - \dots - \alpha_1 \A v - \alpha_0 v $
+        
+\end{conj}
+
+\begin{lemma}(Характеристический многочлен индуцированного оператора)
+    $\chi_{\A |_{L_v}} = \pm \mu_{\A, v}$
+    \begin{proof}
+    $ $ \newline
+    $\begin{vmatrix*}
+        -x & 0 & \dots & 0 & -\alpha_0 \\ 
+        1 & -x & \dots & 0 & -\alpha_1 \\ 
+        0 & 1 & \dots & 0 & -\alpha_2 \\ 
+        \vdots & \vdots & \vdots & \vdots & \vdots \\ 
+        0 & 0 & 0 & 1 & -\alpha_{d - 1} - x
+    \end{vmatrix*} = $
+
+    Разложим по последнему столбцу \\
+    $ = (- \alpha_0) \cdot (-1)^{d + 1} \cdot 1 + (-\alpha_1) \cdot (-1)^{d + 2} \cdot 
+    \begin{vmatrix*}
+        -x & 0 & \dots & 0 \\ 
+        0 & 1 & \dots & 0 \\ 
+        0 & 0 & \vdots & 0 \\ 
+        0 & 0 & 0 & 1
+    \end{vmatrix*} + \dots + (-\alpha_{d - 1} - x) \cdot 1 \cdot
+    \begin{vmatrix*}
+        -x &  & * \\ 
+        & \vdots &  \\ 
+        0 &  & -x
+    \end{vmatrix*} = (-1)^d (\alpha_0 + \alpha_1 x + \alpha_2 x^2 + \dots + (\alpha_{d - 1} + x) \cdot x^{d - 1}) = (-1)^d \mu_{\A, v}$
+    \end{proof}
+\end{lemma}
+
+\begin{theorem-non}(Гамильтона Кэли)
+    $\chi_{\A} (\A) = 0$ 
+
+    Иными словами, характеристический многочлен оператора --- его аннулятор.
+
+    \begin{proof}
+    $ $ \newline
+    Пусть $v \in V$ \\
+    $L_v$ --- инвариантное подпространство $\Longrightarrow \underbrace{\chi_{\A |_{L_{v}}}}_{\text{$ = \mu_{\A, v} $}}  | \chi_{\A}$
+
+    И тем самым, $\chi_{\A |_{L_{v}}}(\A)(v) = 0 \Longrightarrow \chi_{\A}(\A)(v) = 0$ (т.к. он делится на индуцированный)
+    \end{proof}
+\end{theorem-non}
+
+\follow $\mu_{\A} | \chi_{\A}$
+
+\underline{Пример:}
+$[\A]_E = \left(\begin{array}{cc}
+\lambda & 0 \\ 
+0 & \mu
+\end{array}\right)$
+
+\[ \chi_{\A} = (x - \lambda)(x - \mu) \]
+
+$\chi_{\A, e_1} = x - \lambda$
+$\chi_{\A, e_2} = x - \mu$
+
+\begin{itemize}
+    \item $ \lambda \neq \mu \Longrightarrow \mu_{\A} = (x - \lambda) (x - \mu)$
+    \item $ \lambda = \mu \Longrightarrow \mu_{\A} = x - \lambda$
+\end{itemize}
+
+\subsection{Разложение подпространства в прямую сумму примарных подпространств}
+
+\begin{conj}(Примарное подпространство)
+    Пусть $p \in K[x]$ неприводимый \\
+    $ v \in V $ называется $p$-примарным, если $\mu_{\A, v} = p^t$ для некоторого $t \geqslant 0$
+
+    \notice $ \mu_{\A, 0} = 1 $
+\end{conj}
+
+\begin{lemma}
+    $ W_p = \{ v \in V \, | \, v \, p$-примарный \} является инвариантным подпространством
+    \begin{proof}
+    $ $ \newline
+    \quad Почему это подпространтсво \\
+    $ v_1, v_2 \in V $ \\
+    $ p^{t_1 } (\A) v = p^{t_2} (\A) v = 0 $ для некоторых $t_1, t_2$ \\
+    $ t := max (t_1, t_2) $
+    $ p^t (\A) v = 0  \Longrightarrow \mu_{\A, v} | p^t \Longrightarrow \mu_{\A, v} = p^s ( 0 \leqslant s \leqslant t) $
+    Это была замкнутость по сложению 
+
+    По умножению 
+    $ \mu_{\A, \lambda v} = \mu_{\A, v} \quad \lambda \neq 0 $ 
+    
+    \quad Инвариантность \\
+    $ W_p = \bigcup_{t \geqslant 0} \underbrace{\Ker p^t(\A)}_{\text{инвариантны}}  $ (так как мы объединяем конечные подпространства, то среди них есть максимум)
+
+    Объединение инвариантных инвариантно 
+    \end{proof}
+\end{lemma}
+
+\begin{conj}
+    $p$ --- неприводимый многочлен \\
+    $V$ называется $p$---примарным (отн. $\A$) если $V = W_p$
+\end{conj}
+
+\begin{lemma}
+    Пусть $\mu_{\A} = fg, \, (f, g) = 1$ \\
+    Тогда $V = V_1 \oplus V_2$, т.ч. $V_1, V_2 $--- $\A$ инвариантны \\
+    $\mu_{\A |_{V_1}} | f, \, \mu_{\A |_{V_2}} | g$
+
+    \begin{proof}
+        $ $ \newline
+        Пусть $ V_1 = \Ker  g(\A), V_2 = \Ker f(\A)$ --- инв. подпространства
+
+        \quad (1) Поймём, что $V_1 + V_2 = V$ \\
+        $(f, g) = 1 \Longrightarrow fa + gb = 1, \quad a, b \in K[x]$ \\
+        $v \in V: v = \mathcal{E}(v) = (f(\A)a(\A) + g(\A)b(\A))(v) = \underbrace{f(\A)(g(\A)(v))}_{\text{$ \in V_1 $}}  + \underbrace{g(\A) (b(\A)(v))}_{\text{$ \in V_2 $}}  $ \\
+
+        \[ g(\A)f(\A) = \mu_{\A} (\A) = 0 \]
+
+        Если мы оператором $f(\A)$ на что-то действуем, то обязаны попасть в ядро $g(\A)$, аналогично и для $g(\A)$
+
+        \quad (2) Поймём, что $V_1 \cap V_2 = 0$
+        $ v \in V_1 \cap V_2 $ \\
+        $v \in V_1 \Longrightarrow v \in \Ker g(\A) \Longrightarrow g$ --- аннулятор $v \Longrightarrow \mu_{\A, v} | g$
+
+        Аналогично, $\mu_{\A, v} | f$, но $(f, g) = 1 \Longrightarrow \mu_{\A, v} = 1 \Longrightarrow v = 0$
+
+        \quad Убедимся, что $ \mu_{\A |_{V_1}} | f $
+        $\forall v \in V_1: \mu_{\A, v} | f \Longrightarrow f$ --- аннулятор всех $ v \in V_1 \Longrightarrow f$ --- аннулятор $\A |_{V_1} \Longrightarrow \mu_{\A |_{V_1}} | f$
+
+        Аналогично $\mu_{\A |_{V_2}} | g$
+    \end{proof} 
+\end{lemma}

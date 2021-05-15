@@ -15,13 +15,13 @@
     Также можно отметить из того, что $H \lhd G$ тривиальным образом следует, что $H \lhd K$
 \end{conj}
 
-\begin{theorem} (О факторгруппе факторгруппы)
+\begin{theorem-non} (О факторгруппе факторгруппы)
     \begin{gather*}
         \text{Пусть есть } H, K \lhd G, \text{причем } H \subset K \\
         \text{Тогда } K/H \lhd G/H \text{ и } 
         (G/H)/(K/H) \cong G/K
     \end{gather*}
-\end{theorem}
+\end{theorem-non}
 \begin{proof} \quad 
 
     Для начала рассмотрим гомоморфизм проекций на факторгруппу: 
@@ -106,11 +106,11 @@
     = (HH)(KK) = HK$. 
 \end{proof}
 
-\begin{theorem}
+\begin{theorem-non}
     (Теорема о произведении подгрупп)
 
     Пусть $H \lhd G, K < G$. Тогда $H \lhd KH, H \cap K \lhd K$ и $KH/H \cong K/(K \cap H)$
-\end{theorem}
+\end{theorem-non}
 
 \begin{proof} \quad 
 
@@ -151,7 +151,7 @@
 $G \times G'. \; (g_1, g_1')(g_2, g_2') = (g_1g_2, g_1'g_2')$. Легко видеть, 
 что $(G \times G', \; \cdot \; )$ -- группа. 
 
-\begin{theorem-non} 
+\begin{theorem} 
     Рассмотрим отображения: 
     \begin{align*}
         i_1: G \longrightarrow G \times G' &\qquad g \longmapsto (g, e) \\
@@ -159,7 +159,7 @@ $G \times G'. \; (g_1, g_1')(g_2, g_2') = (g_1g_2, g_1'g_2')$. Легко вид
         \pi_1: G \times G' \longrightarrow G &\qquad (g, g') \longmapsto g \\
         \pi_2: G \times G' \longrightarrow G' &\qquad (g, g') \longmapsto g'
     \end{align*}
-\end{theorem-non}
+\end{theorem}
 \textbf{\textit{Fun facts: }}
 \begin{enumerate}
     \item $i_1, i_2$ (вложения) -- мономорфизмы групп
@@ -186,7 +186,7 @@ $G \times G'. \; (g_1, g_1')(g_2, g_2') = (g_1g_2, g_1'g_2')$. Легко вид
 комплексные числа. Группа комплексных чисел по умножению изоморфна группе пар, где первый элемент пары -- 
 модуль комплексного числа, а второй -- тригонометрическая часть. 
 
-\begin{theorem} Пусть $G$ -- группа, $H_1 < G, H_2 < G$, тогда два условия равносильны: 
+\begin{theorem-non} Пусть $G$ -- группа, $H_1 < G, H_2 < G$, тогда два условия равносильны: 
     \begin{itemize}
         \item[А.] Выполняются 3 свойства: 
         \begin{enumerate}
@@ -200,7 +200,7 @@ $G \times G'. \; (g_1, g_1')(g_2, g_2') = (g_1g_2, g_1'g_2')$. Легко вид
             (h_1, h_2) \longmapsto h_1 h_2
         \end{gather*}
     \end{itemize}
-\end{theorem}
+\end{theorem-non}
 \begin{proof} \quad 
     
     \begin{itemize}
@@ -233,13 +233,13 @@ $G \times G'. \; (g_1, g_1')(g_2, g_2') = (g_1g_2, g_1'g_2')$. Легко вид
 
 \example $\R^*$ -- внутреннее прямое произведение $\R^*_+$ и $\{\pm 1\}$
 
-\begin{theorem-non}
+\begin{theorem}
     $G$ - внутреннее прямое произведение $H_1$ и $H_2 \Longleftrightarrow$ выполняются 3 условия: 
     \begin{itemize}
         \item Пункты $1$) и $2$) из предыдущей теоремы
         \item Пункт $3'$) $H_1, H_2 \lhd G$
     \end{itemize}
-\end{theorem-non}
+\end{theorem}
 \begin{proof}
     \item[]``$1, 2, 3 \Longrightarrow 3'$:'' Возьмем $h \in H_1, g \in G$. Необходимо
     проверить, что $ghg^{-1} = H_1$

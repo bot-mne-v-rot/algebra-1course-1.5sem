@@ -100,13 +100,13 @@ $\dim{U} = n - \rk A$
 
 Из курса дискретной математики известно, что замена представителей классов на других представителей тех же классов не влияет на результат операций.
 
-\begin{theorem-non}
+\begin{theorem}
   $(\mathbb{Z}/m \mathbb{Z}, +, \cdot)$ --- коммутативное ассоциативное кольцо с единицей.
 
   \begin{proof}
     Рутинная проверка, тривиально.
   \end{proof}
-\end{theorem-non}
+\end{theorem}
 
 \notice
 Можно обобщить построение кольца классов вычетов до любого коммутативного кольца. 
@@ -212,7 +212,7 @@ $G$ -- группа, $g\in G$, тогда
 
 $\langle g \rangle\ :=\ \{\ g^n\ |\ n\in\ \mathbb{Z}\ \}$
 
-\begin{theorem-non}
+\begin{theorem}
 Это подгруппа.
 
 \begin{proof}
@@ -229,7 +229,7 @@ $(g^m)^{-1} = g^{-m}$
 $e = g^0$
 
 \end{proof}
-\end{theorem-non}
+\end{theorem}
 
 \begin{conj} Циклическая группа
 
@@ -243,7 +243,7 @@ $G$ --- циклическая, если $\exists\ g:\ G = \langle g \rangle$
   $\ord{g} = +\infty \Longleftrightarrow \nexists n\in \mathbb{N} : g^n = e$
 \end{conj}
 
-\begin{theorem-non}
+\begin{theorem}
 
   \begin{itemize}
   \item $|\langle g \rangle| = \ord{g}$
@@ -275,7 +275,7 @@ $G$ --- циклическая, если $\exists\ g:\ G = \langle g \rangle$
     Если $g^i = g^j$, то $g^{j-i} = e$ --- противоречие с определением порядка, так как $1 \leq j - i \leq n - 1$
   \end{itemize}
 \end{proof}
-\end{theorem-non}
+\end{theorem}
 
 \notice Циклическая группа единственна (с точностью до изоморфизма).
 
@@ -295,7 +295,7 @@ $\ord{g} = n \Longrightarrow \langle g \rangle \cong \mathbb{Z}/n \mathbb{Z}$
 \end{conj}
 
 \notice $\langle \{g\} \rangle \ =\ \langle g \rangle$
-\begin{theorem-non}
+\begin{theorem}
   $\langle M \rangle$ --- подгруппа
   \begin{proof}
     Нейтральный:
@@ -310,12 +310,12 @@ $\ord{g} = n \Longrightarrow \langle g \rangle \cong \mathbb{Z}/n \mathbb{Z}$
     $(g_1 \cdots g_s)^{-1} = g_s^{-1} \cdots g_1^{-1} \in \langle M \rangle$  
   \end{proof}
   
-\end{theorem-non}
+\end{theorem}
 \notice $H_i < G, i\in I \Longrightarrow \bigcap\limits_{i\in I} H_i < G$
 
 Это тривиально: произведение любых двух элементов, лежащих в пересечении, лежит в пересечении. Обратный к любому тоже лежит в каждой из подгрупп, значит, лежит в пересечении. Единица Тоже.
 
-\begin{theorem-non}
+\begin{theorem}
   $\langle M \rangle = \bigcap\limits_{\substack{H < G, \\ M \subset H}} H $
 
 \begin{proof} \quad
@@ -342,7 +342,7 @@ $\ord{g} = n \Longrightarrow \langle g \rangle \cong \mathbb{Z}/n \mathbb{Z}$
   \end{gather*}
   
   \end{proof}
-\end{theorem-non}
+\end{theorem}
 
 \notice Обозначение
 
@@ -400,7 +400,7 @@ $D_n = \langle R_1, R_0 \rangle $
   $\Ker{\varphi} = \{ g \in G\ |\ \varphi(g) = e \}$
 \end{conj}
 
-\begin{theorem-non}
+\begin{theorem}
   Образ нейтрального элемента в гомоморфизме -- 
   это нейтральный элемент:
 
@@ -414,9 +414,9 @@ $D_n = \langle R_1, R_0 \rangle $
       e_{G'} &=& \varphi(e_G)
     \end{eqnarray*}
   \end{proof}
-\end{theorem-non}
+\end{theorem}
 
-\begin{theorem-non}
+\begin{theorem}
   Пусть $\varphi \colon G \to G'$, $g \in G$.
   Тогда $\varphi(g^{-1}) = \varphi(g)^{-1}$
 
@@ -428,10 +428,10 @@ $D_n = \langle R_1, R_0 \rangle $
       \Rightarrow \varphi(g^{-1}) &=& \varphi(g)^{-1}
     \end{eqnarray*}
   \end{proof}
-\end{theorem-non}
+\end{theorem}
 
 
-\begin{theorem-non}
+\begin{theorem}
   $\mathrm{Im}{\varphi} < G'$, $\Ker{\varphi} < G$
   \begin{proof} $ $
 
@@ -483,4 +483,4 @@ $D_n = \langle R_1, R_0 \rangle $
   \end{proof}
 
   \notice Очевидно, композиция двух гомоморфизмов -- гомоморфизм.
-\end{theorem-non}
+\end{theorem}

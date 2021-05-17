@@ -1,4 +1,6 @@
-\section*{Нормальные операторы в евклидовом пространстве}
+\section{Лекция 13}
+
+\subsection{Нормальные операторы в евклидовом пространстве}
 
 Вспомним, что мы научились делать:
 
@@ -8,7 +10,7 @@
     Действительно, если $\alpha_1 v_1 + \dots + \alpha_n v_b = 0 \Longrightarrow \alpha_1 = \dots = \alpha_n = 0$
     
 
-\subsection*{Операторы на классификациях}
+\subsection{Операторы на классификациях}
 
 \begin{conj}
 $ \A \in \End{V} $
@@ -25,7 +27,7 @@ E --- базис V
 
 $[\A_{\C}]_{E} = [\A]_{E}$ т.к. базисные вектора вещественные, т.е. мнимая часть $ = 0$
 
-Отсюда следует, что $\Xi_{\A_{\C}} = \Xi_{\A}$
+Отсюда следует, что $\chi_{\A_{\C}} = \chi_{\A}$
 \end{conj}
 
 \begin{theorem}() %поменять на лемму
@@ -46,9 +48,9 @@ $[\A_{\C}]_{E} = [\A]_{E}$ т.к. базисные вектора веществ
 
 \begin{theorem}
     $ \A $ --- норм опреатор в евклидовом пространстве $ V $ \\
-    $ \Xi_{\A} \in \R[x] $ \\
-    $ \Xi_{\A}(z) = 0 \Longrightarrow \Xi_{\A}(\bar{z}) = 0 $ \\
-    $ \Xi_{\A} = \pm \prod_{p = 1}^{s} (x - \mu_p)^{a_p} \prod_{q = 1}^{t} (x - \lambda_q)^{b_q} (x - \bar{\lambda_q})^{b_q}$, где $\mu_p \in \R , \lambda_q \not \in \R$ \\
+    $ \chi_{\A} \in \R[x] $ \\
+    $ \chi_{\A}(z) = 0 \Longrightarrow \chi_{\A}(\bar{z}) = 0 $ \\
+    $ \chi_{\A} = \pm \prod_{p = 1}^{s} (x - \mu_p)^{a_p} \prod_{q = 1}^{t} (x - \lambda_q)^{b_q} (x - \bar{\lambda_q})^{b_q}$, где $\mu_p \in \R , \lambda_q \not \in \R$ \\
 \end{theorem}
 
 lemma
@@ -185,7 +187,7 @@ $ (v_j + i w_j, v_k + iw_k) = \delta_{jk} \Longrightarrow  (v_j - i w_j, v_k - i
 
 Второй частный случай:
 
-    $\A \A^* = \epsilon$ % id 
+    $\A \A^* = \mathcal{E}_V$
     $\Longleftrightarrow [\A]_{E} \cdot [\A]^T_{E} \Longleftrightarrow $ для всех блоков $B: BB^T = E_{\dots}$
 
     $B = (\mu) \Longrightarrow \mu^2 = 1 \Longrightarrow \mu = \pm 1$
@@ -256,7 +258,7 @@ R_{\varphi} & 0 \\
     \begin{proof}
         $1 \to 2$
 
-        $\A^* \A = \epsilon$ \\ % id
+        $\A^* \A = \mathcal{E}_V$ \\
         $(\A v, \A w) = (v, \A^*\A w) = (v, w)$
 
         $2 \to 3 $
@@ -283,7 +285,7 @@ R_{\varphi} & 0 \\
 \end{theorem}
 
 
-\section*{Операторы проектирования}
+\subsection{Операторы проектирования}
 
 Пусть у нас есть такое векторное пространство $V = W_1 \otimes W_2$
 

@@ -1,10 +1,110 @@
 \section{Лекция номер 9}
 
-\subsection*{Про p-примарные подпространства}
-Первая половина лекции не готова. Вторая половина про Билинейные формы готова.
-% от 0:00 до 28:26
+\subsection{Про p-примарные подпространства}
+\begin{theorem}
+    Пусть $\A \in \End V$ 
 
-\subsection*{Билинейные формы и евклидовы пространства.}
+    $\mu_{\A} = p^{n_1}_1 \cdot \dots \cdot p^{n_s}_s$, \quad $p_i$ --- различные унитарные неприводимые многочлены.
+
+    Тогда
+    \[ V = \bigotimes_{i = 1}^{s} W_{p_i} \]
+
+    Напомним, что $W_{p_i} = \{ v \in V \, | \, \mu_{\A, v} = p^t_i \, t \in \N \}$
+
+    \begin{proof}
+        $ $ \newline
+        \quad Для доказательства применим несколько раз предыдущую лемму:
+        \[ V = \bigotimes_{i = 1}^{s} V_i, \quad V_i \text{--- $\A$---инвариантно } \]
+        
+        Откуда получим, что $\mu_{\A |_{V_i}} | p^{n_i}_i$
+
+        Это ещё не всё, мы лишь знаем, что каждый $v \in V_i$ является $p_i$---примарным, т.е. $V_i \subset W_{p_i}$
+        
+        \quad Теперь проверим, что $W_{p_i} \subset V_i$ 
+
+        Возьмём $w \in W_{p_s}$ и разложим в сумму векторов из $V = \bigotimes_{i = 1}^{s} W_{p_i}$:
+        \begin{gather*}
+            w = v_1 + v_2 + \dots + v_s, \quad v_i \in V_i \\
+            \underbrace{w - v_s}_{\text{$ \in W_{p_s} $}}  = v_1 + v_2 + \dots + v_{s - 1} \\
+        \end{gather*}
+
+        Получили, что $\mu_{\A, w - v_s} = p^N_s$ для некоторого $N$
+
+        С другой же стороны, $\mu_{\A, v_i} = p^{n_j}_j$
+
+        И тогда $(\mu_{\A, v_1} \cdot \dots \cdot \mu_{\A, v_{s - 1}})(\A)(v_j) = 0$ для $j = 0, \dots, s - 1$
+
+        $\Longrightarrow (\mu_{\A, v_1} \cdot \dots \cdot \mu_{\A, v_{s - 1}})(\A)(\underbrace{v_1 + \dots + v_{s - 1}}_{\text{$ w - v_s $}} ) = 0$
+
+        Получается, что $\underbrace{\mu_{\A, v_1} \cdot \dots \cdot \mu_{\A, v_{s - 1}}}_{\text{$ p^{n_1}_1 \cdot \dots \cdot p^{n_{s - 1}}_{s - 1} $}} \vdots p^{n_s}_s$ (?! противоречие, т.к. каждый $p^{n_i}_i$ неприводим)
+
+        $\Longrightarrow n_s = 0 \Longrightarrow w - v_s = 0$
+
+        Получается, что $W_{p_s} = V_s$
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}
+    Пусть $V$ это $p$ --- примарное пространство, тогда $\exists v_1, \dots, v_t \in V$, т.ч.
+
+    \[ V = \bigotimes_{i = 1}^{t} L_{v_i} \]
+
+    \begin{proof}
+        Оставлена лектором без доказательства.
+    \end{proof}
+\end{theorem}
+
+Что это всё будет означать на матричном языке?
+
+\vspace*{3mm}
+
+Обозначим $[\A |_{L_{v_i}}]_{E_i}$ за $C(\mu_{\A, v_i})$
+
+\[ E_i = (v_i, \A v_i, \dots, \A^{d - 1} v_i), \quad d = \deg \mu_{\A, v_i} \]
+
+Напомним, как выглядит эта матрица:
+\[
+    \left(\begin{array}{ccccc}
+        0 & 0 & \dots & 0 & -\alpha_0 \\ 
+        1 & 0 & \dots & 0 & -\alpha_1 \\ 
+        0 & 1 & \dots & 0 & -\alpha_2 \\ 
+        \vdots & \vdots & \vdots & \vdots & \vdots \\ 
+        0 & 0 & 0 & 1 & -\alpha_{d - 1}
+    \end{array}\right)    
+\]
+
+Так вот, предыдущая теорема говорит нам о том, что матрица такого оператора будет блочно-диагональной:
+\[
+  [ \A ]_{E} = \left(\begin{array}{ccc}
+  C(\mu_{\A, v_1}) &  & 0 \\ 
+   & \ddots &  \\ 
+  0 &  & C(\mu_{\A, v_t})
+  \end{array}\right)  
+\]
+
+Где $E = E_1\dots E_t$
+
+\begin{follow}
+    Пусть $\chi_{\A} = \pm p^{m_1}_1 \cdot \dots \cdot p^{m_s}_s$, где $p_i$ --- различные неприводимые
+
+    Тогда 
+        \[ \mu_{\A} = p^{n_1}_1 \cdot \dots \cdot p^{n_s}_s, \quad 1 \leqslant n_i \leqslant m_i \]
+    
+    \begin{proof}
+    $ $ \newline
+        Осталось на упражнение.
+    \end{proof}
+\end{follow}
+
+\vspace*{5mm}
+
+Отдельно рассмотрим случай, когда неприводимые множители линейны, т.е. когда характеристический многочлен раскладывается на линейные множители.
+Изучение этого не является экзотикой, поскольку в $\C$ это любой многочлен, а в $\R$ таких много.
+
+\subsection{Жорданова нормальная форма}
+%таймкод 12:23 (https://www.youtube.com/watch?v=lhO-ihwtCu0&list=PL-XfgOapHEQcpZjEQnZPZ7zGBBStGCMxx&index=4&t=1706s)
+
+\subsection{Билинейные формы и евклидовы пространства.}
 
 \begin{conj}(Билинейная форма)
 Пусть $V$~--- ЛП $K$

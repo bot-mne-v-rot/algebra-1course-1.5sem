@@ -16,15 +16,26 @@
 
     \quad$1 \Longrightarrow 2: $
 
-    $[\A]_{E} = diag (\lambda_1, \dots, \lambda_n)$ \\
-    $\chi_{\A} = \prod_{i = 1}^{n} (\lambda_i - x)$ \\
-    $g_{\lambda}$ --- число вхождений $\lambda$ в $(\lambda_1, \dots, \lambda_n)$ \\
-    $a_{\lambda}$ --- то же самое.
+    Знаем, что матрица оператора $\A$ в некотором базисе $E$ выглядит так: 
+    \[
+        \left(\begin{array}{ccc}
+            \lambda &  & 0 \\ 
+            & \ddots &  \\ 
+            0 &  & \lambda
+        \end{array}\right)
+    \]
+
+    Характеристический многочлен этого оператора выглядит так:
+        \[ \chi_{\A} = \prod_{i = 1}^{n} (\lambda_i - x) \]
+    
+    Отсюда следует, что $g_{\lambda} = a_{\lambda}$, т.к. $g_{\lambda}$ равно количеству таких $\lambda_i$ из $(\lambda_1, \dots, \lambda_n)$, что $\lambda = \lambda_i$
+
+    А $a_{\lambda}$ равняется тому же числу, ровно потому что количество таких $\lambda_i$ это количество корней характеристического многочлена.
 
     \quad$2 \Longrightarrow 1: $
     
-    Пусть $\lambda_1, \dots, \lambda_m$ --- все собственные значения. (без повторений) \\
-    Тогда $a_{\lambda_1} + \dots + \alpha_{\lambda_m} = n \Longrightarrow g_{\lambda_1} + \dots + g_{\lambda_m} = n \Longrightarrow \A$ диагонализируем.
+    Пусть $\lambda_1, \dots, \lambda_m$ --- все собственные значения (без повторений). \\
+    Тогда $a_{\lambda_1} + \dots + \alpha_{\lambda_m} = \deg{\chi_{\A}} = n \Longrightarrow g_{\lambda_1} + \dots + g_{\lambda_m} = n \Longrightarrow \A$ диагонализируем.
 
     \end{proof}
 \end{theorem}
@@ -122,7 +133,7 @@ $\Longrightarrow \dim \Ker(J_{n}(0)) = \dim \Lin (e_m) = 1 = g_{\lambda}$
 
 \vspace*{5mm}
 
-\subsection*{Аннулирующие многочлены}
+\subsection{Аннулирующие многочлены}
 
 Сейчас мы будем заниматься тем, что будем подставлять линейные операторы в многочлены.
 Это инструмент для изучения линейных операторов.
@@ -145,7 +156,7 @@ $\Longrightarrow \dim \Ker(J_{n}(0)) = \dim \Lin (e_m) = 1 = g_{\lambda}$
     \begin{enumerate}
         \item $ (fg)(\A) = f(\A) g(\A) $
         \item $ f(\A) g(\A) = g(\A) f(\A) $
-        \item $ \Ker \A , \Imm \A$  ---  $\A $-инвариантные подпространства
+        \item $ \Ker f(\A) , \Imm f(\A)$  ---  $\A $-инвариантные подпространства
     \end{enumerate}
     \begin{proof} \quad
     

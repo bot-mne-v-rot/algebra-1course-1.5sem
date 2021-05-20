@@ -1,1 +1,147 @@
 \section{Лекция номер 9}
+
+\subsection*{Про p-примарные подпространства}
+Первая половина лекции не готова. Вторая половина про Билинейные формы готова.
+% от 0:00 до 28:26
+
+\subsection*{Билинейные формы и евклидовы пространства.}
+
+\begin{conj}(Билинейная форма)
+Пусть $V$~--- ЛП $K$
+
+Билинейная форма на $V$ это отображение $\B: V \times V \to K$, линейное по двум аргументам:
+\begin{itemize}
+    \item $\B(\alpha_1 v_1 + \alpha_2 v_2, w) = \alpha_1 \B(v_1, w) + \alpha_2\B(v_2, w)$
+    \item Для второго аргумента аналогично.
+\end{itemize}
+\end{conj}
+
+\notice Функционал~--- линейное отображение в поле $K$.
+
+\underline{Примеры:}
+\begin{enumerate}
+    \item Стандартное скалярное произведение
+    $V = K^n$
+
+    $\B(
+       \left(\begin{array}{c}
+       \alpha_1 \\ 
+       \vdots \\ 
+       \alpha_n
+       \end{array}\right),
+       \left(\begin{array}{c}
+       \beta_1 \\ 
+       \vdots \\
+       \beta_n
+       \end{array}\right)
+    ) = \alpha_1 \beta_1 + \dots + \alpha_n \beta_n$
+
+    \item $V = C[0, 1]$~--- непрерывные функции на отрезке $[0, 1]$ \\
+    $\B(f, g) = \int_{0}^{1} fg$ (интеграл линеен)
+
+    \item Определитель:
+
+    $V = K^2$ \\
+    $\B(
+        \left(\begin{array}{c}
+        \alpha_1 \\ 
+        \alpha_2
+        \end{array}\right),
+        \left(\begin{array}{c}
+        \beta_1 \\ 
+        \beta_2
+        \end{array}\right)
+    ) = \alpha_1 \beta_2 - \alpha_2 \beta_1$
+\end{enumerate}
+
+
+$V$~--- конечномерное, $E = (e_1, \dots, e_n)$~--- базис.
+$\B(\alpha_1 e_1 + \dots + \alpha_n e_n, \beta_1 e_1 + \dots + \beta_n e_n) = 
+\sum_{i=1}^{n} \sum_{j = 1}^{n} \alpha_i \beta_j \B(e_i, e_j)$
+
+\begin{conj}(Матрица Грама)
+$[\B]_E = \left(\begin{array}{ccc}
+\B(e_1, e_1) & \dots & \B(e_1, e_n) \\ 
+\dots & \dots & \dots \\ 
+\B(e_n, e_1) & \dots & \B(e_n, e_n)
+\end{array}\right)$
+
+$[\B]_E$~---Матрица Грама (далее МГ) $\B$ в $E$
+\end{conj}
+
+Пусть $X = \left(\begin{array}{c}
+\alpha_1 \\ 
+\vdots \\ 
+\alpha_n
+\end{array}\right)$,
+а $Y = \left(\begin{array}{c}
+\beta_1 \\ 
+\vdots \\ 
+\beta_n
+\end{array}\right)$
+
+Тогда $\B(EX, EY) = X^T \cdot B \cdot Y$ ($B$ --- МГ $\B$ в базисе $E$)
+
+Легко видеть, что
+$BY = \left(\begin{array}{c}
+    \B(e_1, EY) \\ 
+    \dots \\ 
+    \B(e_n, EY)
+\end{array}\right)$
+
+%TODO("Затехать примеры матриц Грама")
+
+\begin{theorem}(Матрица Грама при замене базиса)
+    Пусть $E' = EC, \quad C \in GL(n, K)$
+
+    $X = CX'$
+
+    $\B(ECX', ECY')= \B(EX, EY) = X^TBY = X$
+\end{theorem}
+
+\begin{conj}(Ранг билинейной формы)
+    Пусть $\B$~--- билинейная форма на конечномерном $V$.
+    Рангом билинейной формы $\rk{\B}$ является $\rk{[\B]_E}$ для произвольного базиса $E$.
+\end{conj}
+
+\notice Это инвариант $\B$
+Действительно, $\rk{C^T \cdot B \cdot C} = \rk{B}$ для $C^T, C \in GL(n, K), \, B$~--- МГ $\B$
+
+\begin{conj}(Симметрическая билинейная форма)
+    Если $\forall v, w \in V: \, \B(v, w) = \B(w, v)$, то 
+    $\B$~--- симмитрическая билинейная форма.
+\end{conj}
+
+\begin{conj}(Кососимметрическая билинейная форма)
+    Если $\forall v, w \in V: \, \B(v, w) = -\B(w, v)$, то 
+    $\B$~--- кососимметрическая билинейная форма.
+\end{conj}
+
+\begin{conj}(Квадратичная форма)
+    Пусть $V$~--- ЛП / $K, \, char K \neq 2$
+    Отображение $q: V \to K$ называется квадратичной формой,
+    
+    если существует симмитричая билинейная форма $\B$ на $V$, т.ч.:
+    $$
+        \forall v \in V: q(v) = \B(v, v)
+    $$
+\end{conj}
+
+Пусть $E = (e_1, \dots, e_n)$~--- базис.
+
+Можно заметить, что $q(x_1e_1, \dots, x_ne_n) = X^T B X$~--- однородный многочлен степени $2$
+
+$B = \left(\begin{array}{cc}
+b_11 & b_12 \\ 
+b_12 & b_22
+\end{array}\right)$
+
+Тогда $X^TBX = b_{11}x^2_1 + 2b_{12}x_1x_2 + b_{22}x^2_2$
+
+Билинейную форму можно восстановить по квадратичной (помним, что $char K \neq 2$):
+$$
+    \B(v, w) = \frac{1}{2}(
+        \underbrace{q(v + w)}_{\text{$\B(v + w, v + w)$}} - q(v) - q(w)
+        )
+$$
+$\B$ называют поляризацией $q$

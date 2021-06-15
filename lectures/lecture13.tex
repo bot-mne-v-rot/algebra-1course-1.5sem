@@ -109,12 +109,14 @@
 \end{proof}
 
 \begin{theorem}
-    Пусть $\A$~--- нормальный оператор в конечномерном евклидовом пространстве $V$ 
-       
-    Тогда в некотором ортонормированном базисе матрица $\A$ блочно-диагональная и все блоки имеют вид $(\mu)$~--- блок 1х1 или $\left(\begin{array}{cc}
-        \alpha & \beta \\ 
-        -\beta & \alpha
-        \end{array}\right)$
+    Пусть $\A$ -- нормальный оператор в конечномерном евклидовом пространстве $V$.
+    Тогда в некотором ортонормированном базисе матрица $\A$ блочно-диагональная и состоит из блоков 1 на 1 и блоков вида:
+    \begin{gather*}
+        \left(\begin{array}{cc}
+            \alpha & \beta \\ 
+            -\beta & \alpha
+        \end{array}\right)
+    \end{gather*}
 \begin{proof}
     $\A$ -- нормальный оператор. Тогда:
     \begin{gather*}
@@ -144,7 +146,7 @@
     и в любом другом, нам не принципиально. 
 
     Теперь разберемся с парными слагаемыми. Оператор 
-    $\A |_{V_{\lambda_q} \otimes V_{\overline{\lambda_{q}}}}$. 
+    $\A |_{V_{\lambda_q} \oplus V_{\overline{\lambda_{q}}}}$. 
     \begin{gather*}
         v_1 + iw_1, \dots, v_l + iw_l \text{ -- ортонормированный базис } V_{\lambda_q}
     \end{gather*}
@@ -190,216 +192,265 @@
     \end{gather*}
     Тогда $\widetilde{v_1}, \widetilde{w_1}, \dots, \widetilde{v_l}, \widetilde{w_l}$ -- ортонормированный базис $V_{\lambda_q} \oplus V_{\overline{\lambda_{q}}}$.
 
-    Как будет выглядеть матрица для нашего оператора в этом базисе? \\
-    Пусть $\lambda_q = \alpha_q + i \beta_q$
-    Посмотрим на $\A_{\C}(v_j + iw_j) = (\alpha_q + i \beta_q) (v_j + iw_j)$ \\
-    $Av_j = \alpha_q v_j -  \beta_q w_j$ \\
-    $Aw_j = \beta_q v_j + \alpha_q w_j$ \\
-    $\Longrightarrow $ аналогично для $A\tilde{v_j}, A\tilde{w_j}$
+    Теперь хочется лишь понять, как будет выглядеть матрица нашего оператора в этом базисе. 
+    Пусть $\lambda_q = \alpha_q + i \beta_q$. 
+    Посмотрим на $\A_{\C}(v_j + iw_j)$:
+    \begin{gather*}
+        \A_{\C}(v_j + iw_j) = (\alpha_q + i \beta_q) (v_j + iw_j)
+    \end{gather*}
+    Тогда:
+    \begin{align*}
+        Av_j &= \alpha_q v_j -  \beta_q w_j \\
+        Aw_j &= \beta_q v_j + \alpha_q w_j
+    \end{align*}
+    Аналогично для $A\widetilde{v_{j}}, A\widetilde{w_{j}}$
 
+    Тем самым: 
 
-    Итог: 
-
-    Пусть $U_q = \Lin (\underbrace{\tilde{v_1}, \tilde{w_1}, \dots, \tilde{v_l}, \tilde{w_l}}_{\text{$ E_q $}} )$
+    Пусть $U_q = \Lin (\underbrace{\widetilde{v_1}, \widetilde{w_1}, \dots, \widetilde{v_l}, \widetilde{w_l}}_{\text{$ E_q $}} )$, тогда:
     
-    $[\A |_{U_q}]_{E_q} = \left(\begin{array}{ccccc}
-    \alpha_q & \beta_q & 0 & \dots & 0 \\ 
-    -\beta_q & \alpha_q & 0 & \dots & 0 \\ 
-    0 & 0 & \dots & 0 & 0 \\ 
-    \vdots & \vdots & \vdots & \vdots & \vdots \\
-    0 & 0 & 0 & \alpha_q & \beta_q \\ 
-    0 & 0 & 0 & -\beta_q & \alpha_q
-    \end{array}\right)$
+    \begin{gather*}
+        [\A |_{U_q}]_{E_q} = \left(\begin{array}{cccccc}
+        \alpha_q & \beta_q  & 0       & \dots    & 0        & 0\\ 
+        -\beta_q & \alpha_q & 0       & \dots    & 0        & 0\\ 
+        0        & 0        & \ddots  &          & \vdots   & \vdots \\ 
+        \vdots   & \vdots   &         & \ddots   & 0        & 0 \\
+        0        & 0        &  \dots  & 0        & \alpha_q & \beta_q \\ 
+        0        & 0        & \dots   & 0        & -\beta_q & \alpha_q
+        \end{array}\right)
+    \end{gather*}   
 \end{proof} 
 \end{theorem}
 
+\textbf{Частные случаи}:
+\begin{enumerate}
+    \item $\A$ -- самоспопряжённый тогда и только тогда, когда матрица $\A$ в некотором ортонормированном базисе диагональна. 
+    \begin{gather*}
+        \A = \A^* \Longrightarrow [\A]_{E} = [\A]^T_{E} \\
+        \left(\begin{array}{cc}
+        \alpha & \beta \\ 
+        -\beta & \alpha
+        \end{array}\right) = \left(\begin{array}{cc}
+        \alpha & -\beta \\ 
+        \beta & \alpha
+        \end{array}\right) 
+        \Longrightarrow \beta = 0 \Longrightarrow [\A]_{E} \text{ диагональна}
+    \end{gather*}
+    В обратную сторону тривиально. 
+    \item $\A$ -- ортогональный:
+    \begin{align*}
+        \A \A^* = \mathcal{E} &\Longleftrightarrow [\A]_{E} \cdot [\A]^T_{E} = E_n \\
+                              &\Longleftrightarrow \text{ для всех блоков } B \text{ выполняется, что } BB^T = E_{\dots}
+    \end{align*}
+    Таким образом, если блок $B$ был блоком $1 \times 1$ вида $(\mu)$, то $\mu^2 = 1 \Longrightarrow \mu = \pm 1$. Если же блок имел размер $2 \times 2$, то:
+    \begin{gather*}
+        B = \left(\begin{array}{cc}
+            \alpha & \beta \\ 
+            -\beta & \alpha
+            \end{array}\right) \Longrightarrow BB^T = \left(\begin{array}{cc}
+            \alpha^2 + \beta^2 & 0 \\ 
+            0 & \alpha^2 + \beta^2
+        \end{array}\right) = E_2
+        \Longleftrightarrow \alpha^2 + \beta^2 = 1
+    \end{gather*}
 
-\notice
+    Еще подметим, что, в общем то, можно ввести такое $\varphi$, что:
+    \begin{gather*}
+        \begin{cases}
+            \alpha = \cos{\varphi} \\
+            \beta = \sin{\varphi}
+        \end{cases} 
+    \end{gather*}
 
-Первый частный случай:
+    Тогда $\A$ ортогональный оператор $\Longleftrightarrow$ матрица $\A$ в 
+    некотором ортонормированном базисе имеет блочно-диагональный вид с блоками $1 \times 1$ вида $(\pm 1)$ и
+    блоками $2 \times 2$ вида:
+    \begin{gather*}
+        \left(\begin{array}{cc}
+            \cos{\varphi} & \sin{\varphi} \\ 
+            -\sin{\varphi} & \cos{\varphi}
+        \end{array}\right)
+    \end{gather*}
 
-    $\A = \A^* \Longrightarrow [\A]_{E} = [\A]^T_{E}$ \\
-    $\left(\begin{array}{cc}
-    \alpha & \beta \\ 
-    -\beta & \alpha
-    \end{array}\right) = \left(\begin{array}{cc}
-    \alpha & -\beta \\ 
-    \beta & \alpha
-    \end{array}\right) \Longrightarrow \beta = 0 \Longrightarrow [\A]_{E}$
+    Логика повествования давно пошла по жопе. Давайте в очередной раз заметим, что можно еще упростить вид нашей матрицы. 
 
-    Таким образом: $\A$ самосопр. $\Longleftrightarrow$ матрица $\A$ в некотором ортонормированном базисе диагональна
-
-Второй частный случай:
-
-    $\A \A^* = \epsilon$ % id 
-    $\Longleftrightarrow [\A]_{E} \cdot [\A]^T_{E} \Longleftrightarrow $ для всех блоков $B: BB^T = E_{\dots}$
-
-    $B = (\mu) \Longrightarrow \mu^2 = 1 \Longrightarrow \mu = \pm 1$
-
-    $B = \left(\begin{array}{cc}
-    \alpha & \beta \\ 
-    -\beta & \alpha
-    \end{array}\right) \Longrightarrow BB^T = E_2 = \left(\begin{array}{cc}
-    \alpha^2 + \beta^2 & 0 \\ 
-    0 & \alpha^2 + \beta^2
-    \end{array}\right) \Longleftrightarrow \alpha^2 + \beta^2 = 1$
-
-$ \Longrightarrow \exists \varphi : \begin{cases}
-    \alpha = \cos{\varphi} \
-    \beta = \sin{\varphi}
-\end{cases} $
-
-Т.о.: $\A$ ортогональный оператор $\Longleftrightarrow$ матрица $\A$ в некотором ортонормированном базисе имеет блочно-диагональный вид с блоками вида $(\pm 1)$ и $( \left(\begin{array}{cc}
-\cos{\varphi} & \sin{\varphi} \\ 
--\sin{\varphi} & \cos{\varphi}
-\end{array}\right) )$
-
-Можно воспользоваться тем, что $\left(\begin{array}{cc}
-1 & 0 \\ 
-0 & 1
-\end{array}\right) = \left(\begin{array}{cc}
-\cos{0} & \sin{0} \\ 
--\sin{0} & \cos{0}
-\end{array}\right)$
-
-$ \left(\begin{array}{cc}
--1 & 0 \\
-0 & -1
-\end{array}\right)$
-$= \left(\begin{array}{cc}
-    \cos{\pi} & \sin{\pi} \\
-    -\sin{\pi} & \cos{\pi}
-    \end{array}\right)$
-
-$[\A]_{E} = \left(\begin{array}{cccc}
-R_{\varphi_1} &  &  & 0 \\ 
- & \ddots &  &  \\ 
- &  & R_{\varphi_m} &  \\ 
-0 &  &  & D
-\end{array}\right)$
-
-$D = ()$ или $(\pm 1)$ или $\left(\begin{array}{cc}
-    1 & 0 \\ 
-    0 & -1
-    \end{array}\right)$
-
-В частност, если $\dim V = 3$, $| \A | = 1 \Longrightarrow$ в некотором $E : [\A]_{E} = \left(\begin{array}{cc}
-R_{\varphi} & 0 \\ 
-0 & 1 
-\end{array}\right)$ ($| \A |$~--- определитель оператора) %красивая А, странно, но он так пишет 
-
-Вспомним, что $AA^T = E_n \Longrightarrow |A| = \pm 1$
+    Воспользуемся тем, что блоки мы можем переставлять как душе угодно. Давайте в начало сгребем все блоки $2 \times 2$, потом единичные блоки 
+    с единицей, а в самый конец единичные блоки с минус единицей. После этого 
+    заметим, что два подряд идущих блока единиц можно преобразовать в блок $2 \times 2$. Аналогично с блоками из $-1$: 
+    \begin{gather*}
+        \left(\begin{array}{cc}
+            1 & 0 \\ 
+            0 & 1
+        \end{array}\right) = \left(\begin{array}{cc}
+            \cos{0} & \sin{0} \\ 
+            -\sin{0} & \cos{0}
+        \end{array}\right) \qquad \qquad
+        \left(\begin{array}{cc}
+            -1 & 0 \\
+            0 & -1
+        \end{array}\right) = \left(\begin{array}{cc}
+            \cos{\pi} & \sin{\pi} \\
+            -\sin{\pi} & \cos{\pi}
+        \end{array}\right)
+    \end{gather*}
+    Теперь обозначим блоки $2 \times 2$ буковками $R$ от слова rotation и посмотрим на финальный вид нашей матрицы: 
+    \begin{gather*}
+        [\A]_{E} = \left(\begin{array}{cccc}
+            R_{\varphi_1} &  &  & 0 \\ 
+            & \ddots &  &  \\ 
+            &  & R_{\varphi_m} &  \\ 
+            0 &  &  & D
+        \end{array}\right)
+    \end{gather*}
+    Где $D$ будет либо пустым, либо равен $(\pm 1)$, либо же блоку:
+    \begin{gather*}
+        \left(\begin{array}{cc}
+            1 & 0 \\ 
+            0 & -1
+        \end{array}\right)
+    \end{gather*}
+    В частности, если $\dim V = 3$, то любой оператор первого рода, то есть такой, что его определитель равен $1$, а еще точнее просто ортогональный 
+    (так как ортогональность влечет то, что у оператора опеределитель равен $\pm 1$), 
+    в некотором базисе $E$ будет иметь следующую матрицу:
+    \begin{gather*}
+        [\A]_{E} = \left(\begin{array}{cc}
+            R_{\varphi} & 0 \\ 
+            0 & 1 
+        \end{array}\right)
+    \end{gather*}
+    То есть наш оператор будет представлять из себя просто поворот на угол $\varphi$ в некоторой плоскости. 
+    На самом деле получили красивый геометрический факт. Пусть мы взяли композицию двух поворотов на некоторые 
+    углы относительно двух разных осей, проходящих через начало координат. И оказывается, мы сейчас поняли, 
+    что композиция этих поворотов тоже будет поворотом на некий угол, по некоторой оси, проходящей через начало координат. 
+\end{enumerate}
 
 \begin{theorem}(Характеристика ортогональных операторов)
-    Пусть $V$ евклидово пространство, $\A \in \End{V}$ 
 
+    Пусть $V$ -- евклидово пространство, $\A \in \End{V}$.
     Тогда эквивалентны следующие утверждения:
     \begin{enumerate}
         \item $\A$ ортогонален
         \item $\forall v, w \in V: (\A v, \A w) = (v, w)$
         \item $\forall v \in V: ||\A v|| = || v || $
     \end{enumerate}
-    \begin{proof}
-        $1 \to 2$
+    \mybox[orange!15]{Грубо говоря ортогональный оператор -- оператор, сохраняющий длины векторов и сохраняющий начало координат. В общем то 
+    из этого предложения становится интуитивно понятно, почему у ортогональого оператора опеределитель $\pm 1$. 
+    Ведь в терминах операторов определитель -- это то, как сильно оператор изменяет длины векторов.}
+    \begin{proof} \quad
 
-        $\A^* \A = \epsilon$ \\ % id
-        $(\A v, \A w) = (v, \A^*\A w) = (v, w)$
-
-        $2 \to 3 $
-
-        $||Av|| = \sqrt{(Av, Av)} = \sqrt{(v, v)} = ||v||$
-
-        $3 \to 2$
-        
-        $2(v, w) = ||v + w||^2 - ||v||^2 - ||w||^2$
-
-        $2(Av, Aw) = ||Av + Aw||^2 - ||Av||^2 - ||Aw||^2$
-        
-        $\Longrightarrow (Av, Aw) = (v, w)$
-
-        $2 \to 1$
-
-        Нужно доказать, что $\forall v \in V: \, \A^* \A v = v$
-
-        $w \in V: \, (w, \A^* \A v) = (\A w, \A v) = (w, v)$ \\
-        $(\A^* \A v - v) \perp w$ \\
-        $\A^* \A v - v \in V^{\perp} = 0$ \\
-        $\A^* \A v = v$
+        \begin{itemize}
+            \item[``$1 \Rightarrow 2$'':]
+            \begin{gather*}
+                \A^* \A = \mathcal{E} \\
+                (\A v, \A w) = (v, \A^*\A w) = (v, w)
+            \end{gather*} 
+            \item[``$2 \Rightarrow 3$'':]
+            \begin{gather*}
+                ||Av|| = \sqrt{(Av, Av)} = \sqrt{(v, v)} = ||v||
+            \end{gather*} 
+            \item[``$3 \Rightarrow 2$'':]
+            \begin{align*}
+                2(v, w) &= ||v + w||^2 - ||v||^2 - ||w||^2 \\
+                2(Av, Aw) &= ||Av + Aw||^2 - ||Av||^2 - ||Aw||^2 \\
+                &\Longrightarrow (Av, Aw) = (v, w)
+            \end{align*}  
+            \item[``$2 \Rightarrow 1$'':]  \quad
+             
+            Нужно доказать, что $\forall v \in V: \, \A^* \A v = v$. Возьмем произвольный $w \in V$:
+            \begin{align*}
+                (w, \A^* \A v) &= (\A w, \A v) = (w, v) \\
+                &\Longrightarrow (\A^* \A v - v) \perp w \\
+                &\Longrightarrow (\A^* \A v - v) \in V^{\perp} = 0 \\
+                &\Longrightarrow \A^* \A v = v
+            \end{align*} 
+        \end{itemize}
     \end{proof}    
 \end{theorem}
 
 
-\section*{Операторы проектирования}
+\subsection{Операторы проектирования}
+Понятие оператора проектирования можно ввести в любом пространстве. Пусть у нас есть 
+векторное пространство, которое раскладывается в прямую сумму подпространств: $V = W_1 \oplus W_2$. 
 
-Пусть у нас есть такое векторное пространство $V = W_1 \otimes W_2$
-
-\begin{conj}(Оператор проектирования)
-    Оператор $\A \in \End{V}:$ \\
-    $\A(w_1 + w_2) = w_1$~--- оператор проектирования на $W_1$ вдоль $W_2$
+\begin{conj}
+    Если для оператора $\A \in \End{V}$ выполняется, что:  
+    $\A(w_1 + w_2) = w_1$, то $\A$ называется \textbf{оператором проектирования} на $W_1$ вдоль $W_2$. 
 \end{conj}
 
-\begin{theorem}()
-    $\A \in \End{V}$ \\
-    Тогда эквивалентны два утверждения:
+\begin{theorem}
+    Пусть $\A \in \End{V}$. 
+    Тогда эквивалентны следующие условия:
     \begin{enumerate}
-        \item $\A$~--- оператор проектирования (т.е. $\exists W_1, W_2$, т.ч. $W_1 \otimes W_2$ и $\A \dots $ на $W_1$ вдоль $W_2$)
+        \item $\A$~--- оператор проектирования (т.е. $\exists W_1, W_2$, т.ч. $V = W_1 \oplus W_2$ и 
+            $\A$ -- оператор проектирования на $W_1$ вдоль $W_2$)
         \item $\A^2 = \A$ (идемпотентность)
     \end{enumerate}
-    \begin{proof}
-        $1 \to 2$ \\
-        $\A^2 (w_1 + w_2) = \A(w_1) = \A(w_1 + 0)= w_1 = \A(w_1 + w_2)$
+    \begin{proof} \quad
 
-        $2 \to 1$
-
-        $W_1 = \Imm{\A}$
-        $W_2 = \Ker{\A}$
-
-        Проверим, что $V = W_1 \otimes W_2$ \\
-        $v = \underbrace{\A v }_{\text{$ \in W_1 $}} + \underbrace{(v - \A v)}_{\text{$ \in W_2 $}} $ \\
-        т.к. $A(v - Av) = Av - A v = 0$
-
-        $w \in W_1 \cap W_2$ \\
-        Раз $w \in W_1$, то $Aw = A^2 w = Av = w$ \\
-        Но при этом $w \in W_2$, а значит $Aw = 0$
-
-        Осталось доказать, что $A(\underbrace{w_1}_{\text{$ w_1 $}}  + \underbrace{w_2}_{\text{$ w_2 $}} ) = \underbrace{A w_1}_{\text{$ w_1 $}}  + \underbrace{A w_2}_{\text{$ 0 $}}  $ т.е. это оператор проектирования.
-        
+        \begin{itemize}
+            \item[``$1 \Rightarrow 2$'':]
+            \begin{align*}
+                \A^2 (w_1 + w_2) &= \A(w_1) \\
+                &= \A(w_1 + 0) \\
+                &= w_1 \\
+                &= \A(w_1 + w_2)
+            \end{align*}
+            \item[``$2 \Rightarrow 1$'':] Ручками введем необходимые нам подпространства. 
+                Пусть $W_1 = \Imm{\A}$, а $W_2 = \Ker{\A}$. 
+                Хотим проверить, что $V = W_1 \oplus W_2$:
+                \begin{gather*}
+                    v = \inbelow{\A v }{W_1} + \inbelow{\underbrace{(v - \A v)}}{W_2}
+                \end{gather*}
+                Так как $\A(v - \A v) = \A v - \A^2 v = 0$. \\
+                При этом, когда у нас что-то попадает в пересечение, то есть когда $w \in W_1 \cap W_2$, 
+                то $Aw = A^2 w = Av = w$. С другой стороны при этом $w \in W_2$, то есть мы попали в ядро, а значит $Aw = 0$.
+                
+                Мы доказали, что получилось прямая сумма, осталось доказать, что выполянется нужное свойство. Проверим его: 
+                \begin{gather*}
+                    A(\inbelow{w_1}{W_1}  + \inbelow{w_2}{W_2} ) = \stackbelow{A w_1}{w_1}  + \stackbelow{A w_2}{0}
+                \end{gather*}
+                То что нужно. То есть $\A$ -- оператор проектирования на $W_1$ вдоль $W_2$. 
+        \end{itemize}
     \end{proof}
 \end{theorem}
 
 \begin{conj}
-    Пусть $V$ --- евклидово или унитарное, $W \subset V$~--- подпространство \\
-    Оператор проектирования на $W$ вдоль $W^{\perp}$ называется оператором ортогонального проектирования
+    Пусть $V$ --- евклидово или унитарное, $W \subset V$ -- его подпространство. 
+    Оператор проектирования на $W$ вдоль $W^{\perp}$ называется \textbf{оператором ортогонального проектирования} на $W$.
 \end{conj}
 
-\begin{theorem}(Характеристика оператора ортогонального проектирования)
+\begin{theorem} (Характеристика оператора ортогонального проектирования)
 
-    $\A \in \End{V}$
-
+    Пусть $\A \in \End{V}$. 
     Тогда эквивалентны следующие условия:
     \begin{enumerate}
         \item $\A$ оператор ортогонального проектирования
         \item $\A$ самоспопряжённый идемпотентный
     \end{enumerate}
 
-    \begin{proof}
-    \emptyln
-    $ 1 \to 2 $
-
-    $ \A = \A^2 $ знаем \\
-    Пусть $e_1, \dots, e_m$ --- ортонормированный базис $W$, а $e_{m + 1}, \dots, e_n$ ортонормированный базис $W^{\perp}$ \\
-    $E = (e_1, \dots, e_n)$ \\
-    $[\A]_E = \left(\begin{array}{cc}
-    E_m & 0 \\ 
-    0 & 0
-    \end{array}\right)$ \\
-    $[\A]^*_E = \left(\begin{array}{cc}
-    E_m & 0 \\ 
-    0 & 0
-    \end{array}\right) = [\A]_E \Longrightarrow \A^* = \A$
-
-    $2 \to 1$
-
-    В следующий раз
+    \begin{proof} \quad 
+    
+    \begin{itemize}
+        \item[``$1 \Rightarrow 2$'':]
+            То, что он идемпотентный знаем, осталось проверить самоспопряжённость. 
+            Пусть $e_1, \dots, e_m$ --- ортонормированный базис $W$, а $e_{m + 1}, \dots, e_n$ ортонормированный базис $W^{\perp}$.
+            Также пусть $E := (e_1, \dots, e_n)$. Тогда:
+            \begin{gather*}
+                [\A]_E = \left(\begin{array}{cc}
+                E_m & 0 \\ 
+                0 & 0
+                \end{array}\right)
+            \end{gather*}
+            Ну а тогда:    
+            \begin{gather*}
+                [\A]^*_E = \left(\begin{array}{cc}
+                E_m & 0 \\ 
+                0 & 0
+                \end{array}\right) = [\A]_E \Longrightarrow \A^* = \A
+            \end{gather*}
+            Что и означает самоспопряжённость.
+        \item[``$2 \Rightarrow 1$'':]  
+            В следующий раз
+    \end{itemize}
     \end{proof}
 \end{theorem}

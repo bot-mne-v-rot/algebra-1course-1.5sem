@@ -141,3 +141,351 @@
 \end{enumerate}
 \notice В частности, конечно порождённая абелева группа изоморфна
 конечной прямой сумме циклических.
+
+\subsection{Линейные отображения}
+
+\begin{theorem}[Свойство универсальности базиса]
+    Пусть $V, W$ -- ЛП/$K$; $e_1, \dots, e_n$ --- базис $V$;
+    $w_1, \dots, w_n \in W$. Тогда 
+    $\exists! \varphi \in \Hom(V, W) : \varphi(e_i) = w_i, i = 1..n$.
+\end{theorem}
+\begin{proof}
+    Пусть $$\varphi(\alpha_1 e_1 + \dots + \alpha_n e_n) =
+    \alpha_1 w_1 + \dots + \alpha_n w_n $$
+    Очевидно, $\varphi$ линейно, однозначно задано для всех векторов 
+    из $V$ (т.к. любой вектор однозначно раскладывается по базису)
+    и $\varphi(e_i) = w_i$.
+
+    Таким образом мы доказали существование. Докажем единственность.
+    Пусть $ \widetilde{\varphi}(e_i) = w_i = \varphi(e_i)$. Тогда
+    в силу линейности:
+    $$\widetilde{\varphi}(\alpha_1 e_1 + \dots + \alpha_n e_n) = 
+    \alpha_1 \widetilde{\varphi}(e_1) + \dots + \alpha_n \widetilde{\varphi}(e_n) =
+    \alpha_1 w_1 + \dots + \alpha_n w_n = \varphi(\alpha_1 e_1 + \dots + \alpha_n e_n)$$
+    А значит, $\widetilde{\varphi} = \varphi$.
+\end{proof}
+\notice В этом предложении конечномерность $W$ не требуется.
+
+\begin{conj}
+    Пусть $\varphi \in \Hom(V, W)$, $E = (e_1, \dots, e_n)$ -- базис $V$,
+    $F = (f_1, \dots, f_m)$ -- базис $W$. \textbf{Матрицей $\varphi$ 
+    относительно базисов $E$ и $F$} называют
+    $$ [ \varphi ]_{E, F} = \begin{pmatrix}
+        [ \varphi(e_1)]_F & [ \varphi(e_2)]_F & \dots & [ \varphi(e_n) ]_F
+    \end{pmatrix} \in M(m, n, K)
+    $$
+\end{conj}
+
+\begin{conj}
+    Введём структуру линейного пространства над $\Hom(V, W)$. \\
+    Пусть $\varphi, \psi \in \Hom(V, W)$, $\alpha, \beta \in K$.
+    Тогда 
+    \begin{gather*}
+        (\alpha \varphi + \beta \psi)(v) := \alpha \varphi(v) +
+        \beta \psi(v) \\
+        \alpha \varphi + \beta \psi \in \Hom(V, W)
+    \end{gather*}  
+    Аксиомы ЛП тривиально выполняются.
+\end{conj}
+
+\follow из свойства универсальности базиса следующее отображение
+является изоморфизмом ЛП
+\begin{align*}
+    \varepsilon \colon \Hom(V, W) &\to M(m, n, K)\\
+    \varphi &\mapsto [ \varphi ]_{E, F}
+\end{align*}
+
+\follow Пусть $\dim V = n$, $\dim W = m$. Тогда $\Hom(V, W) = mn$.
+\begin{proof}
+    $\Hom(V, W) \cong M(m, n, K)$, а $\dim M(m, n, K) = mn$.
+\end{proof}
+
+\begin{theorem}
+    Пусть $E$ --- базис $V$, $F$ --- базис $W$, $\varphi \in \Hom(V, W)$. \\
+    Тогда $[\varphi(v)]_F = [\varphi]_{E, F} \cdot [v]_E$
+\end{theorem}
+Получается следующая коммутативная диаграмма:
+\begin{center}
+    \shorthandoff{"}
+    \begin{tikzcd}
+        v \arrow[dd, maps to] & V \arrow[rr, "\varphi"] \arrow[dd, "\varepsilon_E"] &  & W \arrow[dd, "\varepsilon_F"]                  & w \arrow[dd, maps to] \\
+                            &                                    &  &                               &                       \\
+        {[v]_E}               & K^n \arrow[rr]                     &  & K^m                           & {[w]_F}               \\
+                            & {[v]_E} \arrow[rr, maps to]        &  & {[\varphi]_{E,F} \cdot [v]_E} &                      
+    \end{tikzcd}
+    \shorthandon{"}
+\end{center}
+\begin{proof}
+    Т.к. $E, F$ --- вектора-строки из базисных векторов, получаем: 
+    $v = E \cdot [v]_E$,  $\varphi(v) = F \cdot [\varphi(v)]_F$.
+
+    С другой стороны, $\varphi(v) = \varphi(E) \cdot [v]_E$, где
+    $\varphi(E) = (\varphi(e_1), \dots, \varphi(e_n))$ -- вектор-строка
+    из образов базисных векторов. Более того, 
+    $\varphi(E) = F \cdot [\varphi]_{E, F}$, т.к. 
+    $\varphi(e_i) = F \cdot [\varphi(e_i)]_F$.
+
+    Собираем вместе:
+    \begin{align*}
+        \varphi(v) &= F \cdot [\varphi(v)]_F \\
+        &= (F \cdot [\varphi]_{E, F}) \cdot [v]_E \\
+        &= F \cdot ([\varphi]_{E, F} \cdot [v]_E)
+    \end{align*}
+
+    Получаем, что линейная комбинация векторов $F$ с коэф.
+    $[\varphi(v)]_F$ равна ЛК векторов $F$ с коэф.
+    $[\varphi]_{E, F} \cdot [v]_E$. Т.к. $F$ --- базис $W$, делаем вывод,
+    что $[\varphi(v)]_F = [\varphi]_{E, F} \cdot [v]_E$.
+\end{proof}
+
+\notice Проще всего понять, что происходит, можно на матрицах.
+
+Пусть 
+$E = (e_1, \dots, e_n)$,
+$[v]_E = \begin{pmatrix}
+\alpha_1 \\ 
+\vdots \\ 
+\alpha_n
+\end{pmatrix}$, 
+$[\varphi(v)]_F = \begin{pmatrix}
+\beta_1 \\ 
+\vdots \\ 
+\beta_m
+\end{pmatrix}$,
+$[\varphi(e_i)]_F = \begin{pmatrix}
+\gamma_{1i} \\ 
+\vdots \\ 
+\gamma_{mi}
+\end{pmatrix}$. Тогда
+$$
+\begin{pmatrix}
+    \beta_1 \\ 
+    {
+        \tikz[overlay]
+        \fill[green!20] (-0.1,-0.2) rectangle (0.5,0.4);
+    }
+    \beta_2 \\ 
+    \vdots \\ 
+    \beta_m
+\end{pmatrix}
+=
+\begin{pmatrix}
+    \gamma_{11} & \gamma_{12} & \dots & \gamma_{1n} \\
+    {
+        \tikz[overlay]
+        \fill[blue!20] (0,-0.2) rectangle (3.5,0.4);
+    }
+    \gamma_{21} & \gamma_{22} & \dots & \gamma_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    \gamma_{m1} & \gamma_{m2} & \dots & \gamma_{mn} \\
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+    {
+        \tikz[overlay]
+        \fill[red!20] (-0.1,0.3) rectangle (0.5,-1.9);
+    }
+    \alpha_1 \\ 
+    \alpha_2 \\ 
+    \vdots \\ 
+    \alpha_n
+\end{pmatrix}
+$$
+
+Получается, что с одной стороны: 
+\colorbox{green!20}{$\beta_i$}$= \sum \limits_{k=1}^{n}$ 
+\colorbox{blue!20}{$\gamma_{ik}$}
+$\cdot$
+\colorbox{red!20}{$\alpha_k$}
+
+А с другой:
+$$
+\underbrace{
+\begin{pmatrix}
+    \beta_1 \\
+    \vdots \\ 
+    \beta_m
+\end{pmatrix}
+}_{=[\varphi(v)]_F}
+=
+\alpha_1
+\underbrace{
+\begin{pmatrix}
+    \gamma_{11} \\ 
+    \vdots \\ 
+    \gamma_{m1}
+\end{pmatrix}
+}_{=[\varphi(e_1)]_F}
++
+\alpha_2
+\underbrace{
+\begin{pmatrix}
+    \gamma_{12} \\ 
+    \vdots \\ 
+    \gamma_{m2}
+\end{pmatrix}
+}_{=[\varphi(e_2)]_F}
++
+\dots
++
+\alpha_n
+\underbrace{
+\begin{pmatrix}
+    \gamma_{1n} \\ 
+    \vdots \\ 
+    \gamma_{mn}
+\end{pmatrix}
+}_{=[\varphi(e_n)]_F}
+$$
+И действительно, 
+$\varphi(v) = \alpha_1 \varphi(e_1) + \dots + \alpha_n \varphi(e_n)$.
+
+\notice Пусть $E, E'$ --- базисы $V$. Тогда $M_{E \to E'} =
+[\E_V]_{E', E}$, где $\E_V \in \Hom(V, V)$ --- тождественное отображение на $V$.
+Действительно, в матрице перехода между базисами 
+$M_{E \to E'}$ мы раскладываем новый базис $E'$ по старому базису $E$,
+что по сути то же самое, что в матрице линейного отображения, только
+никакого отображения мы к векторам не применяем. Или другими словами,
+мы применяем к базисным векторам тождественное отображение.
+
+\begin{theorem}
+    Пусть $U, V, W$ --- конечномерные ЛП/$K$; $E, F, G$ --- их базисы;
+    $\varphi \in \Hom(U, V)$, $\psi \in \Hom(V, W)$. Тогда
+    $[\psi \circ \varphi]_{E,G} = [\psi]_{F,G} \cdot [\varphi]_{E,F}$.
+\end{theorem}
+\begin{proof}
+    Заметим, что:
+    \begin{align*}
+        \varphi(E) &= F \cdot [\varphi]_{E, F}, \\
+        \psi(F) &= G \cdot [\psi]_{F, G}, \\
+        \varphi(\psi(E)) &= G \cdot [\psi \circ \varphi]_{E, G};
+    \end{align*}
+    Получаем:
+    \begin{align*}
+        \varphi(\psi(E)) &= G \cdot [\psi \circ \varphi]_{E, G} \\
+        &= \psi(F) \cdot [\varphi]_{E, F} \\
+        &= G \cdot [\psi]_{F, G} \cdot [\varphi]_{E, F}
+    \end{align*}
+    $G$ --- базис $\Longrightarrow$ 
+    $[\psi \circ \varphi]_{E,G} = [\psi]_{F,G} \cdot [\varphi]_{E,F}$
+\end{proof}
+
+\follow Пусть $E, E'$ -- базисы $V$; $F, F'$ -- базисы $W$;
+$C = M_{E \to E'}$, $D = M_{F \to F'}$, $\varphi \in \Hom(V, W)$.
+Тогда 
+$$ [\varphi]_{E', F'} = D^{-1} \cdot [\varphi]_{E, F} \cdot C $$
+\begin{proof}
+    Заметим, что:
+    $$ \varphi = \E_W \circ \varphi \circ \E_V $$
+
+    Тогда по предыдущему предложению:
+    $$ [\varphi]_{E', F'} = 
+    \stackbelow{[\E_W]_{F, F'}}{M_{F' \to F}} 
+    \cdot [\varphi]_{E, F}
+    \cdot \stackbelow{[\E_V]_{E', E}}{M_{E \to E'}}$$
+    Как мы знаем, $M_{F' \to F} = \left(M_{F \to F'}\right)^{-1}$
+\end{proof}
+
+\begin{theorem}
+    Пусть $V, W$ --- конечномерные ЛП/$K$, $\varphi \in \Hom(V, W)$.
+    Тогда в $V,W$ существуют базисы $E, F$ такие, что
+    $[\varphi]_{E, F}$ --- окаймлённая единичная.
+\end{theorem}
+\begin{proof} Два доказательства:
+    \begin{itemize}
+        \item[I.] Пусть $E_0, F_0$ --- какие-то базисы $V,W$.
+        У $[\varphi]_{E_0, F_0}$ есть $PDQ$-разложение, т.е.
+        $[\varphi]_{E_0, F_0} = PDQ$, где $P, Q$ --- обратимые,
+        $D$ --- окаймлённая единичная.  
+
+        Нужно построить $E, F$ так, что $M_{E_0 \to E} = Q^{-1}$,
+        $M_{F_0 \to F} = P$. Пусть 
+        $E := E_0 \cdot Q^{-1}$, $F := F_0 \cdot P$. 
+        Мы доказывали, что базис, домноженный на обратимую матрицу
+        --- тоже какой-то базис.
+        
+        Тогда:
+        $$ [\varphi]_{E, F} = M_{F_0 \to F}^{-1} \cdot [\varphi]_{E_0, F_0}
+        \cdot M_{E_0 \to E} = P^{-1} PDQ Q^{-1} = D $$
+
+        \item[II.] Пусть $r = \rk \varphi = \dim \Imm \varphi$, 
+        $n = \dim V$, $m = \dim W$.
+        Тогда $\dim \Ker \varphi = n - r$. 
+        
+        Пусть $e_1', \dots, e_{n-r}'$ --- базис $\Ker \varphi$,
+        $e_1, \dots, e_r$ --- его дополнение до базиса $V$.
+        Пусть $f_1 = \varphi(e_1), \dots, f_r = \varphi(e_r)$.
+
+        Проверим, что $f_1, \dots, f_r$ --- ЛНС.
+        Пусть:
+        $$\stackbelow{\alpha_1 f_1 + \dots + \alpha_r f_r}
+        {\varphi(\alpha_1 e_1 + \dots + \alpha_r e_r)} = 0$$
+        Значит, $\alpha_1 e_1 + \dots + \alpha_r e_r \in \Ker \varphi$.
+        А там есть свой базис, поэтому:
+        $$ \alpha_1 e_1 + \dots + \alpha_r e_r =
+        \alpha_1' e_1' + \dots + \alpha_{n-r}' e_{n-r}'$$
+        Но $e_1', \dots, e_{n-r}', e_1, \dots, e_r$ --- базис $V$,
+        поэтому $\alpha_1 = \dots = \alpha_r = 0$.
+
+        Раз $f_1, \dots, f_r$ --- ЛНС, пусть $f_{r+1}, \dots, f_m$ ---
+        дополнение её до базиса $W$.
+
+        Пусть $E = (e_1, \dots, e_r, e_1', \dots, e_{n-r}')$,
+        $F = (f_1, \dots, f_m)$. 
+        Получаем:
+        \begin{align*}
+            [\varphi]_{E,F} &= 
+            (\stackbelow{[\varphi(e_1)]_F}{[f_1]_F} 
+            \quad \dots \quad 
+            \stackbelow{[\varphi(e_r)]_F}{[f_r]_F} \quad
+            \stackbelow{[\varphi(e_1')]_F}{[0]_F} \quad \dots \quad 
+            \stackbelow{[\varphi(e_{n-r})']_F}{[0]_F}) = \\
+            &= 
+            \stackrel{\begin{matrix}
+                & & & r & & &
+            \end{matrix}}
+            {\begin{pmatrix}
+                1 & 0 & \dots & 0 & 0 & \dots & 0 \\
+                0 & 1 & \dots & 0 & 0 & \dots & 0 \\
+                \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+                0 & 0 & \dots & 1 & 0 & \dots & 0 \\
+                0 & 0 & \dots & 0 & 0 & \dots & 0 \\
+                \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+                0 & 0 & \dots & 0 & 0 & \dots & 0 \\
+            \end{pmatrix}}
+            \begin{matrix}
+                \\ \\ r \\ \\ \\
+            \end{matrix} \\
+            &=
+            \begin{pmatrix}
+                E_r & 0 \\
+                0 & 0
+            \end{pmatrix}
+        \end{align*} 
+        
+    \end{itemize}
+\end{proof}
+
+\begin{theorem}
+    Пусть $V, W$ --- конечномерные ЛП/$K$; $E, F$ --- базисы $V, W$;
+    $\varphi \in \Hom(V, W)$. Тогда $\rk [\varphi]_{E, F} = \rk \varphi$.
+\end{theorem}
+\begin{proof}
+    Два доказательства:
+    \begin{itemize}
+        \item[I.] 
+        \begin{align*}
+            \Imm \varphi &\cong \Imm (\varepsilon_F \circ \varphi) \\
+            &= \Imm (([\varphi]_{E,F} \times) \circ \varepsilon_E) & 
+            (``[\varphi]_{E,F} \times'' \text{ --- оператор умножения на $[\varphi]_{E,F}$ слева}) \\
+            &= \Imm ([\varphi]_{E,F} \times) \\
+            &\equiv \text{лин. обол. столбцов } [\varphi]_{E,F} \\
+            \Longrightarrow & \dim \Imm \varphi = \rk [\varphi]_{E,F}
+        \end{align*}
+        \item[II.] $\rk [\varphi]_{E,F}$ не зависит от $E, F$, т.к.
+        при замене базисов происходит умножение на обратимые матрицы.
+
+        Из второго доказательства предыдущего предложения: 
+        $\rk [\varphi]_{E,F} = \rk D = r$, но $r = \rk \varphi$.
+    \end{itemize}
+\end{proof}

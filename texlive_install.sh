@@ -75,7 +75,8 @@ tlmgr install   \
   bookmark \
   amssymb \
   tikz-cd \
-  extarrows
+  extarrows \
+  arydshln
   
 
 # Keep no backups (not required, simply makes cache bigger)

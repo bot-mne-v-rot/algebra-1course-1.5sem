@@ -76,6 +76,7 @@ tlmgr install   \
   amssymb \
   tikz-cd \
   extarrows \
+  arydshln \
   tcolorbox
   
 

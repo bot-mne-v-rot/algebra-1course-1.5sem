@@ -180,18 +180,18 @@ $\Longrightarrow \dim \Ker(J_{n}(0)) = \dim \Lin (e_m) = 1 = g_{\lambda}$
     \end{proof}
 \end{theorem}
 
-Вспомним, что кольцо многочленов является Евклидовым кольцом, что в свою очередь является Областью Главных Идеалов (т.е. любой идеал Евклидова кольца главный, т.е. порождён одним элементом)
+Вспомним, что кольцо многочленов является евклидовым кольцом, что в свою очередь является областью главных идеалов (т.е. любой идеал евклидова кольца главный, т.е. порождён одним элементом)
 
-\begin{theorem}(Об идеалах в Евклидовом кольце)
+\begin{theorem}(Об идеалах в евклидовом кольце)
 
-    В Евклидовом кольце любой идеал главный
+    В евклидовом кольце любой идеал главный.
 
     \begin{proof}
     $ $ \newline
     $ I \subset R $ идеал $ (I < R, bI \subset I \forall b \in R) $ \\
-    $ \nu $ --- Евклидова норма 
+    $ \nu $ --- евклидова норма.
 
-    Пусть $ I = 0 \Longrightarrow I = (0) $ --- главный идеал
+    Пусть $ I = 0 \Longrightarrow I = (0) $ --- главный идеал.
 
     Пусть $ I \neq 0 \Longrightarrow $ пусть $ a \in I $ с минимальной евклидовой нормой, т.ч. $ \nu(a) = c $ \\
     \quad Докажем, что $I = (a):$
@@ -226,7 +226,7 @@ $\Longrightarrow \dim \Ker(J_{n}(0)) = \dim \Lin (e_m) = 1 = g_{\lambda}$
 
     Для произвольного $g \in K[x]: \, (gf)(\A) = g(\A) f(\A) = 0 \Longrightarrow gf \in I $
 
-    \quad Главный т.к. $K[x]$ Евклидово кольцо 
+    \quad Главный, т.к. $K[x]$ --- евклидово кольцо 
     \end{proof}
 \end{theorem}
 
@@ -258,8 +258,8 @@ $ $ \newline
 $\Longrightarrow \mathcal{E}, \A, \A^2, \dots, \A^{n^2}$ --- ЛЗС (т.к. мы перечислили $n^2 + 1$ элемент нашего пространства)
 
 $\Longrightarrow \, \exists \alpha_0, \alpha_1, \dots, \alpha_{n^2}$ не все $0$, т.ч. 
-\[ \alpha_0 \mathcal{E} + \alpha_1 \A \dots + \alpha_{n^2} \A^{n^2} = 0 \]
-\[ \Longrightarrow f = \alpha_0 + \alpha_1 x + \dots + \alpha_{n^2} x \text{--- ненулевой аннулятор $\A$} \]
+\[ \alpha_0 \mathcal{E} + \alpha_1 \A + \dots + \alpha_{n^2} \A^{n^2} = 0 \]
+\[ \Longrightarrow f = \alpha_0 + \alpha_1 x + \dots + \alpha_{n^2} x^{n^2} \text{--- ненулевой аннулятор $\A$} \]
 
 \begin{conj}(Аннулятор вектора по отношению к данному оператору)
 
@@ -310,14 +310,15 @@ $\Longrightarrow \, \exists \alpha_0, \alpha_1, \dots, \alpha_{n^2}$ не все
     Тогда $v, \A v, \A^2 v, \dots, \A^{d - 1} v $ --- базис $L_v$
 
     \begin{proof}
-    $ $ \newline
-    \quad ЛНЗ \\
+    $ $
+
+    \quad Докажем, что ЛНС: \\
     Предположим, что $v, \A v, \A^2 v, \dots, \A^{d - 1} v $ --- ЛЗС \\
     $\beta_0 v + \dots + \beta_{d - 1} \A^{d - 1} v = 0$ \\
     Пусть $ f = \beta_0 + \beta_1 x + \dots + \beta_{d - 1} x^{d - 1} $ \\
-    $ f(\A)(v) = 0 \Longrightarrow  \underbrace{\mu_{\A, v} | f}_{\text{$ \deg{ \mu_{\A, v}}= d \leqslant \deg{f} = d - 1 $}}  \Longrightarrow f = 0 \Longrightarrow \beta_0 = \dots = \beta_{d - 1}$
+    $ f(\A)(v) = 0 \Longrightarrow  \underbrace{\mu_{\A, v} | f}_{\text{$ \deg{ \mu_{\A, v}}= d \leqslant \deg{f} \leqslant d - 1 $}}  \Longrightarrow f = 0 \Longrightarrow \beta_0 = \dots = \beta_{d - 1}$
 
-    \quad Размер линейной оболочки \\ 
+    \quad Выясним размер линейной оболочки: \\ 
     $ W = \Lin (v, \A v, \dots, \A^{d - 1} v) $ \\
     Докажем, что если $m \leqslant 0 \Longrightarrow A^m v \in W$ \\
     Для $ m \leqslant d - 1$ --- тривиально \\
@@ -344,9 +345,9 @@ $\Longrightarrow \, \exists \alpha_0, \alpha_1, \dots, \alpha_{n^2}$ не все
 \vspace*{3mm}
 
 \begin{conj}
-    Есть пространство $ L_v, \; E: v, \A v, \dots, \A^{d - 1}v $ --- базис 
+    Есть пространство $ L_v, \; E = (v, \A v, \dots, \A^{d - 1}v) $ --- базис 
 
-    Посчитаем матрицу $[\A |_{L_{v}}] = 
+    Посчитаем матрицу $[\A |_{L_{v}}]_E = 
     \left(\begin{array}{ccccc}
         0 & 0 & \dots & 0 & -\alpha_0 \\ 
         1 & 0 & \dots & 0 & -\alpha_1 \\ 

@@ -76,7 +76,8 @@ tlmgr install   \
   amssymb \
   tikz-cd \
   extarrows \
-  arydshln
+  arydshln \
+  tcolorbox
   
 
 # Keep no backups (not required, simply makes cache bigger)

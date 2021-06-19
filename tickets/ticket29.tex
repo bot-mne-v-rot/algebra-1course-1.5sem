@@ -1,1 +1,70 @@
 \section{Ортогональное дополнение подпространства}
+Теперь поговорим о понятии ортогонального дополнения к подпространству. 
+\begin{conj}
+    $U < V$ -- линейное подпространство. Ортогональное дополнение к $U$ -- это: 
+    \begin{gather*}
+        U^\perp = \{ v \in V \mid \forall u \in U : u \perp v \}
+    \end{gather*}
+\end{conj}
+
+\begin{theorem-non} \quad
+
+    Зафиксируем, что $\dim V < +\infty$
+
+    \begin{enumerate}
+        \item $U^\perp$ -- линейное подпространство $V$
+        \begin{proof}
+            $(v_1 + v_2, u) = (v_1, u) + (v_2, u), \qquad (\alpha v, u) = \alpha (v, u)$
+        \end{proof}
+        \item $V = U \oplus U^\perp$
+        \begin{proof}
+            Пусть $f_1, \dots, f_m$ -- какой-либо базис $U$, а $f_{m+1}, \dots, f_n$ -- его дополнение до базиса $V$. 
+            Существует $e_1, \dots, e_n$ -- ортонормированный базис $V$, такой, что $\forall l: \Lin{(e_1, \dots, e_l)} = \Lin{(f_1, \dots, f_l)}$. 
+            В частности, $\Lin{(e_1, \dots, e_m)} = U$. 
+            
+            Поймем, из чего состоит ортогональное дополнение к $U$. 
+            \begin{align*}
+                v &= \alpha_1 e_1 + \dots + \alpha_n e_n \in U^\perp \\
+                &\Longleftrightarrow v \perp e_i, i=1, \dots, m \\
+                &\Longleftrightarrow \alpha_i = 0, i=1, \dots, m \; (\text{так как } (v, e_i) = \alpha_i) \\
+                &\Longleftrightarrow v \in \Lin{(e_{m+1}, \dots, e_n)}
+            \end{align*}
+            Таким образом, $U^\perp = \Lin{(e_{m+1}, \dots, e_n)} \Longrightarrow V = U \oplus U^\perp$
+        \end{proof}
+        \item $U_1 \subset U_2 \Longrightarrow U_1^\perp \supset U_2^\perp$
+        \begin{proof}
+            Тривиально.
+        \end{proof}
+        \item $(U^\perp)^\perp = U$
+        \begin{proof} \quad 
+
+            \begin{itemize} 
+                \item[``$\supset$''] Очевидно, так как любой вектор из $U$ ортогонален ко всем векторам из ортогонального дополнения по определению. 
+                \item[``$\subset$''] Из второго свойства знаем, что $\dim{U^\perp} = \dim{V} - \dim{U}$. Применим это свойство еще раз и получим, что $\dim{(U^\perp)^\perp} = \dim{V} - \dim{U^\perp} = \dim{U}$
+                
+                Раз размерности равны, и у нас есть одно включение, то получаем равенство.
+            \end{itemize}
+        \end{proof}
+        \item $(U_1 + U_2)^\perp = U_1^\perp \cap U_2^\perp$
+        \begin{proof}
+            $v \in (U_1 + U_2)^\perp \Longleftrightarrow v \in U_1^\perp$ и $v \in U_2^\perp$
+        \end{proof}
+        \item $(U_1 \cap U_2)^\perp = U_1^\perp + U_2^\perp$
+        \begin{proof}
+            Выводится из пятого и четвертого пунктов: 
+            \begin{align*}
+                (U_1 \cap U_2)^\perp &= \left( (U_1^\perp)^\perp \cap (U_2^\perp)^\perp \right)^\perp \\
+                &= \left( (U_1^\perp + U_2^\perp)^\perp \right)^\perp \\
+                &= U_1^\perp + U_2^\perp  
+            \end{align*}
+        \end{proof}
+        \item $V^\perp = 0, \; 0^\perp = V$
+        \begin{proof}
+            Очевидно благодаря равенству размерностей: 
+            \begin{gather*}
+                \dim{V^\perp} = \dim{V} - \dim{V} = 0 \\
+                0^\perp = (V^\perp)^\perp = V
+            \end{gather*}
+        \end{proof}
+    \end{enumerate}
+\end{theorem-non}

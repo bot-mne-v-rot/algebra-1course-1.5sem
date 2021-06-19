@@ -1,1 +1,114 @@
-\section{Канонический вид матрицы нормального оператора в евклидовом пространстве.}
+\section{Канонический вид матрицы нормального оператора в евклидовом пространстве}
+\begin{theorem}
+    Пусть $\A$ -- нормальный оператор в конечномерном евклидовом пространстве $V$.
+    Тогда в некотором ортонормированном базисе матрица $\A$ блочно-диагональная и состоит из блоков 1 на 1 и блоков вида:
+    \begin{gather*}
+        \left(\begin{array}{cc}
+            \alpha & \beta \\ 
+            -\beta & \alpha
+        \end{array}\right)
+    \end{gather*}
+\begin{proof}
+    $\A$ -- нормальный оператор. Тогда:
+    \begin{gather*}
+        V_{\C} = \underbracket{V_{\mu_1}} \oplus \dots \oplus \underbracket{V_{\mu_s}} \oplus \underbracket{V_{\lambda_1} \oplus V_{\overline{\lambda_1}}} \oplus \dots \oplus \underbracket{V_{\lambda_t} \oplus V_{\overline{\lambda_t}}}
+    \end{gather*}
+    В каждом из вещественных слагаемых $V_{\mu_i}$ и в каждой паре слагаемых $V_{\lambda_i}$, $V_{\overline{\lambda_i}}$ выберем новый базис. 
+    Тогда совокупность базисов составит ортонормированный вещественный базис всей комплексификации.
+    
+    Сначала разберемся с вещественными слагаемыми.
+    Заметим, что в каждом таком кусочке можно выбрать вещественный базис.
+    Этим и займемся. 
+    Сперва выберем в $V_{\mu_p}$ произвольный базис. Он имеет следующий вид:
+    \begin{gather*}
+        v_1 + iw_1, \dots, v_l + i w_l
+    \end{gather*}
+    Из этого следует, что $V_{\mu_p} = \Lin (v_1, w_1, \dots, v_l, w_l)$. А тогда
+    из этого набора можно выбрать вещественный базис для $V_{\mu_p}: u_1, \dots, u_l$. 
+    Теперь мы этот базис ортогонализуем и нормируем. То есть получаем, что:
+    \begin{gather*}
+        \widetilde{u_1}, \dots, \widetilde{u_p} \text{ -- ортонормированный, вещественный базис } V_{\mu_p}
+    \end{gather*}
+    Тогда матрица оператора, индуцированного на соответствующем подпространстве будет выглядеть следующим образом: 
+    \begin{gather*}
+        [\A \, |_{V_{\mu_p} }]_{\dots} = \operatorname{diag} (\underbrace{\mu_p, \dots, \mu_p}_{\text{$l$ раз}})
+    \end{gather*}
+    Вместо базиса стоит троеточие потому что мы можем взять эту матрицу как в том базисе, который мы сейчас построили, так 
+    и в любом другом, нам не принципиально. 
+
+    Теперь разберемся с парными слагаемыми. Оператор 
+    $\A |_{V_{\lambda_q} \oplus V_{\overline{\lambda_{q}}}}$. 
+    \begin{gather*}
+        v_1 + iw_1, \dots, v_l + iw_l \text{ -- ортонормированный базис } V_{\lambda_q}
+    \end{gather*}
+    По одной из предыдущих лемм мы знаем, что:
+    \begin{gather*}
+        v_1 - iw_1, \dots, v_l - iw_l \text{ -- ортонормированный базис } V_{\overline{\lambda_q}}
+    \end{gather*}
+    Выберем новый базис в сумме этих подпространств, взяв все $v$-шки и все $w$-шки. Прежде всего заметим, что:
+    \begin{gather*}
+        \Lin (v_1, w_1, \dots, v_l, w_l) = V_{\lambda_q} \oplus V_{\bar{\lambda_q}}
+    \end{gather*}
+    В то же время размерность $V_{\lambda_q} \oplus V_{\overline{\lambda_{q}}}$ равняется $2l$, то есть это базис. 
+    Сейчас проверим, что он ортогонален.
+
+    Для краткости обозначим за $u_j := v_j + iw_j$. Мы знаем, что:
+    \begin{itemize}
+        \item $(u_j, u_j) = 1$
+        \item $(u_j, u_r) = 0, \quad j \neq r$
+        \item $(u_j, \overline{u_j}) = 0$
+        \item $(u_j, \overline{u_r}) = 0, \quad j \neq r$
+    \end{itemize}
+    Последние два равенства верны, потому что это собственные векторы, пренадлежащие разным собственным значениям, 
+    а у нормального оператора они должны быть ортогональны друг другу.
+
+    Если теперь уйти от введённого обозначения $u_j$ и расписать по линейности, то получим:
+    \begin{enumerate}
+        \item $ (v_j, v_j) + (w_j, w_j) = 1  $
+        \item $ (u_j, \bar{u_j}) = 0 = (v_j + iw_j, v_j - iw_j) = (v_j, v_j) - (w_j, w_j) + i ( (w_j, v_j) + (v_j, w_j) )$
+        \item $(u_j, u_r) = 0 = (v_j, v_r) + (w_j, w_r) + i ( (w_j, v_r ) - (v_j, w_r) )$
+        \item $(u_j, \bar{u_r}) = 0 = (v_j, v_r) - (w_j, w_r) + i ( (w_j, v_r ) + (v_j, w_r) )$
+    \end{enumerate}
+    
+    Раз последние два выражения равны нулю, то что вещественные, что мнимые части равны нулю. А тогда:
+    \begin{gather*}
+        (v_j, v_r) = (w_j, w_r) = (w_j, v_r) = (v_j, w_r) = 0
+    \end{gather*}
+    Из второго равенства следует, что $(v_j, w_j) = 0$.
+    Из первого же мы понимаем, что $(v_j, v_j) = (w_j, w_j) = \frac{1}{2}$.
+
+    Таким образом мы получили ортогональный базис в наборе из $2l$ векторов, где каждый вектор ортогонален каждому, кроме себя. Заметим, что но не нормирован, длина будет равна $\frac{1}{\sqrt{2}}$. В то же время это легко поправить, возьмем:
+    \begin{gather*}
+        \widetilde{v_j} = \sqrt{2} \cdot v_j, \widetilde{w_j} = \sqrt{2} \cdot w_j
+    \end{gather*}
+    Тогда $\widetilde{v_1}, \widetilde{w_1}, \dots, \widetilde{v_l}, \widetilde{w_l}$ -- ортонормированный базис $V_{\lambda_q} \oplus V_{\overline{\lambda_{q}}}$.
+
+    Теперь хочется лишь понять, как будет выглядеть матрица нашего оператора в этом базисе. 
+    Пусть $\lambda_q = \alpha_q + i \beta_q$. 
+    Посмотрим на $\A_{\C}(v_j + iw_j)$:
+    \begin{gather*}
+        \A_{\C}(v_j + iw_j) = (\alpha_q + i \beta_q) (v_j + iw_j)
+    \end{gather*}
+    Тогда:
+    \begin{align*}
+        Av_j &= \alpha_q v_j -  \beta_q w_j \\
+        Aw_j &= \beta_q v_j + \alpha_q w_j
+    \end{align*}
+    Аналогично для $A\widetilde{v_{j}}, A\widetilde{w_{j}}$
+
+    Тем самым: 
+
+    Пусть $U_q = \Lin (\underbrace{\widetilde{v_1}, \widetilde{w_1}, \dots, \widetilde{v_l}, \widetilde{w_l}}_{\text{$ E_q $}} )$, тогда:
+    
+    \begin{gather*}
+        [\A |_{U_q}]_{E_q} = \left(\begin{array}{cccccc}
+        \alpha_q & \beta_q  & 0       & \dots    & 0        & 0\\ 
+        -\beta_q & \alpha_q & 0       & \dots    & 0        & 0\\ 
+        0        & 0        & \ddots  &          & \vdots   & \vdots \\ 
+        \vdots   & \vdots   &         & \ddots   & 0        & 0 \\
+        0        & 0        &  \dots  & 0        & \alpha_q & \beta_q \\ 
+        0        & 0        & \dots   & 0        & -\beta_q & \alpha_q
+        \end{array}\right)
+    \end{gather*}   
+\end{proof} 
+\end{theorem}

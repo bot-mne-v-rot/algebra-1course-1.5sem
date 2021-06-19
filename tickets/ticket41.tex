@@ -1,1 +1,31 @@
 \section{Лемма о базисах в сопряжённых собственных подпространствах}
+\begin{lemma}
+    Пусть вектора $v_1 + iw_1, \dots, v_l + iw_l$ -- это базис $V_{\lambda}$, где $\lambda$ не вещественное, а $(V_{\lambda} = \Ker{\A_{\C} - \lambda \mathcal{E}})$.
+    Тогда сопряженные к ним векторы $v_1 - iw_1, \dots, v_l - iw_l$~--- базис $V_{\bar{\lambda}}$
+
+    Более того, если первый базис ортонормированный, то и второй ортонормированный.
+\end{lemma}
+
+
+\begin{proof} \quad 
+    
+Нетрудно проверить, что:
+\begin{gather*}
+    v + iw \in V_{\lambda} \Longrightarrow v - iw \in V_{\bar{\lambda}}
+\end{gather*}
+Также:
+\begin{gather*}
+    V_{\lambda} = \Lin(v_1 + iw_1, \dots, v_l + iw_l) \Longrightarrow V_{\bar{\lambda}} = \Lin(v_1 - iw_1, \dots, v_l - iw_l)
+\end{gather*}
+Давайте это проверим. Запишем произвольный вектор как линейную комбинацию базисных векторов: 
+\begin{gather*}
+    v + iw = \sum_{j = 1}^{l} (\alpha_j + i \beta_j) (v_j + i w_j) \Longrightarrow v - iw = \sum_{}^{} (\alpha_j - i \beta_j) (v_j - i w_j)
+\end{gather*}
+Аналогично преверяем линейную независимость и первое утверждение доказано. 
+
+Теперь докажем утверждение про ортонормированность:
+\begin{gather*}
+    (v_j + i w_j, v_k + iw_k) = \delta_{jk} \Longrightarrow  (v_j - i w_j, v_k - iw_k) = \delta_{jk}
+\end{gather*}
+Просто применили комплексное сопряжение.
+\end{proof}

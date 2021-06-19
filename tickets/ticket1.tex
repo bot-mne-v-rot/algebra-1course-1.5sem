@@ -1,1 +1,56 @@
 \section{Свойство универсальности базиса. Пространство линейных отображений}
+\begin{theorem}[Свойство универсальности базиса]
+    Пусть $V, W$ -- ЛП/$K$; $e_1, \dots, e_n$ --- базис $V$;
+    $w_1, \dots, w_n \in W$. Тогда 
+    $\exists! \varphi \in \Hom(V, W) : \varphi(e_i) = w_i, i = 1..n$.
+\end{theorem}
+\begin{proof}
+    Пусть $$\varphi(\alpha_1 e_1 + \dots + \alpha_n e_n) =
+    \alpha_1 w_1 + \dots + \alpha_n w_n $$
+    Очевидно, $\varphi$ линейно, однозначно задано для всех векторов 
+    из $V$ (т.к. любой вектор однозначно раскладывается по базису)
+    и $\varphi(e_i) = w_i$.
+
+    Таким образом мы доказали существование. Докажем единственность.
+    Пусть $ \widetilde{\varphi}(e_i) = w_i = \varphi(e_i)$. Тогда
+    в силу линейности:
+    $$\widetilde{\varphi}(\alpha_1 e_1 + \dots + \alpha_n e_n) = 
+    \alpha_1 \widetilde{\varphi}(e_1) + \dots + \alpha_n \widetilde{\varphi}(e_n) =
+    \alpha_1 w_1 + \dots + \alpha_n w_n = \varphi(\alpha_1 e_1 + \dots + \alpha_n e_n)$$
+    А значит, $\widetilde{\varphi} = \varphi$.
+\end{proof}
+\notice В этом предложении конечномерность $W$ не требуется.
+
+\begin{conj}
+    Пусть $\varphi \in \Hom(V, W)$, $E = (e_1, \dots, e_n)$ -- базис $V$,
+    $F = (f_1, \dots, f_m)$ -- базис $W$. \textbf{Матрицей $\varphi$ 
+    относительно базисов $E$ и $F$} называют
+    $$ [ \varphi ]_{E, F} = \begin{pmatrix}
+        [ \varphi(e_1)]_F & [ \varphi(e_2)]_F & \dots & [ \varphi(e_n) ]_F
+    \end{pmatrix} \in M(m, n, K)
+    $$
+\end{conj}
+
+\begin{conj}
+    Введём структуру линейного пространства над $\Hom(V, W)$. \\
+    Пусть $\varphi, \psi \in \Hom(V, W)$, $\alpha, \beta \in K$.
+    Тогда 
+    \begin{gather*}
+        (\alpha \varphi + \beta \psi)(v) := \alpha \varphi(v) +
+        \beta \psi(v) \\
+        \alpha \varphi + \beta \psi \in \Hom(V, W)
+    \end{gather*}  
+    Аксиомы ЛП тривиально выполняются.
+\end{conj}
+
+\follow из свойства универсальности базиса следующее отображение
+является изоморфизмом ЛП
+\begin{align*}
+    \varepsilon \colon \Hom(V, W) &\to M(m, n, K)\\
+    \varphi &\mapsto [ \varphi ]_{E, F}
+\end{align*}
+
+\follow Пусть $\dim V = n$, $\dim W = m$. Тогда $\dim \Hom(V, W) = mn$.
+\begin{proof}
+    $\Hom(V, W) \cong M(m, n, K)$, а $\dim M(m, n, K) = mn$.
+\end{proof}

@@ -1,1 +1,40 @@
 \section{Инвариантные подпространства, матричный критерий}
+\begin{conj}
+    Инвариантное подпространство $W$ векторного пространства $V$ относительно линейного оператора $\A$ - это такое подпространство, что $\A(W) \subset W$.
+\end{conj}
+
+\underline{Примеры:}
+\begin{enumerate}
+    \item Само пространство и нулевое подпространство.
+    \item Ядро и образ линейного оператора.
+\end{enumerate}
+
+\begin{theorem}
+    Пусть $\A \in \End V$, $W$ -- инвариантное относительно $\A$ подпространство $V$, $e_1, e_2, \dots, e_m$ -- базис $W$ и $e_{m+1}, e_{m+2}, \dots, e_n$ -- дополнение до базиса $V$.
+    Тогда
+    \[ [\A]_E =  \begin{pmatrix}
+        A_1 & B \\
+        0 & A_2
+    \end{pmatrix}, \]
+    где $A_1 \in M_m(K)$ -- матрица сужения опреатора $\A$ на пространство $W$.
+\end{theorem}
+\begin{proof}
+    \begin{gather*}
+        \begin{split}
+            W \; \text{инвариантно относительно} \; \A &\Leftrightarrow \forall w \in W \;\; \A w \in W\\
+            &\Leftrightarrow \A e_1, \A e_2, \dots, \A e_m \in W \\
+            &\Leftrightarrow \A e_1, \A e_2, \dots, \A e_m \in \Lin(e_1, e_2, \dots, e_m) \\
+            &\Leftrightarrow \text{первые $m$ стобцов содержат 0 в строках $m + 1,\dots, n$, } \\
+            & \text{так как коэффициенты при этих базисных векторах равны 0}.
+        \end{split}
+    \end{gather*}
+\end{proof}
+
+\begin{follow}
+    Пусть $V = W_1 \oplus W_2$ (прямая сумма; она означает, что $V = W_1 + W_2$ и $W_1 \cap W_2 = 0$)
+     и $E_1$ -- базис $W_1$, $E_2$ -- базис $W_2$ (соответственно $E = E_1E_2$ -- базис $V$). 
+     Тогда \[ W_1, W_2 \; \text{инвариантны относительно $\A$} \Leftrightarrow [\A]_E = \begin{pmatrix}
+         A_1 & 0 \\
+         0 & A_2
+     \end{pmatrix} \]
+\end{follow}

@@ -1,1 +1,148 @@
 \section{Изменение координат вектора под действием линейного отображения}
+\begin{theorem}
+    Пусть $E$ --- базис $V$, $F$ --- базис $W$, $\varphi \in \Hom(V, W)$. \\
+    Тогда $[\varphi(v)]_F = [\varphi]_{E, F} \cdot [v]_E$
+\end{theorem}
+Получается следующая коммутативная диаграмма:
+\begin{center}
+    \shorthandoff{"}
+    \begin{tikzcd}
+        v \arrow[dd, maps to] & V \arrow[rr, "\varphi"] \arrow[dd, "\varepsilon_E"] &  & W \arrow[dd, "\varepsilon_F"]                  & w \arrow[dd, maps to] \\
+                            &                                    &  &                               &                       \\
+        {[v]_E}               & K^n \arrow[rr]                     &  & K^m                           & {[w]_F}               \\
+                            & {[v]_E} \arrow[rr, maps to]        &  & {[\varphi]_{E,F} \cdot [v]_E} &                      
+    \end{tikzcd}
+    \shorthandon{"}
+\end{center}
+\begin{proof}
+    Т.к. $E, F$ --- вектора-строки из базисных векторов, получаем: 
+    $v = E \cdot [v]_E$,  $\varphi(v) = F \cdot [\varphi(v)]_F$.
+
+    С другой стороны, $\varphi(v) = \varphi(E) \cdot [v]_E$, где
+    $\varphi(E) = (\varphi(e_1), \dots, \varphi(e_n))$ -- вектор-строка
+    из образов базисных векторов. Более того, 
+    $\varphi(E) = F \cdot [\varphi]_{E, F}$, т.к. 
+    $\varphi(e_i) = F \cdot [\varphi(e_i)]_F$.
+
+    Собираем вместе:
+    \begin{align*}
+        \varphi(v) &= F \cdot [\varphi(v)]_F \\
+        &= (F \cdot [\varphi]_{E, F}) \cdot [v]_E \\
+        &= F \cdot ([\varphi]_{E, F} \cdot [v]_E)
+    \end{align*}
+
+    Получаем, что линейная комбинация векторов $F$ с коэф.
+    $[\varphi(v)]_F$ равна ЛК векторов $F$ с коэф.
+    $[\varphi]_{E, F} \cdot [v]_E$. Т.к. $F$ --- базис $W$, делаем вывод,
+    что $[\varphi(v)]_F = [\varphi]_{E, F} \cdot [v]_E$.
+\end{proof}
+
+\notice Проще всего понять, что происходит, можно на матрицах.
+
+Пусть 
+$E = (e_1, \dots, e_n)$,
+$[v]_E = \begin{pmatrix}
+\alpha_1 \\ 
+\vdots \\ 
+\alpha_n
+\end{pmatrix}$, 
+$[\varphi(v)]_F = \begin{pmatrix}
+\beta_1 \\ 
+\vdots \\ 
+\beta_m
+\end{pmatrix}$,
+$[\varphi(e_i)]_F = \begin{pmatrix}
+\gamma_{1i} \\ 
+\vdots \\ 
+\gamma_{mi}
+\end{pmatrix}$. Тогда
+$$
+\begin{pmatrix}
+    \beta_1 \\ 
+    {
+        \tikz[overlay]
+        \fill[green!20] (-0.1,-0.2) rectangle (0.5,0.4);
+    }
+    \beta_2 \\ 
+    \vdots \\ 
+    \beta_m
+\end{pmatrix}
+=
+\begin{pmatrix}
+    \gamma_{11} & \gamma_{12} & \dots & \gamma_{1n} \\
+    {
+        \tikz[overlay]
+        \fill[blue!20] (0,-0.2) rectangle (3.5,0.4);
+    }
+    \gamma_{21} & \gamma_{22} & \dots & \gamma_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    \gamma_{m1} & \gamma_{m2} & \dots & \gamma_{mn} \\
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+    {
+        \tikz[overlay]
+        \fill[red!20] (-0.1,0.3) rectangle (0.5,-1.9);
+    }
+    \alpha_1 \\ 
+    \alpha_2 \\ 
+    \vdots \\ 
+    \alpha_n
+\end{pmatrix}
+$$
+
+Получается, что: 
+\colorbox{green!20}{$\beta_i$}$= \sum \limits_{k=1}^{n}$ 
+\colorbox{blue!20}{$\gamma_{ik}$}
+$\cdot$
+\colorbox{red!20}{$\alpha_k$}
+
+И это можно переписать вот так:
+$$
+\underbrace{
+\begin{pmatrix}
+    \beta_1 \\
+    \vdots \\ 
+    \beta_m
+\end{pmatrix}
+}_{=[\varphi(v)]_F}
+=
+\alpha_1
+\underbrace{
+\begin{pmatrix}
+    \gamma_{11} \\ 
+    \vdots \\ 
+    \gamma_{m1}
+\end{pmatrix}
+}_{=[\varphi(e_1)]_F}
++
+\alpha_2
+\underbrace{
+\begin{pmatrix}
+    \gamma_{12} \\ 
+    \vdots \\ 
+    \gamma_{m2}
+\end{pmatrix}
+}_{=[\varphi(e_2)]_F}
++
+\dots
++
+\alpha_n
+\underbrace{
+\begin{pmatrix}
+    \gamma_{1n} \\ 
+    \vdots \\ 
+    \gamma_{mn}
+\end{pmatrix}
+}_{=[\varphi(e_n)]_F}
+$$
+И действительно, 
+$\varphi(v) = \alpha_1 \varphi(e_1) + \dots + \alpha_n \varphi(e_n)$.
+
+\notice Пусть $E, E'$ --- базисы $V$. Тогда $M_{E \to E'} =
+[\E_V]_{E', E}$, где $\E_V \in \Hom(V, V)$ --- тождественное отображение на $V$.
+Действительно, в матрице перехода между базисами 
+$M_{E \to E'}$ мы раскладываем новый базис $E'$ по старому базису $E$,
+что по сути то же самое, что в матрице линейного отображения, только
+никакого отображения мы к векторам не применяем. Или другими словами,
+мы применяем к базисным векторам тождественное отображение.

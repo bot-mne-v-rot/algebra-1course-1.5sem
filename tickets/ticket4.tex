@@ -1,1 +1,16 @@
 \section{Изменение матрицы линейного отображения при замене базисов}
+\follow Пусть $E, E'$ -- базисы $V$; $F, F'$ -- базисы $W$;
+$C = M_{E \to E'}$, $D = M_{F \to F'}$, $\varphi \in \Hom(V, W)$.
+Тогда 
+$$ [\varphi]_{E', F'} = D^{-1} \cdot [\varphi]_{E, F} \cdot C $$
+\begin{proof}
+    Заметим, что:
+    $$ \varphi = \E_W \circ \varphi \circ \E_V $$
+
+    Тогда по предыдущему предложению:
+    $$ [\varphi]_{E', F'} = 
+    \stackbelow{[\E_W]_{F, F'}}{M_{F' \to F}} 
+    \cdot [\varphi]_{E, F}
+    \cdot \stackbelow{[\E_V]_{E', E}}{M_{E \to E'}}$$
+    Как мы знаем, $M_{F' \to F} = \left(M_{F \to F'}\right)^{-1}$
+\end{proof}

@@ -1,1 +1,45 @@
 \section{Сопряжённый оператор в евклидовом и унитарном пространстве}
+Пусть $V$ -- конечномерное евклидово или унитарное пространство, $\A \in \End V$ -- линейный оператор, $w \in V$ -- вектор из $V$.
+Заметим, что данное отображение $h$ будет принадлежать $V^*$: \begin{gather*}
+    h: V \to K \\
+    v \mapsto (\A v, w)
+\end{gather*}
+Из предыдущего параграфа мы поняли, что любое отображение из $V^*$, где $V$ -- евклидово или унитарное пространство, может быть описано скалярным умножением на какой-то $w'$ (причем такой $w'$ уникален): \begin{gather*}
+    \exists \; ! \, w' \in V : \quad \forall v \in V \;\;\; (v, w') = (\A v, w)
+\end{gather*} 
+Каждому $w$ однозначно сопоставляется $w'$, то есть мы получили отображение $V$ в себя: \begin{gather*}
+    \A^*: V \to V \\
+    w \mapsto w'
+\end{gather*}
+
+Теперь определим формально понятие сопряженного оператора.
+\begin{conj}
+    Оператор $\A^*$ называется сопряженным к $\A$, если $\forall v, w \in V$ выполнено $(\A v, w) = (v, \A^*w)$.
+\end{conj}
+
+\vspace*{5mm}
+
+Докажем, что это действительно линейный оператор.
+
+\begin{theorem-non}
+    $\A^*$ -- линейный оператор на $V$.
+\end{theorem-non}
+\begin{proof} \quad 
+
+    \quad Проверим сложение: \begin{gather*}
+        \begin{split}
+            \forall v \in V \quad (v, \A^*(w_1 + w_2)) &= (\A v, w_1 + w_2) \\
+            &= (\A v, w_1) + (\A v, w_2) \\
+            &= (v, \A^* w_1) + (v, \A^* w_2) \\
+            &= (v, \A^* w_1 + \A^* w_2)         
+        \end{split}\\ \Rightarrow \A^*(w_1 + w_2) = \A^* w_1 + \A^* w_2
+    \end{gather*}
+    \quad Проверим умножение на скаляр: \begin{gather*}
+        \begin{split}
+            \forall v \in V \quad (v, \A^*(\alpha w)) &= (\A v, \alpha w) \\
+            &= \bar{\alpha}(\A v, w) \quad (\text{для евкл. пр-ва сопряжение тоже корректно,} \\
+            &= \bar{\alpha}(v, \A^* w) \quad \text{т.к. ничего не меняет)}\\
+            &= (v, \alpha \, \A^* w)
+        \end{split} \\ \Rightarrow \A^*(\alpha w) = \alpha \, \A^* w
+    \end{gather*}
+\end{proof}

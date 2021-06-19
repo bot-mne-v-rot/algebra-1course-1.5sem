@@ -1,1 +1,54 @@
 \section{Характеристический многочлен сужения оператора на циклическое подпространство}
+Поймем, как устроена матрица индуцированного на $L_v$ оператора $\A$.
+Зафиксируем базис $E = \{ v, \A v, \A^2 v, \dots, \A^{d-1} v \}$.
+Тогда: \[ [\A |_{L_{v}}]_E = 
+\left(\begin{array}{ccccc}
+    0 & 0 & \dots & 0 & -\alpha_0 \\ 
+    1 & 0 & \dots & 0 & -\alpha_1 \\ 
+    0 & 1 & \dots & 0 & -\alpha_2 \\ 
+    \vdots & \vdots & \vdots & \vdots & \vdots \\ 
+    0 & 0 & 0 & 1 & -\alpha_{d - 1}
+\end{array}\right) - \text{ сопровождающая матрица многочлена $\mu_{\A, v}$.} \]
+Действительно, первый вектор переходит во второй, второй в третий и т.д. При применении оператора к последнему появляются те самые коэффициенты из доказательства. 
+
+Матрица называется сопровождающей матрицей многочлена $\mu_{\A, v}$, так как он полностью определяет ее.
+
+\vspace*{3mm}
+
+\begin{lemma}
+    Характеристический многочлен индуцированного оператора с точностью до знака равен соответствующему минимальному многочлену:
+    \[ \chi_{\A |_{L_v}} = \pm \mu_{\A, v} \]
+\end{lemma}
+\begin{proof}
+    \[ \chi_{\A |_{L_v}} = \begin{vmatrix*}
+        -x & 0 & \dots & 0 & -\alpha_0 \\ 
+        1 & -x & \dots & 0 & -\alpha_1 \\ 
+        0 & 1 & \dots & 0 & -\alpha_2 \\ 
+        \vdots & \vdots & \vdots & \vdots & \vdots \\ 
+        0 & 0 & 0 & 1 & -\alpha_{d - 1} - x
+    \end{vmatrix*} \]
+
+    Воспользуемся разложением по последнему столбцу.
+    Для этого надо просуммировать следующие слагаемые: \begin{itemize}
+        \item $(-\alpha_0) \cdot (-1)^{d+1} \cdot \begin{vmatrix}
+            1 & 0 & \dots & 0 \\
+            0 & 1 & \dots & 0 \\
+            0 & 0 & \ddots & 0 \\
+            0 & 0 & \dots & 1 
+        \end{vmatrix} = (-1)^d \alpha_0$  
+        \item $(-\alpha_1) \cdot (-1)^{d+2} \cdot \begin{vmatrix}
+            -x & 0 & \dots & 0 \\
+            0 & 1 & \dots & 0 \\
+            0 & 0 & \ddots & 0 \\
+            0 & 0 & \dots & 1 
+        \end{vmatrix} = (-1)^d \alpha_1 x$
+        \item \dots
+        \item $(-\alpha_{d-1} - x) \cdot (-1)^{d+d} \cdot \begin{vmatrix}
+            -x & 0 & \dots & 0 \\
+            0 & -x & \dots & 0 \\
+            0 & 0 & \ddots & 0 \\
+            0 & 0 & \dots & -x 
+        \end{vmatrix} = (-1)^d (\alpha_{d-1}x^{d-1} + x^d)$
+    \end{itemize}
+    Таким образом: \[ \chi_{\A |_{L_v}} = (-1)^d(\alpha_0 + \alpha_1 x + \dots + \alpha_{d - 1}x^{d-1} + x^d) = \pm \mu_{\A, v}  \]
+\end{proof}

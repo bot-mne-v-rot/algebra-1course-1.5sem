@@ -1,1 +1,33 @@
 \section{Самосопряжённые операторы в унитарном пространстве и унитарные операторы}
+В наших двух важных частных случаях матрица будет не только диагональной.
+
+\begin{follow}
+    \begin{enumerate}
+        \item Пусть $V$ -- унитарное, $\A \in \End V$. Тогда эквивалентны: \begin{enumerate}
+            \item $\A = \A^*$
+            \item В $V$ существует такой ортонормированный базис $E$, что $[\A]_E$ диагональна и вещественна. 
+        \end{enumerate}
+        \begin{proof} 
+            $1 \Rightarrow 2:$ Для ортонормированного базиса верно, что $[\A^*]_E = A^*$.
+            По условию $[\A^*]_E = [\A]_E = A$. Следовательно, $A = A^*$ и на диагонали стоят вещественные числа.
+
+            $2 \Rightarrow 1:$ $A = [\A]_E$ диагональна и вещественна. Тогда $A^* = A$ и $[\A^*]_E = [\A]_E$. 
+            Раз матрицы операторов совпадают в каком-то базисе, совпадают и сами операторы, то есть $\A = \A^*$.
+        \end{proof}
+        \item Пусть $V$ -- унитарное, $\A \in \End V$. Тогда эквивалентны: \begin{enumerate}
+            \item $\A$ унитарный
+            \item В $V$ существует такой ортонормированный базис $E$, что $[\A]_E$ диагональна, и все числа на диагонали по модулю равны 1. 
+        \end{enumerate}
+        \begin{proof}
+            Аналогично, только меняется ключевое свойство:
+            \begin{gather*}
+                \begin{split}
+                    \A - \text{унитарный} &\Leftrightarrow AA^* = E_n \\
+                    &\Leftrightarrow diag(z_1, \dots, z_n) * diag(\bar{z_1}, \dots, \bar{z_n}) = E_n \\
+                    &\Leftrightarrow z_i\bar{z_i} = 1 \;\; \forall i = 1, \dots, n \\
+                    &\Leftrightarrow |z_i|^2 = 1  \;\; \forall i = 1, \dots, n
+                \end{split}
+            \end{gather*}
+        \end{proof}
+    \end{enumerate}
+\end{follow}

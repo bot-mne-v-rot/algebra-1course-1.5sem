@@ -1,1 +1,45 @@
 \section{Нормальные операторы, свойства}
+\begin{conj}
+    Оператор $\A$ называется нормальным, если он коммутирует со своим сопряженным: $\A\A^* = \A^*\A$.
+\end{conj}
+Выделим два важных частных случая нормальных операторов:
+\begin{enumerate}
+    \item $\A = \A^*$ -- самосопряженные операторы.
+    \item $\A^{-1} = \A^*$ -- ортогональные (для евклидова пр-ва) или унитарные (для унитарного пр-ва) операторы.
+\end{enumerate}
+
+Докажем пару предложений, необходмых для доказательства важной теоремы о диагональной матрице оператора.
+Здесь будем считать, что $V$ евклидово или унитарное.
+
+\begin{theorem-non}
+    Пусть $\A \in \End V$ и $W \subset V$ инвариантно относительно $\A$. 
+    Тогда $W^\perp$ инвариантно относительно $\A^*$.
+\end{theorem-non}
+\begin{proof}
+    Пусть $w' \in W^\perp$ и $w \in W$. Тогда: \[ (w, \A^*w') = (\underbrace{\A w}_{\in W}, w') = 0 \Rightarrow \A^*w' \in W^\perp \]
+\end{proof}
+
+\begin{theorem-non}
+    Пусть $\A \in \End V$ -- нормальный, $\alpha \in \mathbb{C}$ (для евклидова случая $\R$). Тогда $\B = \A - \alpha \mathcal{E}$ -- нормальный.
+\end{theorem-non}
+
+\begin{proof}
+    \begin{gather*}
+        \B\B^* = (\A - \alpha\mathcal{E})(\A^* - \bar{\alpha}\mathcal{E}) = \A\A^* - \alpha\A^* - \bar{\alpha}\A + |\alpha|^2\mathcal{E} \\
+        \B^*\B = (\A^* - \bar{\alpha}\mathcal{E})(\A - \alpha\mathcal{E}) = \underbrace{\A^*\A}_{= \A\A^*} - \alpha\A^* - \bar{\alpha}\A + |\alpha|^2\mathcal{E} \\
+    \end{gather*}
+\end{proof}
+
+\begin{theorem-non}
+    Пусть $\A \in \End V$ -- нормальный, $v$ -- собственный вектор $\A$, соотвествующий собственному значению $\lambda$.
+    Тогда $v$ -- собственный вектор $\A^*$, соотвествующий собственному значению $\bar{\lambda}$.
+\end{theorem-non}
+
+\begin{proof}
+    Введем $\B = \A - \lambda \mathcal{E}$. Заметим, что по предыдущему предложению этот оператор нормальный.
+    По определению собственного вектора $\B v = 0$. Тогда $(\B v, \B v) = 0$, но мы также можем переписать это следующим образом:
+    \begin{gather*}
+        0 = (\B v, \B v) = (v, \B^*\B v) = (v, \B\B^* v) = (\B^*v, \B^*v) \\
+        \Rightarrow \B^* v = 0 \Rightarrow (\A^* - \bar{\lambda}\mathcal{E})v = 0 \Rightarrow \A^* v = \bar{\lambda}v
+    \end{gather*}
+\end{proof}

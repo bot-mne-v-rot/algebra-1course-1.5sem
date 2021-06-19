@@ -1,1 +1,49 @@
 \section{Закон инерции вещественных квадратичных форм}
+\begin{theorem} (Закон инерции вещественных билинейных форм)
+
+    Пусть $V$ -- конечномерное линейное пространство над $\R$, $\B$ -- симметрическая билинейная форма на $V$. Тогда 
+    существует такой базис $E$, такой, что: 
+    \begin{gather*}
+        [\B]_E = \diag{\underbrace{1, \dots, 1}_s, \underbrace{-1, \dots, -1}_t, 0, \dots, 0}
+    \end{gather*}
+    При этом $s$ и $t$ -- инварианты $\B$ 
+\end{theorem}
+\begin{proof} \quad
+
+    Существование $E$ доказывается аналогично предыдущему предложению. 
+    Только нужно будет взять квадратный корень из модуля чисел на диагонали. Каждое число поделится на свой модуль и останутся 1 и -1.
+    То, что $s+t$ -- инвариант, тоже понятно, так как $s+t = \rk{[\B]_E} = \rk{\B}$. 
+
+    То есть единственное, что нам нужно доказать -- это что $s$ -- инвариант. Предположим обратное.     
+    Тогда существуют $E_1$ и $E_2$:
+    \begin{gather*}
+        [\B]_{E_1} = \diag{\underbrace{1, \dots, 1}_{s_1}, \underbrace{-1, \dots, -1}_{t_1}, 0, \dots, 0} \qquad 
+        [\B]_{E_2} = \diag{\underbrace{1, \dots, 1}_{s_2}, \underbrace{-1, \dots, -1}_{t_2}, 0, \dots, 0}
+    \end{gather*}
+    Причем $s_1 \neq s_2$. НУО скажем, что $s_1 > s_2$. Пусть $E_1 = (e_1, \dots, e_n), E_2 = (f_1, \dots, f_n)$. Введем
+    $U_1 := \Lin{(e_1, \dots, e_{s_1})}, U_2 := \Lin{(f_{s_2 + 1}, \dots, f_n)}$. Обратим внимание, что: 
+    \begin{gather*}
+        \forall v \in U_1, v \neq 0: \B(v, v) > 0
+    \end{gather*}
+    Давайте убедимся, что это правда: 
+    \begin{gather*}
+        v = \alpha_1 e_1 + \dots + \alpha_{s_1} e_{s_1} (\text{и } \exists \nu : \alpha_\nu \neq 0 \text{ т. к. } v \neq 0) \Longrightarrow \\
+        \B(v, v) = \sum\limits_{i=1}^{s_1} \alpha_i^2 > 0
+    \end{gather*}
+    Аналогичными рассужденяими придем к выводу, что $\forall v \in U_2 : \B(v, v) \leqslant 0$: 
+    \begin{gather*}
+        v = \alpha_{s_2 + 1} f_{s_2 + 1} + \dots + \alpha_n f_n \\
+        \B(v, v) = \sum\limits_{i = s_2 + 1}^n \alpha_i^2 \B(f_i, f_i) = - \sum\limits_{s_2 + 1}^{s_2 + t_2} \alpha_i^2 \leqslant 0
+    \end{gather*}
+    Что же мы получили? Мы получили, что $U_1 \cap U_2 = 0$. На самом деле, мы можем уже сказать, что получили противоречие, но, давайте поймем почему: 
+    \begin{gather*}
+        \dim{U_1} = s_1 \qquad \dim{U_2} = n - s_2 \\
+        \dim{U_1} + \dim{U_2} = s_1 + n - s_2 > n \\ 
+        (\text{т. к. мы фиксировали, что } s_1 > s_2)
+    \end{gather*}
+    Теперь видно, где собака зарыта. У нас есть формула для пересечения подпространств, подставив в которую $U_1$ и $U_2$ получим: 
+    \begin{gather*}
+        \dim{U_1 \cap U_2} = \overbrace{\dim{U_1} + \dim{U_2}}^{> n} - \underbrace{\dim{(U_1 + U_2)}}_{\leqslant n} > 0
+    \end{gather*}
+    Противоречие.
+\end{proof}

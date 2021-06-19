@@ -1,1 +1,87 @@
 \section{Евклидово пространство. Неравенство Коши—Буняковского, неравенство треугольника}
+\begin{conj}
+    Симметрическая билинейная форма $\B$ на $V_\R$ называется положительно определенной, если 
+    $\forall v \in V : \B(v ,v) \geqslant 0$ и $\B(v, v) > 0$ при $v \neq 0$.
+\end{conj}
+Аналогично определяются понятия отрицательной, неположительной и неотрицательной билинейных форм. 
+
+Если речь идет о конечномерных пространствах, там у нас есть сигнатура $(s, t)$ и размерность пространства $n$. И получается, что: 
+\begin{itemize}
+    \item Положительная определенность равносильна тому, что $s = n$ 
+    \item Неотрицательная определенность $\Longleftrightarrow t = 0$
+    \item Отрицательная определенность $\Longleftrightarrow t = n$
+    \item Неотрицательная определенность $\Longleftrightarrow s = 0$
+\end{itemize} 
+
+\begin{conj}
+    Евклидово пространство -- линейное пространство над $\R$ с фиксированной положительно определенной симметрической 
+    билинейной формой. Обычно значение этой билинейной формы на векторах $u$ и $v$ обозначают как $(u, v)$, а саму форму называют скалярным произведением. 
+\end{conj}
+
+\underline{Примеры:} 
+\begin{enumerate}
+    \item $V = \R^n$. Задано стандартное скалярное произведение: 
+    \begin{gather*}
+        \left(\left(\begin{array}{c}
+            \alpha_1 \\ 
+            \vdots \\ 
+            \alpha_n
+            \end{array}\right), 
+            \left(\begin{array}{c}
+            \beta_1 \\ 
+            \vdots \\ 
+            \beta_n
+            \end{array}\right)\right) 
+            = \alpha_1 \beta_1 + \dots + \alpha_n \beta_n
+    \end{gather*}
+    \item $V = C[0, 1]$
+    \begin{gather*}
+        (f, g) = \int\limits_{0}^{1} fg
+    \end{gather*}
+\end{enumerate}
+Дальше будем считать, что $V$ -- евклидово пространство.
+\begin{conj}
+    Пусть $v \in V$. Длина(норма) $v$ обозначется как $\abs{v} = \sqrt{(v, v)}$.
+\end{conj} 
+
+\begin{theorem-non}
+    (Неравенство КБШ) 
+
+    Пусть $v, w \in V$. Тогда: 
+    \begin{gather*}
+        \abs{(v, w)} \leqslant  \abs{v} \cdot \abs{w}
+    \end{gather*}
+\end{theorem-non}
+\begin{proof}
+    Возьмем произвольное $t \in \R$ 
+    \begin{gather*}
+        (v + tw, v + tw) \geqslant 0 \\
+        (v, v) + t^2 (w, w) + t (v, w) + t (w, v) = \\
+        \abs{w}^2 t^2 + 2 (v, w) t + \abs{v}^2
+    \end{gather*}
+    Значения этого трехчлена неотрицательны, когда $t$ пробегает вещественные числа, значит соответствующее 
+    квадратное уравнение имеет не более одного корня, а значит дескриминант $D \leqslant 0$.
+    Посчитаем дескриминант и получим нужное нам неравенство: 
+    \begin{gather*}
+        \frac{D}{4} = (v, w)^2 - \abs{w}^2 \cdot \abs{v}^2 \leqslant 0 \\
+        \abs{(v, w)} \leqslant  \abs{v} \cdot \abs{w}
+    \end{gather*} 
+\end{proof}
+\follow Пусть $v, w \in V$. Тогда $\abs{v + w} \leqslant \abs{v} + \abs{w}$.
+\begin{proof}
+    \begin{align*}
+        \abs{v + w}^2 &= (v + w, v + w) \\
+        &= (v, v) + (w, w) + 2(v, w) \\
+        &\leqslant \abs{v}^2 + \abs{w}^2 + 2\abs{v} \cdot \abs{w} \\
+        &= (\abs{v} + \abs{w})^2
+    \end{align*}
+\end{proof}
+
+\notice В евклидовом пространстве можно ввести метрику: $\rho(v, w) = \abs{v - w}$. Аксиомы метрики очевидны из положительной определенности 
+и из только что доказанного неравенства.
+
+Также можно ввести понятие угла между векторами. Пусть $v, w \neq 0$. Тогда угол между $v$ и $w$ -- это $\alpha \in [0, \pi]$, такой, что $(v, w) = \abs{v} \cdot \abs{w} \cdot \cos{\alpha}$. 
+\begin{gather*}
+    -1 \leqslant \frac{(v, w)}{\abs{v} \cdot \abs{w}} \leqslant 1
+    \Longrightarrow \exists ! \ \alpha \in [0, \pi] : \cos{\alpha} = \frac{(v, w)}{\abs{v} \cdot \abs{w}}
+\end{gather*}

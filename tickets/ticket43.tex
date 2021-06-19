@@ -1,1 +1,145 @@
 \section{Канонический вид матрицы и ортогонального оператора в евклидовом пространстве}
+\textbf{Частные случаи}:
+\begin{enumerate}
+    \item $\A$ -- самоспопряжённый тогда и только тогда, когда матрица $\A$ в некотором ортонормированном базисе диагональна. 
+    \begin{gather*}
+        \A = \A^* \Longrightarrow [\A]_{E} = [\A]^T_{E} \\
+        \left(\begin{array}{cc}
+        \alpha & \beta \\ 
+        -\beta & \alpha
+        \end{array}\right) = \left(\begin{array}{cc}
+        \alpha & -\beta \\ 
+        \beta & \alpha
+        \end{array}\right) 
+        \Longrightarrow \beta = 0 \Longrightarrow [\A]_{E} \text{ диагональна}
+    \end{gather*}
+    В обратную сторону тривиально. 
+    \item $\A$ -- ортогональный:
+    \begin{align*}
+        \A \A^* = \mathcal{E} &\Longleftrightarrow [\A]_{E} \cdot [\A]^T_{E} = E_n \\
+                              &\Longleftrightarrow \text{ для всех блоков } B \text{ выполняется, что } BB^T = E_{\dots}
+    \end{align*}
+    Таким образом, если блок $B$ был блоком $1 \times 1$ вида $(\mu)$, то $\mu^2 = 1 \Longrightarrow \mu = \pm 1$. Если же блок имел размер $2 \times 2$, то:
+    \begin{gather*}
+        B = \left(\begin{array}{cc}
+            \alpha & \beta \\ 
+            -\beta & \alpha
+            \end{array}\right) \Longrightarrow BB^T = \left(\begin{array}{cc}
+            \alpha^2 + \beta^2 & 0 \\ 
+            0 & \alpha^2 + \beta^2
+        \end{array}\right) = E_2
+        \Longleftrightarrow \alpha^2 + \beta^2 = 1
+    \end{gather*}
+
+    Еще подметим, что, в общем то, можно ввести такое $\varphi$, что:
+    \begin{gather*}
+        \begin{cases}
+            \alpha = \cos{\varphi} \\
+            \beta = \sin{\varphi}
+        \end{cases} 
+    \end{gather*}
+
+    Тогда $\A$ ортогональный оператор $\Longleftrightarrow$ матрица $\A$ в 
+    некотором ортонормированном базисе имеет блочно-диагональный вид с блоками $1 \times 1$ вида $(\pm 1)$ и
+    блоками $2 \times 2$ вида:
+    \begin{gather*}
+        \left(\begin{array}{cc}
+            \cos{\varphi} & \sin{\varphi} \\ 
+            -\sin{\varphi} & \cos{\varphi}
+        \end{array}\right)
+    \end{gather*}
+
+    Логика повествования давно пошла по жопе. Давайте в очередной раз заметим, что можно еще упростить вид нашей матрицы. 
+
+    Воспользуемся тем, что блоки мы можем переставлять как душе угодно. Давайте в начало сгребем все блоки $2 \times 2$, потом единичные блоки 
+    с единицей, а в самый конец единичные блоки с минус единицей. После этого 
+    заметим, что два подряд идущих блока единиц можно преобразовать в блок $2 \times 2$. Аналогично с блоками из $-1$: 
+    \begin{gather*}
+        \left(\begin{array}{cc}
+            1 & 0 \\ 
+            0 & 1
+        \end{array}\right) = \left(\begin{array}{cc}
+            \cos{0} & \sin{0} \\ 
+            -\sin{0} & \cos{0}
+        \end{array}\right) \qquad \qquad
+        \left(\begin{array}{cc}
+            -1 & 0 \\
+            0 & -1
+        \end{array}\right) = \left(\begin{array}{cc}
+            \cos{\pi} & \sin{\pi} \\
+            -\sin{\pi} & \cos{\pi}
+        \end{array}\right)
+    \end{gather*}
+    Теперь обозначим блоки $2 \times 2$ буковками $R$ от слова rotation и посмотрим на финальный вид нашей матрицы: 
+    \begin{gather*}
+        [\A]_{E} = \left(\begin{array}{cccc}
+            R_{\varphi_1} &  &  & 0 \\ 
+            & \ddots &  &  \\ 
+            &  & R_{\varphi_m} &  \\ 
+            0 &  &  & D
+        \end{array}\right)
+    \end{gather*}
+    Где $D$ будет либо пустым, либо равен $(\pm 1)$, либо же блоку:
+    \begin{gather*}
+        \left(\begin{array}{cc}
+            1 & 0 \\ 
+            0 & -1
+        \end{array}\right)
+    \end{gather*}
+    В частности, если $\dim V = 3$, то любой оператор первого рода, то есть такой, что его определитель равен $1$, а еще точнее просто ортогональный 
+    (так как ортогональность влечет то, что у оператора опеределитель равен $\pm 1$), 
+    в некотором базисе $E$ будет иметь следующую матрицу:
+    \begin{gather*}
+        [\A]_{E} = \left(\begin{array}{cc}
+            R_{\varphi} & 0 \\ 
+            0 & 1 
+        \end{array}\right)
+    \end{gather*}
+    То есть наш оператор будет представлять из себя просто поворот на угол $\varphi$ в некоторой плоскости. 
+    На самом деле получили красивый геометрический факт. Пусть мы взяли композицию двух поворотов на некоторые 
+    углы относительно двух разных осей, проходящих через начало координат. И оказывается, мы сейчас поняли, 
+    что композиция этих поворотов тоже будет поворотом на некий угол, по некоторой оси, проходящей через начало координат. 
+\end{enumerate}
+
+\begin{theorem}(Характеристика ортогональных операторов)
+
+    Пусть $V$ -- евклидово пространство, $\A \in \End{V}$.
+    Тогда эквивалентны следующие утверждения:
+    \begin{enumerate}
+        \item $\A$ ортогонален
+        \item $\forall v, w \in V: (\A v, \A w) = (v, w)$
+        \item $\forall v \in V: ||\A v|| = || v || $
+    \end{enumerate}
+    \mybox[orange!15]{Грубо говоря ортогональный оператор -- оператор, сохраняющий длины векторов и сохраняющий начало координат. В общем то 
+    из этого предложения становится интуитивно понятно, почему у ортогональого оператора опеределитель $\pm 1$. 
+    Ведь в терминах операторов определитель -- это то, как сильно оператор изменяет длины векторов.}
+    \begin{proof} \quad
+
+        \begin{itemize}
+            \item[``$1 \Rightarrow 2$'':]
+            \begin{gather*}
+                \A^* \A = \mathcal{E} \\
+                (\A v, \A w) = (v, \A^*\A w) = (v, w)
+            \end{gather*} 
+            \item[``$2 \Rightarrow 3$'':]
+            \begin{gather*}
+                ||Av|| = \sqrt{(Av, Av)} = \sqrt{(v, v)} = ||v||
+            \end{gather*} 
+            \item[``$3 \Rightarrow 2$'':]
+            \begin{align*}
+                2(v, w) &= ||v + w||^2 - ||v||^2 - ||w||^2 \\
+                2(Av, Aw) &= ||Av + Aw||^2 - ||Av||^2 - ||Aw||^2 \\
+                &\Longrightarrow (Av, Aw) = (v, w)
+            \end{align*}  
+            \item[``$2 \Rightarrow 1$'':]  \quad
+             
+            Нужно доказать, что $\forall v \in V: \, \A^* \A v = v$. Возьмем произвольный $w \in V$:
+            \begin{align*}
+                (w, \A^* \A v) &= (\A w, \A v) = (w, v) \\
+                &\Longrightarrow (\A^* \A v - v) \perp w \\
+                &\Longrightarrow (\A^* \A v - v) \in V^{\perp} = 0 \\
+                &\Longrightarrow \A^* \A v = v
+            \end{align*} 
+        \end{itemize}
+    \end{proof}    
+\end{theorem}

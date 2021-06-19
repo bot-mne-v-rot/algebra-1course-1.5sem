@@ -354,18 +354,17 @@ $M_{E \to E'}$ мы раскладываем новый базис $E'$ по с�
     $[\psi \circ \varphi]_{E,G} = [\psi]_{F,G} \cdot [\varphi]_{E,F}$.
 \end{theorem}
 \begin{proof}
-    Заметим, что:
+    По определению:
     \begin{align*}
-        \varphi(E) &= F \cdot [\varphi]_{E, F}, \\
-        \psi(F) &= G \cdot [\psi]_{F, G}, \\
-        \varphi(\psi(E)) &= G \cdot [\psi \circ \varphi]_{E, G};
+        \varphi(E) &= F \cdot [\varphi]_{E, F} \\
+        \psi(F) &= G \cdot [\psi]_{F, G} \\
+        \psi(\varphi(E)) &= G \cdot [\psi \circ \varphi]_{E, G} 
     \end{align*}
-    Получаем:
-    \begin{align*}
-        \varphi(\psi(E)) &= G \cdot [\psi \circ \varphi]_{E, G} \\
-        &= \psi(F) \cdot [\varphi]_{E, F} \\
-        &= G \cdot [\psi]_{F, G} \cdot [\varphi]_{E, F}
-    \end{align*}
+    Применим $\psi$ к первому равенству.
+    Важно, что $[\varphi]_{E, F}$ это матрица-скаляр, поэтому при применении к ней $\psi$ ничего не происходит:
+    \[ \psi(\varphi(E)) = \psi(F) \cdot [\varphi]_{E, F} = G \cdot [\psi]_{F, G} \cdot [\varphi]_{E, F}  \]
+    Получилось то же самое, что и в треьем равенстве:
+    \[ \psi(\varphi(E)) = G \cdot [\psi \circ \varphi]_{E, G} = G \cdot [\psi]_{F, G} \cdot [\varphi]_{E, F}  \]
     $G$ --- базис $\Longrightarrow$ 
     $[\psi \circ \varphi]_{E,G} = [\psi]_{F,G} \cdot [\varphi]_{E,F}$
 \end{proof}

@@ -1,1 +1,74 @@
 \section{Минимальный многочлен алгебраического элемента. Строение простого алгебраического расширения, его степень. Присоединение к полю корня неприводимого многочлена}
+\begin{conj}
+    Тогда $F = \langle f_0 \rangle$. $f_0$ --- \textbf{минимальный многочлен} 
+    $a$.
+\end{conj}
+
+\begin{lemma}
+    $f_0$ неприводим.
+\end{lemma}
+\begin{proof}
+    Предположим, что $f_0$ приводим. Тогда $f_0 = gh$, где $1 \leqslant \deg g, \deg h < \deg f_0$. $f_0(a) = 0 \Rightarrow g(a) h(a) = 0$. Тогда либо $g(a) = 0$, либо $h(a) = 0$, либо оба. НУО, $g(a) = 0$. Тогда $g \in F$ $\Rightarrow$ $f_0 \mid g$ $\Rightarrow$ $\deg g \geqslant \deg f_0$.
+\end{proof}
+
+\notice $f_0$ ещё называют минимальным неприводимым многочленом. 
+Не совсем стандартное обозначение: $\Irr_K a := f_0$. 
+
+\textbf{Пример:} $\Irr_\R i = x^2 + 1$.
+
+\begin{conj}
+    Расширение $L / K$ называется \textbf{простым}, если $L = K(a)$ для некоторого $a \in L$.
+\end{conj}
+
+Прежде, чем заняться изучением структуры простого расширения, нам нужно разобраться с некоторыми вопросами факторколец. А именно, когда $K[x] / \langle f \rangle$ является полем. Вопрос аналогичен тому, когда кольцо классов вычетов $\Z / \langle f \rangle$ является полем. Мы знаем, что тогда и только тогда, когда $p$ --- простое. Здесь ответ аналогичен.
+
+\begin{lemma}
+    $K[x] / \langle f \rangle$ --- поле $\Longleftrightarrow$ $f$ неприводим.
+\end{lemma}
+\begin{proof} $ $
+
+    \begin{itemize}
+        \item[``$\Longrightarrow$'':] Предположим, это не так. Пусть $f = gh$, где $1 \leqslant \deg g, \deg h < \deg f$. В $K[x]/\langle f \rangle$ верно, что класс $[f] = 0$. А тогда $[g] \cdot [h] = 0$. Но $[g] \neq 0$ и $[h] \neq 0$, т.к. $f \nmid g$ и $f \nmid h$. Получаем, что в $K[x]/(f)$ есть делители нуля. А тогда это не область целостности и уж тем более не поле.
+
+        \item[``$\Longleftarrow$'':] Хотим доказать, что любой ненулевой элемент обратим. Пусть $G \in K[x] / \langle f \rangle$, $G \neq 0$. Тогда $G = [g] = g + \langle f \rangle$ для некоторого $g \in K[x]$, $\deg g < \deg f$. Т.к. $G \neq 0$, то $g \neq 0$. Т.к. $f$ неприводим, получаем, что $\gcd(g, f) = 1$. А значит, $ga + fb = 1$ для некоторых $a, b \in K[x]$. Возвращаясь к классам, $[1] = G \cdot [a] + \underbrace{[f]}_{=[0]} \cdot [b] = G \cdot [a]$. Получаем, что $G$ обратим в $K[x] / \langle f \rangle$.
+    \end{itemize}
+\end{proof}
+
+\textbf{Пример:} cовсем взрослое определение комплексных чисел: $\C = \R[x] / (x^2 + 1)$. 
+
+Теперь займёмся изучением структуры простого расширения. Для этого нам важно различать два случая: когда $a$ --- алгебраическое, и когда $a$ --- трансцендентное.
+
+\begin{theorem}
+    Пусть $a$ --- алгебраический элемент над $K$. Тогда $K(a) \cong K[x] / \langle f \rangle$, где \\ $f = \Irr_K a$.
+\end{theorem}
+\begin{proof}
+    Определим отображение:
+    \begin{align*}
+        \varphi : K[x] &\to K(a) \\
+        g &\mapsto g(a) 
+    \end{align*}
+    $\varphi$ --- гомоморфизм колец, т.к. это просто гомоморфизм подстановки в многочлен (мы это изучали в первом семестре).
+    
+    Поймём, что $\Ker \varphi = \langle f \rangle$. По определению
+    $\Ker \varphi = \{ g \in K[x] \mid g(a) = 0 \}$. Но это был главный идеал в $K[x]$, порождённый $f = \Irr_K a$.
+
+    По теореме о гомоморфизме (для групп) $K[x] / \langle f \rangle \overset{\widetilde{\varphi}}\cong \Imm \varphi$, где $\widetilde{\varphi}$ --- изоморфизм групп.
+
+    Заметим, что $\widetilde{\varphi}$ сохраняет умножение. Действительно, пусть:
+    $$[g], [h] \in K[x]/\langle f \rangle, [g] = g + \langle f \rangle, [h] = h + \langle f \rangle$$
+    $\widetilde{\varphi}$ --- индуцированный гомоморфизм. 
+    И он определяется следующим образом: $\widetilde{\varphi}([g]) = \varphi(g)$. По определению произведения классов: $[g] \cdot [h] = [gh]$. Поэтому:
+    $$\widetilde{\varphi}([g] \cdot [h]) = \widetilde{\varphi}([gh]) = \underbrace{\varphi(gh) = \varphi(g) \cdot \varphi(h)}_{\text{$\varphi$ --- гом-м колец}} = \widetilde{\varphi}([g]) \cdot 
+    \widetilde{\varphi}([h])$$
+
+    Таким образом, $\widetilde{\varphi}$ --- изоморфизм колец. Т.к. $f = \Irr_K a$ неприводим, $K[x] / \langle f \rangle$ --- поле.
+    Тогда $\Imm \varphi$ --- тоже поле. 
+
+    Заметим, что $K \subset \Imm \varphi$, т.к. $\varphi(c) = c \;\; \forall c \in K \subset K[x]$. Также заметим, что $\varphi(x) = a$. Действительно, подставляем $a$ в многочлен $g(x) = x$ и получаем $a$. Тогда $\Imm \varphi \supset K(a)$ по определению $K(a)$, но $\Imm \varphi \subset K(a)$, а значит, они равны.
+\end{proof}
+
+\notice Если отождествить класс константы $c + \langle f \rangle$ с константой $c$ в $K[x] / \langle f \rangle$, то 
+\begin{enumerate}
+    \item $K[x] / \langle f \rangle$ можно рассматривать, как расширение $K$.
+    \item $\widetilde{\varphi} : K[x]/ \langle f \rangle \to K(a)$ --- изоморфизм расширений $K$ (изоморфизм над $K$).
+\end{enumerate}
